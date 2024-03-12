@@ -163,6 +163,14 @@ Route::middleware('auth')->group(function () {
             Route::post('admin/ribbon/save', 'ribbon_save')->name('ribbon.save');
             Route::get('admin/resource/download/', 'resource_download')->name('admin.resource.download');
             Route::post('admin/resource/download/delete/{id}', 'resource_download_delete')->name('admin.download.delete');
+
+            Route::get('admin/english/test/', 'admin_english_view')->name('admin.english.view');
+            Route::get('admin/academy/test/', 'admin_academy_view')->name('admin.academy.view');
+
+            Route::post('admin/english/delete/{id}', 'admin_english_delete')->name('admin.english.delete');
+
+            Route::post('admin/academic/delete/{id}', 'admin_academic_delete')->name('admin.academic.delete');
+
             Route::get('admin/loan/all/', 'admin_loan_all')->name('admin.loan.all');
             Route::post('admin/loan/delete/{id}', 'loan_delete')->name('loan.delete');
             Route::post('admin/loan/status/{id}', 'loan_status')->name('admin.loan.status');
@@ -221,6 +229,11 @@ Route::controller(FrontendController::class)->group(function () {
     Route::post('/consultation/add', 'consultation_add')->name('consultation.add');
     Route::post('/resource/download', 'resource_download')->name('resource.download');
     Route::post('/loan/save', 'loan_save')->name('user.loan.save');
+    Route::get('/english/test', 'user_english_test')->name('user.english.test');
+    Route::get('/academic/test', 'user_academic_test')->name('user.academic.test');
+
+    Route::post('/academic/tutorial', 'academic_tutorial')->name('academic.tutorial');
+    Route::post('/english/tutorial', 'english_tutorial')->name('english.tutorial');
 });
 
 

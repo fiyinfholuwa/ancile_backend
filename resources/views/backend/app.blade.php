@@ -446,6 +446,34 @@
 
 
 
+    <li class="nav-item ">
+        <a class="nav-link {{ request()->routeIs('admin.english.view') || request()->routeIs('admin.academy.view') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav612" data-bs-toggle="collapse" href="#">
+            @if(in_array('add_post', $permissions) || in_array('manage_post', $permissions) || Auth::user()->user_type== 2 )
+                <i class="fas fa-blog"></i><span >Test Preps</span><i class="bi bi-chevron-down ms-auto"></i>
+            @endif
+        </a>
+        <ul id="charts-nav612" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            @if(in_array('add_post', $permissions) || Auth::user()->user_type== 2)
+                <li>
+                    <a href="{{route('admin.english.view')}}">
+                        <i class="bi bi-circle"></i><span>English Test</span>
+                    </a>
+                </li>
+            @endif
+
+            @if(in_array('manage_post', $permissions) || Auth::user()->user_type== 2)
+                <li>
+                    <a href="{{route('admin.academy.view')}}">
+                        <i class="bi bi-circle"></i><span>Academy Tutorials</span>
+                    </a>
+                </li>
+            @endif
+        </ul>
+    </li><!-- End Charts Nav -->
+
+
+
+
     <li class="nav-item">
     <a class="nav-link {{ request()->routeIs('counsellor.view') || request()->routeIs('counsellor.all') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav2" data-bs-toggle="collapse" href="#">
     @if(in_array('add_counsellor', $permissions) || in_array('manage_counsellor', $permissions) || Auth::user()->user_type== 2 )

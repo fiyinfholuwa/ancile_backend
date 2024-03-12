@@ -58,10 +58,36 @@
 </div>
 
 <li class="nav-item"><a href="{{route('resources')}}" class="nav-link">Resources</a></li>
-<li class="nav-item"><a href="{{route('blog')}}" class="nav-link">Blogs</a></li>
-<li class="nav-item"><a href="{{route('news')}}" class="nav-link">News</a></li>
+<!-- <li class="nav-item"><a href="{{route('blog')}}" class="nav-link">Blogs</a></li> -->
+<!-- <li class="nav-item"><a href="{{route('news')}}" class="nav-link">News</a></li> -->
 <li class="nav-item"><a href="{{route('faq')}}" class="nav-link">FAQ</a></li>
 <li class="nav-item"><a href="{{route('study.loan')}}" class="nav-link">Study Loan</a></li>
+<li class="nav-item insighto"><a href="#" class="nav-linkee" style="color:#fff;">Insight</a>
+            <ul class="ins">
+              <li class="sublink"><a href="#">Blog</a></li>
+              <li class="sublink"><a href="#">News</a></li>
+            </ul>
+          </li>
+          <li class="nav-item tutor"><a href="#" style="color:#fff;" class="nav-linkee">Tutorial</a>
+            <ul class="tutorial-set">
+              <li class="english-link"><a href="#" class="english-ref">English Tutorial</a>
+                <ul class="english-tutor">
+                  <li class="sublink"><a href="{{route('user.english.test')}}#IELTS">IELTS</a></li>
+                  <li class="sublink"><a href="{{route('user.english.test')}}#PTE">PTE</a></li>
+                  <li class="sublink"><a href="{{route('user.english.test')}}#DUO">Duolingo</a></li>
+                  <li class="sublink"><a href="{{route('user.english.test')}}#TOEFL">TOEFL</a></li>
+                </ul>
+              </li>
+              <li class="nav-item acada-link"><a href="#" style="color:#fff;" class="acada-ref">Academic Tutorial</a>
+                <ul class="acada-tutor">
+                  <li><a href="academic-tutorial.html#GRE">GRE</a></li>
+                  <li><a href="academic-tutorial.html#SAT">SAT</a></li>
+                  <li><a href="academic-tutorial.html#GMAT">GMAT</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
 {{--            <li class="nav-item"><a href="about.html#offer" class="nav-link">Services</a></li>--}}
 <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About</a></li>
 

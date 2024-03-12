@@ -10,6 +10,8 @@ use App\Models\Country;
 use App\Models\CourseCategory;
 use App\Models\Destination;
 use App\Models\ProgramCourse;
+use App\Models\AcademyTutorial;
+use App\Models\EnglishTest;
 use App\Models\ResourceBook;
 use App\Models\Loan;
 use App\Models\Testimonial;
@@ -190,5 +192,49 @@ public function news(){
         );
         return redirect()->route('home')->with($notification);
 
+    }
+
+    public function user_english_test(){
+        return view('frontend.english');
+    }
+
+    public function user_academic_test(){
+        return view('frontend.academy');
+    }
+
+
+    public function academic_tutorial(Request $request){
+        $request->validate([
+            'email' => ['required', 'string', 'lowercase', 'email'],
+            'phone' => 'required',
+        ]);
+        $check_if_exist = AcademyTutorial::where('email', '=', $request->email)->Where('phone', '=', $request->phone)->Where('section', '=', $request->section)->first();
+        if($check_if_exist){
+            return response()->json(['message' => 'you have already have detail with us, we will get back to you shortly'], 200);
+        }
+        $res = new AcademyTutorial;
+        $res->email = $request->email;
+        $res->phone = $request->phone;
+        $res->section = $request->section;
+        $res->save();
+        return response()->json(['message' => 'submitted successfully, thank you registering, we will get back to you shortly.'], 200);
+    }
+
+
+    public function english_tutorial(Request $request){
+        $request->validate([
+            'email' => ['required', 'string', 'lowercase', 'email'],
+            'phone' => 'required',
+        ]);
+        $check_if_exist = EnglishTest::where('email', '=', $request->email)->Where('phone', '=', $request->phone)->Where('section', '=', $request->section)->first();
+        if($check_if_exist){
+            return response()->json(['message' => 'you have already have detail with us, we will get back to you shortly'], 200);
+        }
+        $res = new EnglishTest;
+        $res->email = $request->email;
+        $res->phone = $request->phone;
+        $res->section = $request->section;
+        $res->save();
+        return response()->json(['message' => 'submitted successfully, thank you registering, we will get back to you shortly.'], 200);
     }
 }

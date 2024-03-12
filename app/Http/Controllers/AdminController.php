@@ -15,6 +15,8 @@ use App\Models\Destination;
 use App\Models\EducationalLevel;
 use App\Models\Blog;
 use App\Models\ProgramCat;
+use App\Models\AcademyTutorial;
+use App\Models\EnglishTest;
 use App\Models\ProgramCourse;
 use App\Models\ResourceBook;
 use App\Models\ResourceDownloader;
@@ -1970,6 +1972,26 @@ class AdminController extends Controller
     }
 
 
+    public function admin_english_view(){
+        $tests = EnglishTest::all();
+        return view('backend.english_test', compact('tests'));
+    }
+
+    
+
+
+    public function admin_academy_view(){
+        $tests = AcademyTutorial::all();
+        return view('backend.academy_test', compact('tests'));
+    }
+
+
+    // public function resource_download(){
+    //     $downloads = ResourceDownloader::all();
+    //     return view('backend.resource_download', compact('downloads'));
+    // }
+
+
     public function loan_delete($id)
     {
 
@@ -2006,6 +2028,32 @@ class AdminController extends Controller
         $download->delete();
         $notification = array(
             'message' => 'Downloader Successfully deleted',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+
+    public function admin_english_delete($id)
+    {
+
+        $test = EnglishTest::findOrFail($id);
+        $test->delete();
+        $notification = array(
+            'message' => 'English Test Student Successfully deleted',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+
+    public function admin_academic_delete($id)
+    {
+
+        $test = AcademyTutorial::findOrFail($id);
+        $test->delete();
+        $notification = array(
+            'message' => 'Academic Tutorial Student Successfully deleted',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
