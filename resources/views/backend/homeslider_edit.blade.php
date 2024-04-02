@@ -15,48 +15,80 @@
               <h5 class="card-title">Edit Home Slider</h5>
               <div class="card">
 
-              <form action="{{route('homeslider.update', $homeslider->id)}}" enctype="multipart/form-data" method="post" class="row g-3">
-                @csrf
-                <div class="col-md-12 col-lg-12">
-                  <label for="inputName5" class="form-label">Header Text</label>
-                  <textarea  name="header_text" value="{{old('header_text')}}" class="form-control"  placeholder="homeslider Name" id="inputName5">{{$homeslider->header}}</textarea>
-                  <p style="font-weight:bold; color:red; font-size:12px;">
-                  @error('header_text')
-                    {{$message}}
-                  @enderror
-                  </p>
-                </div>
+              <form action="{{ route('homeslider.update', $homeslider->id) }}" enctype="multipart/form-data" method="post" class="row g-3">
+    @csrf
+    <div class="col-md-12 col-lg-12">
+        <label for="inputName5" class="form-label">Header Text</label>
+        <textarea name="header_text" class="form-control" placeholder="homeslider Name" id="updateHeaderText" maxlength="30">{{ old('header_text', $homeslider->header) }}</textarea>
+        <p style="font-weight:bold; color:red; font-size:12px;" id="updateHeaderError">
+            @error('header_text')
+                {{ $message }}
+            @enderror
+        </p>
+        <p id="updateHeaderCharCount">Character count: {{ strlen($homeslider->header) }}</p>
+    </div>
 
-                <div class="col-md-12 col-lg-12">
-                  <label for="inputName5" class="form-label">Paragraph Text</label>
-                  <textarea type="text" name="text" value="{{old('text')}}" class="form-control"  placeholder="homeslider Name" id="inputName5">{{$homeslider->text}}</textarea>
-                  <p style="font-weight:bold; color:red; font-size:12px;">
-                  @error('text')
-                    {{$message}}
-                  @enderror
-                  </p>
-                </div>
+    <div class="col-md-12 col-lg-12">
+        <label for="inputName5" class="form-label">Paragraph Text</label>
+        <textarea type="text" name="text" class="form-control" placeholder="homeslider Name" id="updateParagraphText" maxlength="40">{{ old('text', $homeslider->text) }}</textarea>
+        <p style="font-weight:bold; color:red; font-size:12px;" id="updateParagraphError">
+            @error('text')
+                {{ $message }}
+            @enderror
+        </p>
+        <p id="updateParagraphCharCount">Character count: {{ strlen($homeslider->text) }}</p>
+    </div>
 
-                <div class="col-md-12 col-lg-12">
-                  <label for="inputName5" class="form-label">Image</label>
-                  <input type="file" name="image"  class="form-control"  placeholder="homeslider Name" id="inputName5">
-                  <p style="font-weight:bold; color:red; font-size:12px;">
-                  
-                  @error('image')
-                    {{$message}}
-                  @enderror
-                  </p>
-                  <div style="margin: 20px 0px;">
-                        <img height="40px" width="40px" src="{{asset($homeslider->image)}}">
-                    </div>
-                </div>
+    <div class="col-md-12 col-lg-12">
+        <label for="inputName5" class="form-label">Image</label>
+        <input type="file" name="image" class="form-control" placeholder="homeslider Name" id="updateInputName5">
+        <p style="font-weight:bold; color:red; font-size:12px;">
+            @error('image')
+                {{ $message }}
+            @enderror
+        </p>
+        <div style="margin: 20px 0px;">
+            <img height="40px" width="40px" src="{{ asset($homeslider->image) }}">
+        </div>
+    </div>
 
+    <div class="text-left">
+        <button type="submit" class="btn btn-primary">Update Home Slider</button>
+    </div>
+</form>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var updateHeaderText = document.getElementById("updateHeaderText");
+        var updateParagraphText = document.getElementById("updateParagraphText");
+        var updateHeaderCharCount = document.getElementById("updateHeaderCharCount");
+        var updateParagraphCharCount = document.getElementById("updateParagraphCharCount");
+        var updateHeaderError = document.getElementById("updateHeaderError");
+        var updateParagraphError = document.getElementById("updateParagraphError");
 
-                <div class="text-left">
-                  <button type="submit" class="btn btn-primary">Update Home Slider</button>
-                </div>
-              </form><!-- End Multi Columns Form -->
+        updateHeaderText.addEventListener("input", function () {
+            var charCount = this.value.length;
+            updateHeaderCharCount.textContent = "Character count: " + charCount;
+
+            if (charCount > 30) {
+                updateHeaderError.textContent = "Header text cannot exceed 30 characters.";
+            } else {
+                updateHeaderError.textContent = "";
+            }
+        });
+
+        updateParagraphText.addEventListener("input", function () {
+            var charCount = this.value.length;
+            updateParagraphCharCount.textContent = "Character count: " + charCount;
+
+            if (charCount > 40) {
+                updateParagraphError.textContent = "Paragraph text cannot exceed 40 characters.";
+            } else {
+                updateParagraphError.textContent = "";
+            }
+        });
+    });
+</script>
 
 
             </div>

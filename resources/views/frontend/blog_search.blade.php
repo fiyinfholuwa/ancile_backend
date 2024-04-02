@@ -132,7 +132,7 @@
                             </div>
 
                             <div class="card-body">
-                                <h3 class="blog-title">{{$blog->title}}</h3>
+                                <h3 class="blog-title">{!! (\Illuminate\Support\Str::limit($blog->title, 45, '...')) !!}</h3>
                                 <div class="card-profile">
                                     <img class="profile-img" src='https://static.thenounproject.com/png/4035887-200.png' alt=''>
                                     <div class="card-profile-info">

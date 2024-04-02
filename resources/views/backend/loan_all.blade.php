@@ -15,6 +15,33 @@
               <h5 class="card-title">Manage Loans</h5>
 
 
+              <form method="post" action="{{route('loan.report')}}">
+										@csrf
+                                <div class="row">
+                                    <div class="col-lg-2  mt-1">
+                                    <div class="" style="">
+
+                                    <input name="date_from" class="form-control "  type="date"  placeholder="Start Date"    required/>
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-lg-2  mt-1">
+                                    <div class="" style="">
+
+                                    <input name="date_to" class="form-control "  type="date"  placeholder="End Date"   required/>
+                                    
+                                    </div>
+                                </div>
+                                
+                              
+                              
+                                <div class="col-lg-4   mt-1" >
+                                <button type="submit" class='btn btn-secondary btn-sm'>Export to CSV</button>
+                                </div>
+                                </div>
+                            </div>
+                        </form>
+
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>

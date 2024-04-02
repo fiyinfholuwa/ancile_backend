@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\AppChat;
 use App\Models\NewApplication;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mail;
+use App\Mail\ApplicationNotification;
 
 class UserController extends Controller
 {
@@ -224,6 +227,11 @@ class UserController extends Controller
         $application->user_id = Auth::user()->id;
         $application->status = "pending";
         $application->save();
+        $mailData = [
+            'name' => $request->full_name,
+            'status' => "welcome",
+        ];
+        Mail::to($request->email)->send(new ApplicationNotification($mailData));
         $notification = array(
             'message' => 'Application successfully saved',
             'alert-type' => 'success'

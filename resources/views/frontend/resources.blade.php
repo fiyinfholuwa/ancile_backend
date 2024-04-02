@@ -55,12 +55,35 @@
             background: rgba(0, 0, 0, 0.5);
             justify-content: center;
             align-items: center;
+            padding:50px 30px !important;
+            
+        }
+
+        .form-container i{
+            position: absolute;
+            top:20px;
+            right:20px;
+            font-size:20px;
+        }
+
+        .form-container a{
+            color:black;
         }
 
         .form-container {
             background: #fff;
             padding: 20px;
             border-radius: 5px;
+            padding:50px 70px;
+            border-radius: 20px;
+            position: relative;
+            
+        }
+
+        .form-container h2{
+            margin-top:30px;
+            font-size: 27px;
+
         }
 
         .Rectangle-1239 {
@@ -78,7 +101,16 @@
             .form-container {
                 width:80%;
            margin:0px 10%;
+           padding:20px 15px;
         }
+
+        .form-container h2{
+            margin-top:20px;
+            font-size: 14px;
+            border-radius: 10px;
+
+        }
+
         }
     </style>
 </head>
@@ -171,8 +203,10 @@
 
         <!-- Unique overlay and form for each resource -->
         <div id="overlay{{$loop->index}}" class="overlay">
+        
             <div class="form-container">
-                <h2 style="color:#080808;">Resource File Download</h2>
+            <a href="#" style="margin-top:50px;" onclick="hideForm('{{$resource->pdf}}', {{$loop->index}})"><i class="fa fa-times"></i></a>
+                <h2 style="color:#080808;" class="">Resource File Download</h2>
                 <form id="downloadForm{{$loop->index}}" onsubmit="return submitForm('{{$resource->pdf}}', {{$loop->index}})">
                     <label for="email{{$loop->index}}">Email:</label>
                     <input type="email" id="email{{$loop->index}}" required>
@@ -180,7 +214,7 @@
                     <label for="phone{{$loop->index}}">Phone:</label>
                     <input type="tel" id="phone{{$loop->index}}" required>
                     <br>
-                    <button  class="Rectangle-1239" type="submit">Download Pdf File</button> <span onclick="hideForm('{{$resource->pdf}}', {{$loop->index}})" style="border-radius:10px;" class="badge bg-danger">Cancel</span>
+                    <button  class="Rectangle-1239" type="submit">Download Pdf File</button> 
                 </form>
             </div>
         </div>
@@ -397,7 +431,7 @@
     function submitForm(pdfLink, index) {
     var email = document.getElementById(`email${index}`).value;
     var phone = document.getElementById(`phone${index}`).value;
-    var page = 'resource page';
+    var page = 'resource';
 
 console.log(email);
     fetch('/resource/download', {

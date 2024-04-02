@@ -169,44 +169,17 @@
         
    
 
-            <div class="last-btn2">
+            <div style="padding-left:20px;" class="last-btn2">
                 <!-- <a href="{{route('profile')}}">Cancel</a> -->
                 <button type="submit">Apply</button>
             </div>
+
         </div>
     </form>
 
 </section>
 
 
-<script>
-    function setupFileInput(inputId, fileNameContainerId) {
-        var fileInput = document.getElementById(inputId);
-        var fileNameContainer = document.getElementById(fileNameContainerId);
-
-        fileInput.addEventListener('change', function (e) {
-            if (fileInput.files.length > 0) {
-                fileNameContainer.textContent = 'Selected File: ' + fileInput.files[0].name;
-            } else {
-                fileNameContainer.textContent = '';
-            }
-        });
-    }
-
-    // Call the function for each file input
-    setupFileInput('fileInput1', 'selectedFileName1');
-    setupFileInput('fileInput2', 'selectedFileName2');
-    setupFileInput('fileInput21', 'selectedFileName21');
-    setupFileInput('fileInput22', 'selectedFileName22');
-    setupFileInput('fileInput23', 'selectedFileName23');
-    setupFileInput('fileInput3', 'selectedFileName3');
-    setupFileInput('fileInput4', 'selectedFileName4');
-    // setupFileInput('fileInput5', 'selectedFileName5');
-    // setupFileInput('fileInput6', 'selectedFileName6');
-    // setupFileInput('fileInput7', 'selectedFileName7');
-    // setupFileInput('fileInput8', 'selectedFileName8');
-    // Add more calls as needed for additional file inputs
-</script>
 @include('frontend.common_footer')
 <!-- consultation page............................ -->
 
@@ -311,6 +284,78 @@
         e.preventDefault()
         consult.classList.toggle('active')
     })
+
+
+    // REGISTER LOGIC
+    const registerBtn = document.getElementById('registered')
+
+    
+
+    const registerBtn3 = document.getElementById('registered3')
+
+
+    const registerBox = document.getElementById('register')
+    const closeReg = document.querySelector('.reg-link')
+    const regLogin = document.querySelector('.reg-login')
+    const loginReg = document.querySelector('.login-reg')
+    const getStarted = document.querySelectorAll('.login2')
+
+    registerBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        registerBox.classList.toggle('active');
+    })
+
+    
+
+    // registerBtn3.addEventListener('click', (e) => {
+    //     e.preventDefault()
+    //     registerBox.classList.toggle('active');
+    // })
+
+
+    closeReg.addEventListener('click', (e) => {
+        e.preventDefault()
+        registerBox.classList.toggle('active');
+    })
+    //LOGIN LOGIC
+    const loginBtn = document.getElementById('logged')
+
+    const loginBtn2 = document.getElementById('logged2')
+
+
+    const loginBox = document.getElementById('login')
+
+    const loginBox23 = document.getElementById('login23')
+
+
+    const closeLogin = document.querySelector('.login-link')
+
+    
+    loginBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        loginBox.classList.toggle('active');
+    })
+
+
+
+
+    loginBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        loginBox23.classList.toggle('active');
+    })
+
+    closeLogin.addEventListener('click', (e) => {
+        e.preventDefault()
+        loginBox.classList.toggle('active');
+    })
+
+    regLogin.addEventListener('click', (e) => {
+        e.preventDefault()
+        registerBox.classList.toggle('active');
+        loginBox.classList.toggle('active');
+    })
+    
+
 
     // REGISTER LOGIC
 

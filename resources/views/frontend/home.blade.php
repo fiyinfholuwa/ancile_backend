@@ -104,22 +104,25 @@
 
         @if(count($homesliders) > 0)
 
+        @foreach($homesliders as $slide)
+
         <div class="swiper-slide">
                 <div class="hero">
                     <div class="hero-text">
-                        <h1>Explore Boundless Horizons</h1>
-                        <p>Your Gateway to Global Education Opportunities</p>
+                        <h1>{{$slide->header}}</h1>
+                        <p>{{$slide->text}}</p>
                         <div class="hero-buttons">
-                            <a href="#"  id="registered2">Get Started</a>
+                            <a href="{{route('courses')}}">Get Started</a>
                         </div>
                     </div>
                     <div class="hero-img">
-                        <img src="{{asset('assets/image/home-header.png')}}" alt="hero-image" class="her-img">
+                        <img src="{{asset($slide->image)}}" alt="hero-image" class="her-img">
                     </div>
                     <!-- <img src="assets/image/home-header.png" alt="hero-image" class="hero-img"> -->
                 </div>
             </div>
 
+        @endforeach
         @else
 
 
@@ -689,7 +692,7 @@
     // REGISTER LOGIC
     const registerBtn = document.getElementById('registered')
 
-    const registerBtn2 = document.getElementById('registered2')
+    
 
     const registerBtn3 = document.getElementById('registered3')
 
@@ -705,15 +708,12 @@
         registerBox.classList.toggle('active');
     })
 
-    registerBtn2.addEventListener('click', (e) => {
-        e.preventDefault()
-        registerBox.classList.toggle('active');
-    })
+    
 
-    registerBtn3.addEventListener('click', (e) => {
-        e.preventDefault()
-        registerBox.classList.toggle('active');
-    })
+    // registerBtn3.addEventListener('click', (e) => {
+    //     e.preventDefault()
+    //     registerBox.classList.toggle('active');
+    // })
 
 
     closeReg.addEventListener('click', (e) => {

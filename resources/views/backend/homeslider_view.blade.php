@@ -15,44 +15,78 @@
               <h5 class="card-title">Add Home Slider</h5>
               <div class="card">
 
-              <form action="{{route('homeslider.add')}}" enctype="multipart/form-data" method="post" class="row g-3">
-                @csrf
-                <div class="col-md-12 col-lg-12">
-                  <label for="inputName5" class="form-label">Header Text</label>
-                  <textarea  name="header_text" value="{{old('header_text')}}" class="form-control"  placeholder="homeslider Name" id="inputName5"></textarea>
-                  <p style="font-weight:bold; color:red; font-size:12px;">
-                  @error('header_text')
-                    {{$message}}
-                  @enderror
-                  </p>
-                </div>
+              <form action="{{ route('homeslider.add') }}" enctype="multipart/form-data" method="post" class="row g-3">
+    @csrf
+    <div class="col-md-12 col-lg-12">
+        <label for="inputName5" class="form-label">Header Text</label>
+        <textarea name="header_text" class="form-control" placeholder="homeslider Name" id="headerText" maxlength="30">{{ old('header_text') }}</textarea>
+        <p style="font-weight:bold; color:red; font-size:12px;" id="headerError">
+            @error('header_text')
+                {{ $message }}
+            @enderror
+        </p>
+        <p style="color:red; font-weight:bold;" id="headerCharCount">Character count: 0</p>
+    </div>
 
-                <div class="col-md-12 col-lg-12">
-                  <label for="inputName5" class="form-label">Paragraph Text</label>
-                  <textarea type="text" name="text" value="{{old('text')}}" class="form-control"  placeholder="homeslider Name" id="inputName5"></textarea>
-                  <p style="font-weight:bold; color:red; font-size:12px;">
-                  @error('text')
-                    {{$message}}
-                  @enderror
-                  </p>
-                </div>
+    <div class="col-md-12 col-lg-12">
+        <label for="inputName5" class="form-label">Paragraph Text</label>
+        <textarea type="text" name="text" class="form-control" placeholder="homeslider Name" id="paragraphText" maxlength="40">{{ old('text') }}</textarea>
+        <p style="font-weight:bold; color:red; font-size:12px;" id="paragraphError">
+            @error('text')
+                {{ $message }}
+            @enderror
+        </p>
+        <p style="color:red; font-weight:bold;" id="paragraphCharCount">Character count: 0</p>
+    </div>
 
-                <div class="col-md-12 col-lg-12">
-                  <label for="inputName5" class="form-label">Image</label>
-                  <input type="file" name="image"  class="form-control"  placeholder="homeslider Name" id="inputName5">
-                  <p style="font-weight:bold; color:red; font-size:12px;">
-                  @error('image')
-                    {{$message}}
-                  @enderror
-                  </p>
-                </div>
+    <div class="col-md-12 col-lg-12">
+        <label for="inputName5" class="form-label">Image</label>
+        <input type="file" name="image" class="form-control" placeholder="homeslider Name" id="inputName5">
+        <p style="font-weight:bold; color:red; font-size:12px;">
+            @error('image')
+                {{ $message }}
+            @enderror
+        </p>
+    </div>
 
+    <div class="text-left">
+        <button type="submit" class="btn btn-primary">Add Home Slider</button>
+    </div>
+</form>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var headerText = document.getElementById("headerText");
+        var paragraphText = document.getElementById("paragraphText");
+        var headerCharCount = document.getElementById("headerCharCount");
+        var paragraphCharCount = document.getElementById("paragraphCharCount");
+        var headerError = document.getElementById("headerError");
+        var paragraphError = document.getElementById("paragraphError");
 
-                <div class="text-left">
-                  <button type="submit" class="btn btn-primary">Add Home Slider</button>
-                </div>
-              </form><!-- End Multi Columns Form -->
+        headerText.addEventListener("input", function () {
+            var charCount = this.value.length;
+            headerCharCount.textContent = "Character count: " + charCount;
+
+            if (charCount > 30) {
+                headerError.textContent = "Header text cannot exceed 30 characters.";
+            } else {
+                headerError.textContent = "";
+            }
+        });
+
+        paragraphText.addEventListener("input", function () {
+            var charCount = this.value.length;
+            paragraphCharCount.textContent = "Character count: " + charCount;
+
+            if (charCount > 40) {
+                paragraphError.textContent = "Paragraph text cannot exceed 40 characters.";
+            } else {
+                paragraphError.textContent = "";
+            }
+        });
+    });
+</script>
+
 
 
             </div>

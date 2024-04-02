@@ -130,7 +130,7 @@
                     </div>
 
                     <div class="card-body">
-                        <h2 class="blog-title">{{$blog->title}}</h2>
+                        <h2 class="blog-title">{!! (\Illuminate\Support\Str::limit($blog->title, 30, '...')) !!}</h2>
                         <div class="card-profile">
                             <img class="profile-img" src='https://static.thenounproject.com/png/4035887-200.png' alt=''>
                             <div class="card-profile-info">
@@ -438,7 +438,7 @@
     .card-profile {
         display: flex;
         margin-top: 2rem;
-        align-items: center;
+        /*align-items: center;*/
     }
 
     .profile-img {

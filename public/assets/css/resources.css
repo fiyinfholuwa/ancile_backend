@@ -25,18 +25,21 @@
 /*.resource {*/
 /*  width: 30%;*/
 /*}*/
-
 .resource-box {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 8rem;
 }
 
 .resource {
-    width: calc(33.333% - 1rem); /* Three items per row with a small gap between them */
+  flex: 0 0 calc(30% - 1rem);
+  box-sizing: border-box;
+  /* Add additional styles as needed */
 }
+
+
+
 .resource h3 {
   font-size: 2rem;
   font-weight: bold;
@@ -57,7 +60,7 @@ margin-bottom: 20px;
 
 .resource-banner img {
   width: 100%;
-    height: 300px !important;
+    /* height: 300px !important; */
     border-radius: 50px;
 }
 .blog-banner img {

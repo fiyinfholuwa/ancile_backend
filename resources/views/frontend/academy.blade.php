@@ -45,10 +45,24 @@
             align-items: center;
         }
 
+        .form-container i{
+            position: absolute;
+            top:20px;
+            right:20px;
+            font-size:20px;
+        }
+
+        .form-container a{
+            color:black;
+        }
+
         .form-container {
             background: #fff;
             padding: 20px;
             border-radius: 5px;
+            padding:50px 70px !important;
+            border-radius: 20px;
+            position: relative;
         }
 
         .Rectangle-1239 {
@@ -162,7 +176,7 @@
             assesses a
             candidate’s readiness for graduate-level academic work.</p>
           <div class="tutorial-footer">
-            <a href=" #"  onclick="showForm('gre')" class="test-link">Apply for Lessons</a>
+            <a href=" #"  onclick="showForm('GRE')" class="test-link">Apply for Lessons</a>
             <img src="{{asset('assets/image/gre-logo.png')}}" alt="">
           </div>
 
@@ -176,7 +190,7 @@
             United States. It
             assesses a student’s readiness for college and is typically taken by high school juniors and seniors.</p>
           <div class="tutorial-footer">
-            <a href=" #"  onclick="showForm('sat')" class="test-link">Apply for Lessons</a>
+            <a href=" #"  onclick="showForm('SAT')" class="test-link">Apply for Lessons</a>
             <img src="{{asset('assets/image/sat-logo.png')}}" alt="">
           </div>
         </div>
@@ -185,7 +199,7 @@
       </div>
     </section>
     <section id="GMAT">
-      <div class="tutorial-container">
+      <div  class="tutorial-container last_div">
         <!-- <img src="{{asset('assets/image/img11.jpg')}}" alt=""> -->
         <div class="tutor-imggs3"></div>
         <div class="tutorial-text thirrd">
@@ -195,7 +209,7 @@
             admissions process for MBA (Master of Business Administration) and other graduate management programs.
           </p>
           <div class="tutorial-footer">
-            <a href=" #"  onclick="showForm('gmat')" class="test-link">Apply for Lessons</a>
+            <a href=" #"  onclick="showForm('GMAT')" class="test-link">Apply for Lessons</a>
             <img src="{{asset('assets/image/gmat-logo.png')}}" alt="">
           </div>
         </div>
@@ -205,6 +219,7 @@
 
     <div id="overlay" class="overlay">
     <div class="form-container">
+    <a href="#" style="margin-top:50px;"  onclick="hideForm()"><i class="fa fa-times"></i></a>
         <h2 id="formTitle" style="color:#080808; padding-bottom:20px;">Register for the Tutorials</h2>
         <form id="downloadForm" onsubmit="return submitForm()">
             <input type="hidden" id="typeField" name="type" value="">
@@ -215,7 +230,7 @@
             <input type="tel" id="phone" required>
             <br>
             <button class="Rectangle-1239" type="submit">Submit</button>
-            <button style="border-radius:10px;" class="badge bg-danger" type="button" onclick="hideForm()">Cancel</button>
+            
         </form>
     </div>
 </div>

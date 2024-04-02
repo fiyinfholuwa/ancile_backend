@@ -9,11 +9,11 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class LoanNotification extends Mailable
+class ConsultNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public  $mailData;
+    public $mailData;
     /**
      * Create a new message instance.
      */
@@ -25,20 +25,20 @@ class LoanNotification extends Mailable
     /**
      * Get the message envelope.
      */
+
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Loan Notification',
+            subject: 'Consultation Notification',
         );
     }
-
     /**
      * Get the message content definition.
      */
     public function content(): Content
     {
         return new Content(
-            view: 'mail.loan_status',
+            view: 'mail.consult_notify',
         );
     }
 

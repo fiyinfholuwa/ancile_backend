@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Mail\ApplicationNotification;
+use App\Mail\ConsultationNotification;
+use App\Mail\ConsultNotification;
 use App\Models\AskCategory;
 use App\Models\AskGpt;
 use App\Models\Blog;
@@ -19,6 +23,8 @@ use App\Models\ResourceDownloader;
 use App\Models\EducationalLevel;
 use Illuminate\Http\Request;
 use App\Models\HomeSlider;
+use Mail;
+use App\Mail\LoanNotification;
 
 
 class FrontendController extends Controller
@@ -110,7 +116,17 @@ public function news(){
         $consultation->country = $request->country;
         $consultation->education_level = $request->education_level;
         $consultation->save();
+        $mailData = [
+            'name' => $request->full_name,
+            'status' => "welcome",
+        ];
+        Mail::to($request->email)->send(new ApplicationNotification($mailData));
 
+        $mailData1 = [
+            'name' => 'AncileAcademy',
+            'status' => 'pending'
+        ];
+        Mail::to("fiyinfholuwa@gmail.com")->send(new ConsultNotification($mailData1));
         return response()->json([
             'message' => 'Consultation request successfully sent, we will get back to you shortly',
         ]);
@@ -166,7 +182,7 @@ public function news(){
         $res_download->page = $request->page;
         $res_download->save();
         return response()->json(['message' => 'submitted successfully, click ok, while your resource will be downloaded automatically'], 200);
-    } 
+    }
 
     public function study_loan(){
         return view('frontend.loan');
@@ -186,6 +202,16 @@ public function news(){
         $loan->program = $request->program;
         $loan->status = "pending";
         $loan->save();
+        $mailData = [
+            'name' => $loan->full_name,
+            'status' => "welcome",
+        ];
+        Mail::to($loan->email)->send(new LoanNotification($mailData));
+        $mailData1 = [
+            'name' => 'AncileAcademy',
+            'status' => 'admin'
+        ];
+        Mail::to("fiyinfholuwa@gmail.com")->send(new LoanNotification($mailData1));
         $notification = array(
             'message' => 'loan successfully submitted, we will get back to you shortly.',
             'alert-type' => 'success'
@@ -215,7 +241,7 @@ public function news(){
         $res = new AcademyTutorial;
         $res->email = $request->email;
         $res->phone = $request->phone;
-        $res->section = $request->section;
+        $res->section = strtolower($request->section);
         $res->save();
         return response()->json(['message' => 'submitted successfully, thank you registering, we will get back to you shortly.'], 200);
     }
@@ -233,7 +259,7 @@ public function news(){
         $res = new EnglishTest;
         $res->email = $request->email;
         $res->phone = $request->phone;
-        $res->section = $request->section;
+        $res->section = strtolower($request->section);
         $res->save();
         return response()->json(['message' => 'submitted successfully, thank you registering, we will get back to you shortly.'], 200);
     }

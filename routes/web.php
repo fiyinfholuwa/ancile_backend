@@ -7,6 +7,7 @@ use App\Http\Controllers\CounsellorController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\ExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -187,6 +188,16 @@ Route::middleware('auth')->group(function () {
             Route::get('counsellor/application/chat/{id}', 'counsellor_application_chat')->name('counsellor.application.chat');
             Route::post('counsellor/application/chat/save', 'counsellor_application_chat_save')->name('counsellor.application.chat.save');
         });
+
+
+        Route::controller(ExportController::class)->group(function () {
+            Route::post('academic/test/report', 'academic_test_report')->name('academic.test.report');
+            Route::post('english/test/report', 'english_test_report')->name('english.test.report');
+            Route::post('resource/download/report', 'resource_download_report')->name('resource.download.report');
+            Route::post('loan/report', 'loan_report')->name('loan.report');
+           
+        });
+
 
         Route::controller(UserController::class)->group(function () {
             Route::get('/profile', 'profile')->name('profile');

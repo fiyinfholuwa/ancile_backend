@@ -33,7 +33,18 @@
     <title>Academy -Course</title>
 
     <style>
-         .overlay {
+        /* Your existing CSS styles */
+
+        .resource-box {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .resource {
+            margin: 20px;
+        }
+
+        .overlay {
             display: none;
             position: fixed;
             top: 0px; /* Adjust as needed */
@@ -43,12 +54,35 @@
             background: rgba(0, 0, 0, 0.5);
             justify-content: center;
             align-items: center;
+            padding:50px 30px !important;
+            
+        }
+
+        .form-container i{
+            position: absolute;
+            top:20px;
+            right:20px;
+            font-size:20px;
+        }
+
+        .form-container a{
+            color:black;
         }
 
         .form-container {
             background: #fff;
             padding: 20px;
             border-radius: 5px;
+            padding:50px 70px !important;
+            border-radius: 20px;
+            position: relative;
+        }
+
+
+        .form-container h2{
+            margin-top:30px;
+            font-size: 27px;
+
         }
 
         .Rectangle-1239 {
@@ -58,13 +92,24 @@
   padding: 9px 30.5px;
   border-radius: 16.8px;
   background-color: #000000;
-  color:#ffffff}
+  color:#ffffff
+}
 
-  @media (max-width:425px) {
+
+        @media (max-width:425px) {
             .form-container {
                 width:80%;
            margin:0px 10%;
+           padding:20px 15px;
         }
+
+        .form-container h2{
+            margin-top:20px;
+            font-size: 14px;
+            border-radius: 10px;
+
+        }
+
         }
     </style>
 </head>
@@ -156,7 +201,7 @@
       <div class="tutorial-container">
         <img src="{{asset('assets/image/ielts-img.png')}}" alt="" class="tutor-imgg">
         <div class="tutorial-text">
-          <img src="assets/image/ielts-logo.png" alt="">
+          <img src="{{asset('assets/image/ielts-logo.png')}}" alt="">
           <p>The International English Language Testing System (IELTS) measures the language proficiency of people who
             want to study
             or work where English is used as a language of communication. It uses a nine-band scale to clearly identify
@@ -212,6 +257,7 @@
 
     <div id="overlay" class="overlay">
     <div class="form-container">
+    <a href="#" style="margin-top:50px;"  onclick="hideForm()"><i class="fa fa-times"></i></a>
         <h2 id="formTitle" style="color:#080808; padding-bottom:20px;">Register for the lessons</h2>
         <form id="downloadForm" onsubmit="return submitForm()">
             <input type="hidden" id="typeField" name="type" value="">
@@ -222,7 +268,7 @@
             <input type="tel" id="phone" required>
             <br>
             <button class="Rectangle-1239" type="submit">Submit</button>
-            <button style="border-radius:10px;" class="badge bg-danger" type="button" onclick="hideForm()">Cancel</button>
+            
         </form>
     </div>
 </div>

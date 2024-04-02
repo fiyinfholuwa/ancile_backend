@@ -7,10 +7,11 @@
   }
   
   .hero-bag {
-    width: 35%;
+    width: 45%;
     background-color: #fff;
-    padding: 3rem 4rem;
+    padding: 5rem 10rem;
     border-radius: 10px;
+    padding-bottom: 50px;
   }
   
   .hero-bag h1 {
@@ -55,7 +56,7 @@
   }
   
   .tutorial-container img {
-    width: 40%;
+    width: 45%;
   }
   
   .tutorial-text {
@@ -63,7 +64,7 @@
   }
   
   .tutorial-text img {
-    width: 100px;
+    width: 40%;
     margin-bottom: 2rem;
   
   }
@@ -98,8 +99,8 @@
     right: 5rem;
     top: 8rem;
     background-color: #fff;
-    width: 30%;
-    padding: 2rem 3rem;
+    width: 40%;
+    padding: 5rem 3rem;
     border-radius: 25px;
   }
   
