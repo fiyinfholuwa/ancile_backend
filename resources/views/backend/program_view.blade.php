@@ -15,13 +15,23 @@
               <h5 class="card-title">Add Program</h5>
               <div class="card">
 
-              <form action="{{route('program.add')}}" method="post" class="row g-3">
+              <form action="{{route('program.add')}}" enctype="multipart/form-data" method="post" class="row g-3">
                 @csrf
                 <div class="col-md-12 col-lg-12">
                   <label for="inputName5" class="form-label">Program Name</label>
                   <input type="text" name="name" value="{{old('name')}}" class="form-control"  placeholder="Program Name" id="inputName5">
                   <p style="font-weight:bold; color:red; font-size:12px;">
                   @error('name')
+                    {{$message}}
+                  @enderror
+                  </p>
+                </div>
+
+                <div class="col-md-12 col-lg-12">
+                  <label for="inputName5" class="form-label">Program Image</label>
+                  <input required type="file" name="image" class="form-control"  placeholder="Program Name" id="inputName5">
+                  <p style="font-weight:bold; color:red; font-size:12px;">
+                  @error('image')
                     {{$message}}
                   @enderror
                   </p>
@@ -51,6 +61,11 @@
                   <tr>
                     <th>
                       Name
+                    </th><th>
+                      Program ID
+                    </th>
+                      <th>
+                      Image
                     </th>
                     <th>Action</th>
                   </tr>
@@ -60,7 +75,9 @@
                 @foreach($programs as $program)
                   <tr>
                     <td>{{$program->name}}</td>
+                    <td>{{$program->id}}</td>
 
+                  <td><img height="40px" width="40px" src="{{asset($program->image)}}"></td>
                     <td>
                     <a href="{{route('program.edit', $program->id)}}">
                     <i  class="fa fa-edit text-primary"></i>

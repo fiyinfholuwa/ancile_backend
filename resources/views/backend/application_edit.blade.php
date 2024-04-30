@@ -110,6 +110,16 @@
                           <option value="2027/2028">2027/2028</option>
                           <option value="2028/2029">2028/2029</option>
                           <option value="2029/2030">2029/2030</option>
+                          <option value="2030/2031">2030/2031</option>
+                          <option value="2031/2032">2031/2032</option>
+                          <option value="2032/2033">2032/2033</option>
+                          <option value="2033/2034">2033/2034</option>
+                          <option value="2034/2035">2034/2035</option>
+                          <option value="2035/2036">2035/2036</option>
+                          <option value="2036/2037">2036/2037</option>
+                          <option value="2037/2038">2037/2038</option>
+                          <option value="2038/2039">2038/2039</option>
+                          <option value="2039/2040">2039/2040</option>
                       </select>
                       <p style="color: red; font-weight: 500">
                           @error('year')
@@ -119,7 +129,7 @@
                   </div>
 
                   <h2>Other Details</h2>
-                  <div class="personal col-lg-6">
+                  <div class="personal col-lg-4">
                       <label for="program">Source of Funds</label>
                       <select name="fund" id="fund" class="form-control">
                           <option value="{{$app->fund}}">{{$app->fund}}</option>
@@ -136,7 +146,7 @@
                   </div>
 
 
-                  <div class="personal col-lg-6">
+                  <div class="personal col-lg-4">
                       <div class="first-input">
                           <label for="country">Emergency Contact Detail</label>
                           <input type="number" class="form-control" value="{{$app->emergency}}" name="emergency" placeholder="Enter Emergency Contact Detail"/>
@@ -147,6 +157,23 @@
                           </p>
                       </div>
                   </div>
+
+                  <div class="personal col-lg-4">
+                      <label for="program">User Account</label>
+                      <select name="user_id" id="fund" class="form-control">
+                          <option value="">Select user</option>
+                          @foreach($users as $user)
+                              <option value="{{$user->id}}" {{$user->id == $app->user_id ? "selected" : ""}}>{{$user->email}}</option>
+                          @endforeach
+                      </select>
+                      <p style="color: red; font-weight: 500">
+                          @error('user_id')
+                          {{$message}}
+                          @enderror
+                      </p>
+                  </div>
+
+
                   <div class="first-input col-lg-6">
                       <label for="year">Application Status</label>
                       <select class="form-control" name="application_status" id="year">

@@ -56,7 +56,7 @@
             justify-content: center;
             align-items: center;
             padding:50px 30px !important;
-            
+
         }
 
         .form-container i{
@@ -77,7 +77,7 @@
             padding:50px 70px;
             border-radius: 20px;
             position: relative;
-            
+            width: 40%;
         }
 
         .form-container h2{
@@ -87,14 +87,15 @@
         }
 
         .Rectangle-1239 {
-  width: 163.5px;
-  height: 33.5px;
-  margin: 6px 181.5px 12.5px 8.5px;
-  padding: 9px 30.5px;
-  border-radius: 16.8px;
-  background-color: #000000;
-  color:#ffffff
-}
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            outline: none;
+            border: none;
+            background-color: #000;
+            color: #fff;
+            margin-left: 2rem;
+        }
 
 
         @media (max-width:425px) {
@@ -189,7 +190,7 @@
         @if(count($resources) >0)
             <div class="resource-box">
                 @foreach($resources as $resource)
-               
+
         <div class="resource">
             <div class="resource-banner">
                 <img src="{{asset($resource->image)}}" alt="">
@@ -197,27 +198,30 @@
             <h3>{{optional($resource->country_info)->name}} - RunBook</h3>
             <div class="resource-download">
                 <img src="{{optional($resource->country_info)->flag}}" alt="">
-                <a href="#" onclick="showForm('{{$resource->pdf}}', {{$loop->index}})">Download</a>
+                <a href="#" onclick="showForm({{$loop->index}})">Download</a>
             </div>
         </div>
 
         <!-- Unique overlay and form for each resource -->
-        <div id="overlay{{$loop->index}}" class="overlay">
-        
-            <div class="form-container">
-            <a href="#" style="margin-top:50px;" onclick="hideForm('{{$resource->pdf}}', {{$loop->index}})"><i class="fa fa-times"></i></a>
-                <h2 style="color:#080808;" class="">Resource File Download</h2>
-                <form id="downloadForm{{$loop->index}}" onsubmit="return submitForm('{{$resource->pdf}}', {{$loop->index}})">
-                    <label for="email{{$loop->index}}">Email:</label>
-                    <input type="email" id="email{{$loop->index}}" required>
-                    <br>
-                    <label for="phone{{$loop->index}}">Phone:</label>
-                    <input type="tel" id="phone{{$loop->index}}" required>
-                    <br>
-                    <button  class="Rectangle-1239" type="submit">Download Pdf File</button> 
-                </form>
-            </div>
-        </div>
+                    <div id="overlay{{$loop->index}}" class="overlay">
+
+                        <div class="form-container">
+                            <a href="#" style="margin-top:50px;" onclick="hideForm({{$loop->index}})"><i class="fa fa-times"></i></a>
+                            <h2 style="color:#080808; margin-bottom: 30px;" class=""><span style="color: #0a53be; text-align: center;">Resource Download</span></h2>
+                            <form id="downloadForm{{$loop->index}}" onsubmit="return submitForm({{$resource->pdf}},{{$loop->index}})">
+                                <label for="email{{$loop->index}}">Email:</label>
+                                <input  placeholder="Enter Email" type="email" id="email{{$loop->index}}" required>
+                                <br>
+                                <label for="phone{{$loop->index}}">Phone:</label>
+                                <input placeholder="Enter Mobile Number"  type="number" id="phone{{$loop->index}}" required>
+
+                                <br>
+                                <br/>
+                                <br/>
+                                <button  class="Rectangle-1239" type="submit">Apply Now</button>
+                            </form>
+                        </div>
+                    </div>
     @endforeach
 </div>
 
@@ -309,7 +313,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -318,7 +322,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC
@@ -329,10 +333,10 @@
         consult.classList.toggle('active');
     })
 
-    closeConsult.addEventListener('click', (e) => {
-        e.preventDefault()
-        consult.classList.toggle('active')
-    })
+    // closeConsult.addEventListener('click', (e) => {
+    //     e.preventDefault()
+    //     consult.classList.toggle('active')
+    // })
 
     // REGISTER LOGIC
     const registerBtn = document.getElementById('registered')
@@ -420,11 +424,11 @@
 </script>
 
 <script>
-    function showForm(pdfLink, index) {
+    function showForm(index) {
         document.getElementById(`overlay${index}`).style.display = 'flex';
     }
 
-    function hideForm(pdfLink, index) {
+    function hideForm(index) {
         // document.getElementById(`overlay${index}`).style.display = 'flex';
         document.getElementById(`overlay${index}`).style.display = 'none';
     }
@@ -438,12 +442,13 @@ console.log(email);
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}', 
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
         },
         body: JSON.stringify({ email, phone, page }),
     })
     .then(response => {
         if (!response.ok) {
+            document.getElementById(`overlay${index}`).style.display = 'none';
             throw new Error('Network response was not ok');
         }
         return response.json();
@@ -451,17 +456,19 @@ console.log(email);
     .then(data => {
         // Success: Trigger file download
         alert(data.message);
+        document.getElementById(`overlay${index}`).style.display = 'none';
         triggerFileDownload(pdfLink, index);
         setTimeout(function () {
             window.location.reload();
         }, 5000);
     })
     .catch(error => {
+        document.getElementById(`overlay${index}`).style.display = 'none';
         // Handle errors (display appropriate messages)
         alert('Error submitting the form: ' + error.message);
     });
 
-    document.getElementById(`overlay${index}`).style.display = 'none';
+
     return false;
 }
 

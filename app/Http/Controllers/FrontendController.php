@@ -6,13 +6,17 @@ namespace App\Http\Controllers;
 use App\Mail\ApplicationNotification;
 use App\Mail\ConsultationNotification;
 use App\Mail\ConsultNotification;
+use App\Mail\TutorialEMail;
+use App\Models\ApplyCourse;
 use App\Models\AskCategory;
 use App\Models\AskGpt;
 use App\Models\Blog;
 use App\Models\Consultation;
+use App\Models\Contact;
 use App\Models\Country;
 use App\Models\CourseCategory;
 use App\Models\Destination;
+use App\Models\ProgramCat;
 use App\Models\ProgramCourse;
 use App\Models\AcademyTutorial;
 use App\Models\EnglishTest;
@@ -40,14 +44,15 @@ class FrontendController extends Controller
     }
     public function courses(){
         $levels = EducationalLevel::all();
-        $course_category = CourseCategory::all();
+        $course_category = ProgramCat::all();
         return view('frontend.course', compact('course_category', 'levels'));
     }
     public function courses_category($name){
         $levels = EducationalLevel::all();
-        $course_info = CourseCategory::where('course_code', '=', $name)->first();
-        $courses = ProgramCourse::where('course_id', '=', $course_info->id)->get();
-        return view('frontend.course_cat', compact('courses', 'levels'));
+        $course_info = ProgramCat::where('slug', '=', $name)->first();
+        $courses = ProgramCourse::where('course_id', '=', $course_info->id)->paginate(4);
+        $course_category = ProgramCat::all();
+        return view('frontend.course_cat', compact('courses', 'levels', 'course_category'));
     }
     public function courses_detail($title){
         $course = ProgramCourse::where('slug', '=', $title)->first();
@@ -71,8 +76,36 @@ class FrontendController extends Controller
         $blogs = Blog::where('category', '=', 'blog')->paginate(6);
         return view('frontend.blog', compact('blogs'));
     }
-public function news(){
-        $blogs = Blog::where('category', '=', 'blog')->paginate(6);
+    public function contact(){
+        return view('frontend.contact');
+    }
+
+    public function contact_save(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+//            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+        $attendance = new Contact;
+        $attendance->name = $request->name;
+        $attendance->email = $request->email;
+        $attendance->phone = $request->phone;
+//        $attendance->subject = $request->subject;
+        $attendance->message= $request->message;
+        $attendance->save();
+        $notification = array(
+            'message' => 'Message sent Successfully, we will get back to you shortly',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function news(){
+        $blogs = Blog::where('category', '=', 'news')->paginate(6);
         return view('frontend.new', compact('blogs'));
     }
 
@@ -117,7 +150,7 @@ public function news(){
         $consultation->education_level = $request->education_level;
         $consultation->save();
         $mailData = [
-            'name' => $request->full_name,
+            'name' => $request->first_name,
             'status' => "welcome",
         ];
         Mail::to($request->email)->send(new ApplicationNotification($mailData));
@@ -126,7 +159,7 @@ public function news(){
             'name' => 'AncileAcademy',
             'status' => 'pending'
         ];
-        Mail::to("fiyinfholuwa@gmail.com")->send(new ConsultNotification($mailData1));
+        Mail::to("hello@ancileacademy.com")->send(new ConsultNotification($mailData1));
         return response()->json([
             'message' => 'Consultation request successfully sent, we will get back to you shortly',
         ]);
@@ -140,14 +173,17 @@ public function news(){
 
 
     public function courses_general_search(Request $request){
-        $levelCode = $request->input('level');
-        $level_id = EducationalLevel::findOrFail($levelCode);
-        $levels = EducationalLevel::all();
+        $category = $request->input('category');
+        $country = $request->input('country');
+//        $level_id = EducationalLevel::findOrFail($levelCode);
+//        $levels = EducationalLevel::all();
+        $course_category = ProgramCat::all();
         $searchQuery = $request->input('search');
         $courses = ProgramCourse::where('title', 'like', '%' . $searchQuery . '%')
-            ->where('level', 'like', '%' . $level_id . '%')
-            ->get();
-        return view('frontend.course_search_general', compact('courses', 'searchQuery', 'levels'));
+            ->where('course_id', 'like', '%' . $category . '%')
+            ->where('location', 'like', '%' . $country . '%')
+            ->paginate(4);
+        return view('frontend.course_search_general', compact('courses', 'searchQuery', 'course_category'));
     }
     public function blog_search(Request $request){
         $searchQuery = $request->input('search');
@@ -211,7 +247,7 @@ public function news(){
             'name' => 'AncileAcademy',
             'status' => 'admin'
         ];
-        Mail::to("fiyinfholuwa@gmail.com")->send(new LoanNotification($mailData1));
+        Mail::to("hello@ancileacademy.com")->send(new LoanNotification($mailData1));
         $notification = array(
             'message' => 'loan successfully submitted, we will get back to you shortly.',
             'alert-type' => 'success'
@@ -243,6 +279,10 @@ public function news(){
         $res->phone = $request->phone;
         $res->section = strtolower($request->section);
         $res->save();
+        $mailData = [
+            'name' => $request->email,
+        ];
+        Mail::to($request->email)->send(new TutorialEMail($mailData));
         return response()->json(['message' => 'submitted successfully, thank you registering, we will get back to you shortly.'], 200);
     }
 
@@ -261,6 +301,30 @@ public function news(){
         $res->phone = $request->phone;
         $res->section = strtolower($request->section);
         $res->save();
+        $mailData = [
+            'name' => $request->email,
+        ];
+        Mail::to($request->email)->send(new TutorialEMail($mailData));
+        return response()->json(['message' => 'submitted successfully, thank you registering, we will get back to you shortly.'], 200);
+    }
+    public function apply_course(Request $request){
+        $request->validate([
+            'email' => ['required', 'string', 'lowercase', 'email'],
+            'phone' => 'required',
+        ]);
+        $check_if_exist = ApplyCourse::where('email', '=', $request->email)->Where('phone', '=', $request->phone)->Where('course_id', '=', $request->course_id)->first();
+        if($check_if_exist){
+            return response()->json(['message' => 'you have already have detail with us, we will get back to you shortly'], 200);
+        }
+        $res = new ApplyCourse();
+        $res->email = $request->email;
+        $res->phone = $request->phone;
+        $res->course_id = $request->course_id;
+        $res->save();
+        $mailData = [
+            'name' => $request->email,
+        ];
+        Mail::to($request->email)->send(new TutorialEMail($mailData));
         return response()->json(['message' => 'submitted successfully, thank you registering, we will get back to you shortly.'], 200);
     }
 }

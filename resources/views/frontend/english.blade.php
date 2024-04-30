@@ -55,7 +55,7 @@
             justify-content: center;
             align-items: center;
             padding:50px 30px !important;
-            
+
         }
 
         .form-container i{
@@ -76,6 +76,7 @@
             padding:50px 70px !important;
             border-radius: 20px;
             position: relative;
+            width: 40%;
         }
 
 
@@ -86,29 +87,29 @@
         }
 
         .Rectangle-1239 {
-  width: 163.5px;
-  height: 33.5px;
-  margin: 6px 181.5px 12.5px 8.5px;
-  padding: 9px 30.5px;
-  border-radius: 16.8px;
-  background-color: #000000;
-  color:#ffffff
-}
-
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            outline: none;
+            border: none;
+            background-color: #000;
+            color: #fff;
+            margin-left: 2rem;
+        }
 
         @media (max-width:425px) {
             .form-container {
-                width:80%;
-           margin:0px 10%;
-           padding:20px 15px;
-        }
+                width:100%;
+                /*margin:0px 10%;*/
+                padding:20px 15px;
+            }
 
-        .form-container h2{
-            margin-top:20px;
-            font-size: 14px;
-            border-radius: 10px;
+            .form-container h2{
+                margin-top:20px;
+                font-size: 14px;
+                border-radius: 10px;
 
-        }
+            }
 
         }
     </style>
@@ -181,94 +182,98 @@
     @endauth
 
 
-<div class="hero-container">
+    <div class="hero-container">
         <div class="hero-bag">
-          <h1>Prepare for your
-            English test</h1>
-          <p>Apply for lessons</p>
-          <div class="tutorial-link">
-            <a href="#IELTS">IELTS</a>
-            <a href="#PTE">PTE</a>
-            <a href="#DUO">Duolingo</a>
-            <a href="#TOEFL">TOEFL</a>
-          </div>
+            <h1>Prepare for your
+                English test</h1>
+            <p>Apply for lessons</p>
+            <div class="tutorial-link">
+                <a href="#IELTS">IELTS</a>
+                <a href="#PTE">PTE</a>
+                <a href="#DUO">Duolingo</a>
+                <a href="#TOEFL">TOEFL</a>
+            </div>
         </div>
-      </div>
+    </div>
 
-      </header>
-    
-    <section id="IELTS">
-      <div class="tutorial-container">
+</header>
+
+<section id="IELTS">
+    <div class="tutorial-container">
         <img src="{{asset('assets/image/ielts-img.png')}}" alt="" class="tutor-imgg">
         <div class="tutorial-text">
-          <img src="{{asset('assets/image/ielts-logo.png')}}" alt="">
-          <p>The International English Language Testing System (IELTS) measures the language proficiency of people who
-            want to study
-            or work where English is used as a language of communication. It uses a nine-band scale to clearly identify
-            levels of
-            proficiency, from non-user (band score 1) through to expert (band score 9). Over 2.7 million candidates take
-            the test
-            each year to start their journeys in international education and employment.</p>
-          <p>The IELTS is accepted by more than 9,000 institutions / organizations in over 135 countries.</p>
-          <a href="#"  onclick="showForm('IELTS')" class="test-link">Apply for Lessons</a>
+            <img src="{{asset('assets/image/ielts-logo.png')}}" alt="">
+            <p>The International English Language Testing System (IELTS) measures the language proficiency of people who
+                want to study
+                or work where English is used as a language of communication. It uses a nine-band scale to clearly identify
+                levels of
+                proficiency, from non-user (band score 1) through to expert (band score 9). Over 2.7 million candidates take
+                the test
+                each year to start their journeys in international education and employment.</p>
+            <p>The IELTS is accepted by more than 9,000 institutions / organizations in over 135 countries.</p>
+            <a href="#"  onclick="showForm('IELTS')" class="test-link">Apply for Lessons</a>
         </div>
-      </div>
-    </section>
-    <section id="PTE">
-      <div class="tutorial-container">
+    </div>
+</section>
+<section id="PTE">
+    <div class="tutorial-container">
         <div class="tutorial-text">
-          <img src="{{asset('assets/image/pearson-logo.png')}}" alt="">
-          <p>The PTE (Pearson Test of English) exam is a computer-based English language proficiency test designed to
-            assess the
-            speaking, writing, listening, and reading abilities of non-native English speakers. It’s widely accepted by
-            universities, colleges, and governments around the world as proof of English language proficiency for study,
-            work, and
-            migration purposes.</p>
-          <a href="#"  onclick="showForm('PTF')" class="test-link">Apply for Lessons</a>
+            <img src="{{asset('assets/image/pearson-logo.png')}}" alt="">
+            <p>The PTE (Pearson Test of English) exam is a computer-based English language proficiency test designed to
+                assess the
+                speaking, writing, listening, and reading abilities of non-native English speakers. It’s widely accepted by
+                universities, colleges, and governments around the world as proof of English language proficiency for study,
+                work, and
+                migration purposes.</p>
+            <a href="#"  onclick="showForm('PTF')" class="test-link">Apply for Lessons</a>
         </div>
         <img src="{{asset('assets/image/pearson-img.png')}}" alt="" class="tutor-imgg">
-      </div>
-    </section>
-    <section id="DUO">
-      <div class="tutorial-container">
+    </div>
+</section>
+<section id="DUO">
+    <div class="tutorial-container">
         <img src="{{asset('assets/image/duolingo.png')}}" alt="" class="tutor-imgg">
         <div class="tutorial-text">
-          <!-- <img src="assets/image/AncileAcad-logo.svg" alt=""> -->
-          <p>The Duolingo English Test (DET) is an English proficiency test offered by the language-learning platform
-            Duolingo. It’s
-            gaining popularity as an alternative to traditional language tests like TOEFL and IELTS, especially for
-            admission to
-            universities and colleges.</p>
-          <a href="#" onclick="showForm('Duolingo')" class="test-link">Apply for Lessons</a>
+            <!-- <img src="assets/image/AncileAcad-logo.svg" alt=""> -->
+            <p>The Duolingo English Test (DET) is an English proficiency test offered by the language-learning platform
+                Duolingo. It’s
+                gaining popularity as an alternative to traditional language tests like TOEFL and IELTS, especially for
+                admission to
+                universities and colleges.</p>
+            <a href="#" onclick="showForm('Duolingo')" class="test-link">Apply for Lessons</a>
         </div>
-      </div>
-    </section>
-    <section id="TOEFL">
-      <div class="toe-container">
+    </div>
+</section>
+<section id="TOEFL">
+    <div class="toe-container">
         <img src="{{asset('assets/image/tofel-logo.png')}}" alt="">
         <p>The TOEFL (Test of English as a Foreign Language) exam is one of the most widely recognized English
-          proficiency tests
-          globally. It’s designed to assess the English language skills of non-native speakers who wish to enroll in
-          English-speaking universities or colleges, as well as for immigration and professional purposes.</p>
+            proficiency tests
+            globally. It’s designed to assess the English language skills of non-native speakers who wish to enroll in
+            English-speaking universities or colleges, as well as for immigration and professional purposes.</p>
         <a href="#"  onclick="showForm('TOEFL')">Apply for Lessons</a>
-      </div>
-    </section>
+    </div>
+</section>
 
 
-    <div id="overlay" class="overlay">
+<div id="overlay" class="overlay">
     <div class="form-container">
-    <a href="#" style="margin-top:50px;"  onclick="hideForm()"><i class="fa fa-times"></i></a>
-        <h2 id="formTitle" style="color:#080808; padding-bottom:20px;">Register for the lessons</h2>
+        <a href="#" style="margin-top:50px;"  onclick="hideForm()"><i class="fa fa-times"></i></a>
+        <h2 id="formTitle" style="color:#080808; padding-bottom:20px; text-align: center">Register for the lessons</h2>
         <form id="downloadForm" onsubmit="return submitForm()">
             <input type="hidden" id="typeField" name="type" value="">
             <label for="email">Email:</label>
-            <input type="email" id="email" required>
+            <input type="email" id="email" placeholder="Enter Email" required>
             <br>
+            <br/>
+            <br/>
             <label for="phone">Phone:</label>
-            <input type="tel" id="phone" required>
+            <input type="tel" id="phone" placeholder="Enter Mobile Number" required>
             <br>
+            <br/>
+            <br/>
             <button class="Rectangle-1239" type="submit">Submit</button>
-            
+
         </form>
     </div>
 </div>
@@ -352,7 +357,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -361,7 +366,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC
@@ -487,30 +492,32 @@
             },
             body: JSON.stringify({ email, phone, section }),
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Success: Trigger file download
-            alert(data.message);
-            
-            setTimeout(function () {
-            window.location.reload();
-        }, 5000);
+            .then(response => {
+                if (!response.ok) {
+                    document.getElementById('overlay').style.display = 'none';
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Success: Trigger file download
+                alert(data.message);
+                document.getElementById('overlay').style.display = 'none';
+                setTimeout(function () {
+                    window.location.reload();
+                }, 5000);
 
-        })
-        .catch(error => {
-            // Handle errors (display appropriate messages)
-            alert('Error submitting the form: ' + error.message);
-        });
+            })
+            .catch(error => {
+                document.getElementById('overlay').style.display = 'none';
+                // Handle errors (display appropriate messages)
+                alert('Error submitting the form: ' + error.message);
+            });
 
-        document.getElementById('overlay').style.display = 'none';
+
         return false;
     }
 
-    
+
 </script>
 </html>

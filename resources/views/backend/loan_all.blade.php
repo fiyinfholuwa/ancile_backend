@@ -22,19 +22,19 @@
                                     <div class="" style="">
 
                                     <input name="date_from" class="form-control "  type="date"  placeholder="Start Date"    required/>
-                                    
+
                                     </div>
                                 </div>
                                 <div class="col-lg-2  mt-1">
                                     <div class="" style="">
 
                                     <input name="date_to" class="form-control "  type="date"  placeholder="End Date"   required/>
-                                    
+
                                     </div>
                                 </div>
-                                
-                              
-                              
+
+
+
                                 <div class="col-lg-4   mt-1" >
                                 <button type="submit" class='btn btn-secondary btn-sm'>Export to CSV</button>
                                 </div>
@@ -75,11 +75,15 @@
                       <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>{{$loan->status}}</span>
                       @endif
                     </td>
-                    
+
                    <td>
-                   <a type="button" class="" data-bs-toggle="modal" data-bs-target="#loan_status_{{$loan->id}}">
+                       <a href="{{route('loan.view', $loan->id)}}">
+                           <i style="color:green;"  class="fa fa-eye text-secondary"></i>
+                       </a>
+                   <a  class="" data-bs-toggle="modal" data-bs-target="#loan_status_{{$loan->id}}">
                     <i  class="fa fa-check-circle	 text-secondary"></i>
                     </a>
+
                     <a type="button" class="" data-bs-toggle="modal" data-bs-target="#loan_{{$loan->id}}">
                     <i  class="fa fa-trash text-danger"></i>
                     </a>

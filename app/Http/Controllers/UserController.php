@@ -51,7 +51,13 @@ class UserController extends Controller
     }
     public function user_application(){
 
-        return view('frontend.application');
+        $application = NewApplication::where('user_id', '=', Auth::user()->id)->first();
+        if ($application){
+            return view('frontend.application_before', compact('application'));
+        }else{
+            return view('frontend.application');
+        }
+
     }
 
     public function user_track($id){
@@ -232,10 +238,17 @@ class UserController extends Controller
             'status' => "welcome",
         ];
         Mail::to($request->email)->send(new ApplicationNotification($mailData));
+
+        $mailData1 = [
+            'name' => "AncileAcademy",
+            'status' => "admin",
+        ];
+        Mail::to("hello@ancileacademy.com")->send(new ApplicationNotification($mailData1));
         $notification = array(
             'message' => 'Application successfully saved',
             'alert-type' => 'success'
         );
+
         return redirect()->route('profile')->with($notification);
 
     }

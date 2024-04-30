@@ -100,7 +100,7 @@
 
 <section id="askgpt">
     <div class="ask-container">
-        <h2 class="course-head">AskGpt</h2>
+        <h2 class="course-head">FAQ</h2>
         <form action="{{route('faq.general.search')}}" method="get">
             <div class="find-course">
                 <input  name="search" type="text" placeholder="Search...">
@@ -120,18 +120,21 @@
     $work = collect($cat)->firstWhere('ask_code', 'work');
     $communication = collect($cat)->firstWhere('ask_code', 'communication');
 @endphp
-<section>
+<section style="margin-top: -70px;">
     <div class="ask-list">
         <div class="gpt-container">
             <a href="{{route('ask.details', $started['ask_code'])}}">
+                <div class="trying"></div>
                 <img src="{{asset('assets/image/get-s.svg')}}" />
                 <h6>{{$started['ask_name']}}</h6>
             </a>
             <a href="{{route('ask.details', $benefit['ask_code'])}}">
+                <div class="trying"></div>
                 <img src="{{asset('assets/image/benefit.svg')}}" />
                 <h6>{{$benefit['ask_name']}}</h6>
             </a>
             <a href="{{route('ask.details', $requirements['ask_code'])}}">
+                <div class="trying"></div>
                 <img src="{{asset('assets/image/reqr.svg')}}" />
                 <h6>{{$requirements['ask_name']}}</h6>
             </a>
@@ -139,14 +142,17 @@
 
         <div class="gpt-container">
             <a href="{{route('ask.details', $eligibility['ask_code'])}}">
+                <div class="trying"></div>
                 <img src="{{asset('assets/image/elig.svg')}}" />
                 <h6>{{$eligibility['ask_name']}}</h6>
             </a>
             <a href="{{route('ask.details', $work['ask_code'])}}">
+                <div class="trying"></div>
                 <img src="{{asset('assets/image/work-study.svg')}}" />
                 <h6>{{$work['ask_name']}}</h6>
             </a>
             <a href="{{route('ask.details', $communication['ask_code'])}}">
+                <div class="trying"></div>
                 <img src="{{asset('assets/image/comm.svg')}}" />
                 <h6>{{$communication['ask_name']}}</h6>
             </a>
@@ -235,7 +241,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -244,7 +250,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC

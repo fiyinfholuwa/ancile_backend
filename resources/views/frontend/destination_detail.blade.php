@@ -54,7 +54,7 @@
             justify-content: center;
             align-items: center;
             padding:50px 30px !important;
-            
+
         }
 
         .form-container i{
@@ -75,6 +75,7 @@
             padding:50px 70px !important;
             border-radius: 20px;
             position: relative;
+            width: 40%;
         }
 
         .form-container h2{
@@ -85,14 +86,15 @@
         }
 
         .Rectangle-1239 {
-  width: 163.5px;
-  height: 33.5px;
-  margin: 6px 181.5px 12.5px 8.5px;
-  padding: 9px 30.5px;
-  border-radius: 16.8px;
-  background-color: #000000;
-  color:#ffffff
-}
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            outline: none;
+            border: none;
+            background-color: #000;
+            color: #fff;
+            margin-left: 2rem;
+        }
 
 
         @media (max-width:425px) {
@@ -266,7 +268,7 @@
                 Process. Our highly trained reps are
                 Standing by. Ready to help.</p>
             <div class="question-call">
-                <a href="#">Contact us</a>
+                <a href="{{route('contact')}}">Contact us</a>
             </div>
         </div>
         <img src="{{asset('assets/image/call-in.jpg')}}" alt="">
@@ -277,7 +279,7 @@
 <div id="overlay" class="overlay">
             <div class="form-container">
             <a href="#" style="margin-top:50px;"  onclick="hideForm()"><i class="fa fa-times"></i></a>
-            <h2 style="color:#080808;">Resource File Download</h2>
+            <h2 style="color:#080808; text-align: center">Resource File Download</h2>
             <form id="downloadForm" onsubmit="return submitForm('{{ $destination->pdf }}')">
             <label for="email">Email:</label>
             <input type="email" id="email" required>
@@ -286,7 +288,7 @@
             <input type="tel" id="phone" required>
             <br>
             <button  class="Rectangle-1239" type="submit">Submit</button>
-            
+
         </form>
 
             </div>
@@ -372,7 +374,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -381,7 +383,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC
@@ -507,6 +509,7 @@
         })
         .then(response => {
             if (!response.ok) {
+                document.getElementById('overlay').style.display = 'none';
                 throw new Error('Network response was not ok');
             }
             return response.json();
@@ -515,7 +518,7 @@
             // Success: Trigger file download
             alert(data.message);
             triggerFileDownload(pdfLink);
-
+            document.getElementById('overlay').style.display = 'none';
             setTimeout(function () {
             window.location.reload();
         }, 5000);
@@ -523,10 +526,11 @@
         })
         .catch(error => {
             // Handle errors (display appropriate messages)
+            document.getElementById('overlay').style.display = 'none';
             alert('Error submitting the form: ' + error.message);
         });
 
-        document.getElementById('overlay').style.display = 'none';
+
         return false;
     }
 

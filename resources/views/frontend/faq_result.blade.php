@@ -101,7 +101,7 @@
  <section>
     <div class="get-container">
         <div class="get-left">
-            <a href="{{route('faq')}}">AskGPT > {{$ask_info->ask_name}}</a>
+            <a href="{{route('faq')}}">FAQ > {{$ask_info->ask_name}}</a>
             <h2>{{$ask_info->ask_name}}</h2>
 
             @if(count($asks) > 0)
@@ -259,7 +259,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -268,7 +268,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC

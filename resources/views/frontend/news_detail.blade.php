@@ -115,6 +115,18 @@
                     {!! $blog->body !!}
                 </div>
 
+
+            <div class="share_link">
+                <?php $currentUrl = URL::current(); ?>
+
+                <h3>Social Share <i class="fa fa-share"></i></h3>
+                <a href="http://www.facebook.com/share.php?u={{$currentUrl}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/share?url={{$currentUrl}}&amp;text={{$blog->title}}&amp;hashtags=" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://web.whatsapp.com/send?text={{$currentUrl}}" target="_blank"><i class="fa fa-whatsapp"></i></a>
+                {{--                <a href="https://plus.google.com/share?url={{$currentUrl}}L" target="_blank"><i class="fa fa-google-plus"></i></a>--}}
+                <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{$currentUrl}}" target="_blank"><i class="fa fa-linkedin"></i></a>
+            </div>
+
         </div>
 
         @if($next_blog != NULL)
@@ -128,11 +140,23 @@
             </div>
         @endif
 
+
     </div>
 
 </section>
 
 
+<style>
+    .share_link{
+        margin-top: 50px;
+    }
+    .share_link a {
+        padding: 5px;
+        color: coral;
+        font-weight: 700;
+        font-size: 25px;
+    }
+</style>
 @include('frontend.common_footer')
 <!-- consultation page............................ -->
 
@@ -213,7 +237,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -222,7 +246,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC

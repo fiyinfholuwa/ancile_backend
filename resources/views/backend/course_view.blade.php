@@ -8,7 +8,7 @@
 
   <section class="section">
       <div class="row">
-        <div class="col-lg-10">
+        <div class="col-lg-8">
 
           <div class="card">
             <div class="card-body">
@@ -26,19 +26,10 @@
                   @enderror
                   </p>
                 </div>
-                <div class="col-md-6 col-lg-12">
-                  <label for="inputName5" class="form-label">Course Description</label>
-                  <textarea name="description" placeholder="Enter Course Description" class="form-control" rows="10"></textarea>
-                  <p style="font-weight:bold; color:red; font-size:12px;">
-                  @error('description')
-                    {{$message}}
-                  @enderror
-                  </p>
-                </div>
 
                   <div class="col-md-6 col-lg-4">
                       <label for="inputName5" class="form-label">Duration</label>
-                      <input type="number" class="form-control" name="duration">
+                      <input type="number" value="{{old('duration')}}" class="form-control" placeholder="Duration" name="duration">
                       <p style="font-weight:bold; color:red; font-size:12px;">
                           @error('duration')
                           {{$message}}
@@ -47,8 +38,8 @@
                   </div>
 
                   <div class="col-md-6 col-lg-4">
-                      <label for="inputName5" class="form-label">Entry Score (IELTS)</label>
-                      <input type="text" class="form-control" name="entry_score">
+                      <label for="inputName5" class="form-label">Exam Score</label>
+                      <input type="text" value="{{old('entry_score')}}" placeholder="Exam Score" class="form-control" name="entry_score">
                       <p style="font-weight:bold; color:red; font-size:12px;">
                           @error('entry_score')
                           {{$message}}
@@ -57,10 +48,46 @@
                   </div>
 
                  <div class="col-md-6 col-lg-4">
-                      <label for="inputName5" class="form-label">Entry Score (TOEFL iBT)</label>
-                      <input type="text" class="form-control" name="entry_score2">
+                      <label for="inputName5" class="form-label">Country</label>
+                     <select required name="location" class="form-control">
+                         <option value="">Select Country</option>
+                         @foreach($countries as $country)
+                             <option value="{{$country->id}}">{{$country->name}}</option>
+                         @endforeach
+                     </select>
+
                       <p style="font-weight:bold; color:red; font-size:12px;">
-                          @error('entry_score2')
+                          @error('location')
+                          {{$message}}
+                          @enderror
+                      </p>
+                  </div>
+
+                <div class="col-md-6 col-lg-6">
+                      <label for="inputName5" class="form-label">Intake</label>
+                      <input type="text" value="{{old('intake')}}" placeholder="Intake" class="form-control" name="intake">
+                      <p style="font-weight:bold; color:red; font-size:12px;">
+                          @error('intake')
+                          {{$message}}
+                          @enderror
+                      </p>
+                  </div>
+                <div class="col-md-6 col-lg-6">
+                      <label for="inputName5" class="form-label">Tuition Fee</label>
+                      <input type="text" value="{{old('fee')}}" class="form-control" placeholder="Tuition Fee" name="fee">
+                      <p style="font-weight:bold; color:red; font-size:12px;">
+                          @error('fee')
+                          {{$message}}
+                          @enderror
+                      </p>
+                  </div>
+
+
+                <div class="col-md-12 col-lg-12">
+                      <label for="inputName5" class="form-label">University</label>
+                      <input type="text" value="{{old('university')}}" class="form-control" placeholder="University" name="university">
+                      <p style="font-weight:bold; color:red; font-size:12px;">
+                          @error('university')
                           {{$message}}
                           @enderror
                       </p>
@@ -72,7 +99,7 @@
                   <select required name="course_id" class="form-control">
                       <option value="">Select Course</option>
                       @foreach($courses as $course)
-                          <option value="{{$course->id}}">{{$course->course_name}}</option>
+                          <option value="{{$course->id}}">{{$course->name}}</option>
                       @endforeach
                   </select>
                   <p style="font-weight:bold; color:red; font-size:12px;">
@@ -81,7 +108,6 @@
                   @enderror
                   </p>
                 </div>
-
 
                   <div class="col-md-12 col-lg-6">
                       <label for="inputCity" class="form-label">Educational Category</label>
@@ -98,32 +124,59 @@
                       </p>
                   </div>
 
-                  <div class="col-md-6 col-lg-12">
-                      <label for="inputName5" class="form-label">More Information about the Course</label>
-                      <textarea id="myTextarea" name="about" placeholder="More Information about the Course" class="form-control" rows="10"></textarea>
-                      <p style="font-weight:bold; color:red; font-size:12px;">
-                          @error('about')
-                          {{$message}}
-                          @enderror
-                      </p>
-                  </div>
-
-
                   <div class="">
                   <button type="submit" class="btn btn-primary">Add Course</button>
                 </div>
-              </form><!-- End Multi Columns Form -->
+              </form>
 
 
             </div>
           </div>
-
-
             </div>
+          </div>
+          <div style="margin-top: 50px" class="col-lg-4">
+              <form action="{{route('admin.course.excel')}}" method="post" enctype="multipart/form-data">
+                  @csrf
+                  <h5 class="card-title">Upload Excel/ CSV File</h5>
+                  <div class="form-group">
+                    <input type="file" class="form-control" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="csv_file"/>
+                  </div>
+                  <div class="mt-5">
+                      <button class="btn btn-danger" type="submit">Upload Excel / CSV</button>
+                  </div>
+              </form>
+
+              <div class="mt-5">
+                  <a href="{{asset('course_upload_template.xlsx')}}" class="btn btn-outline-success" download="">Download Template</a>
+
+              </div>
+              <div class="mt-5">
+                  <form action="{{route('export.save_courses')}}" method="post">
+                      @csrf
+                      <button type="submit" class="btn btn-outline-primary">Download Saved Courses</button>
+
+                  </form>
+              </div>
+              <div class="mt-5">
+                  <h3>Brief Instruction on how to use the template</h3>
+                  <ul>
+                      <li>Course Duration is in Months</li>
+                      <li>You will need to  <a style="text-decoration: #0a53be;" href="{{route('program.view')}}">click here </a>for course category ID</li>
+
+                      <li>For Education Level to the the education level:
+                          <ol>
+                              <li>Undergraduate => 1</li>
+                              <li>High School  => 2</li>
+                              <li>Master Degree =>  3</li>
+                              <li>PHD  => 4</li>
+                          </ol>
+                      <li>You will need to  <a style="text-decoration: #0a53be;" href="{{route('manage.country.view')}}">click here </a>for Country ID</li>
+                  </ul>
+              </div>
           </div>
 
         </div>
-      </div>
+
     </section>
 
 

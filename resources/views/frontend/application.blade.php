@@ -215,6 +215,16 @@
                         <option value="2027/2028">2027/2028</option>
                         <option value="2028/2029">2028/2029</option>
                         <option value="2029/2030">2029/2030</option>
+                        <option value="2030/2031">2030/2031</option>
+                        <option value="2031/2032">2031/2032</option>
+                        <option value="2032/2033">2032/2033</option>
+                        <option value="2033/2034">2033/2034</option>
+                        <option value="2034/2035">2034/2035</option>
+                        <option value="2035/2036">2035/2036</option>
+                        <option value="2036/2037">2036/2037</option>
+                        <option value="2037/2038">2037/2038</option>
+                        <option value="2038/2039">2038/2039</option>
+                        <option value="2039/2040">2039/2040</option>
                     </select>
                     <p style="color: red; font-weight: 500">
                         @error('year')
@@ -415,6 +425,7 @@
                                 <option value="gre">GRE</option>
                                 <option value="toefl">TOEFL</option>
                                 <option value="ielts">IELTS</option>
+                                <option value="pte">PTE</option>
                             </select>
                             <input type="text" name="score[]" placeholder="Enter score" required>
                             <input type="file" name="attachment[]" required>
@@ -656,7 +667,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -665,7 +676,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC

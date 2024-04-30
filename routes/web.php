@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
             Route::post('admin/user/delete/{id}', 'admin_user_delete')->name('admin.user.delete');
             Route::post('admin/user/block/{id}', 'admin_user_block')->name('admin.user.block');
             Route::get('admin/consultation/all', 'consultation_all')->name('consultation.all');
+            Route::get('admin/consultation/view/{id}', 'consultation_view')->name('consultation.view');
             Route::post('admin/consultation/delete/{id}', 'consultation_delete')->name('consultation.delete');
             Route::post('admin/consultation/status/{id}', 'admin_consultation_status')->name('admin.consultation.status');
             Route::get('admin/counsellor/view', 'counsellor_view')->name('counsellor.view');
@@ -146,11 +147,14 @@ Route::middleware('auth')->group(function () {
             Route::post('admin/destination/delete/{id}', 'admin_destination_delete')->name('admin.destination.delete');
 
             Route::get('admin/course/view', 'admin_course_view')->name('admin.course.view');
+            Route::get('admin/course/review/{id}', 'admin_course_review')->name('admin.course.review');
             Route::get('admin/course/all', 'admin_course_all')->name('admin.course.all');
             Route::post('admin/course/save/', 'admin_course_save')->name('admin.course.save');
+            Route::post('admin/course/excel/', 'admin_course_excel')->name('admin.course.excel');
             Route::get('admin/course/edit/{id}', 'admin_course_edit')->name('admin.course.edit');
             Route::post('admin/course/update/{id}', 'admin_course_update')->name('admin.course.update');
             Route::post('admin/course/delete/{id}', 'admin_course_delete')->name('admin.course.delete');
+            Route::post('admin/course/delete/all/courses', 'course_delete_all')->name('delete.courses.all_all');
 
 
             Route::get('admin/blog/view', 'admin_blog_view')->name('admin.blog.view');
@@ -173,7 +177,10 @@ Route::middleware('auth')->group(function () {
             Route::post('admin/academic/delete/{id}', 'admin_academic_delete')->name('admin.academic.delete');
 
             Route::get('admin/loan/all/', 'admin_loan_all')->name('admin.loan.all');
+            Route::get('admin/apply/course/all/', 'admin_apply_course_all')->name('admin.apply.course.all');
+            Route::get('admin/apply/course/review/{id}', 'admin_apply_course_review')->name('admin.apply.course.review');
             Route::post('admin/loan/delete/{id}', 'loan_delete')->name('loan.delete');
+            Route::get('admin/loan/view/{id}', 'loan_view')->name('loan.view');
             Route::post('admin/loan/status/{id}', 'loan_status')->name('admin.loan.status');
         });
 
@@ -193,9 +200,11 @@ Route::middleware('auth')->group(function () {
         Route::controller(ExportController::class)->group(function () {
             Route::post('academic/test/report', 'academic_test_report')->name('academic.test.report');
             Route::post('english/test/report', 'english_test_report')->name('english.test.report');
+            Route::post('applied/course/report', 'applied_course_report')->name('applied.course.report');
             Route::post('resource/download/report', 'resource_download_report')->name('resource.download.report');
             Route::post('loan/report', 'loan_report')->name('loan.report');
-           
+            Route::post('export/saved/courses', 'export_saved_courses')->name('export.save_courses');
+
         });
 
 
@@ -232,6 +241,8 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/blog/{title}', 'blog_detail')->name('blog.detail');
     Route::get('/news/{title}', 'news_detail')->name('news.detail');
     Route::get('/faq', 'faq')->name('faq');
+    Route::get('/contact', 'contact')->name('contact');
+    Route::post('/contact/save', 'contact_save')->name('contact.save');
     Route::get('/ask/category/{ask_name}', 'faq_category_d')->name('ask.details');
     Route::get('/about', 'about')->name('about');
     Route::get('/consultation', 'consultation')->name('consultation');
@@ -245,6 +256,7 @@ Route::controller(FrontendController::class)->group(function () {
 
     Route::post('/academic/tutorial', 'academic_tutorial')->name('academic.tutorial');
     Route::post('/english/tutorial', 'english_tutorial')->name('english.tutorial');
+    Route::post('/apply/course', 'apply_course')->name('apply.course');
 });
 
 

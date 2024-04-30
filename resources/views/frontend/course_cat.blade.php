@@ -31,6 +31,89 @@
 
     <title>Academy Course Category</title>
 </head>
+
+<style>
+    /* Your existing CSS styles */
+
+    .resource-box {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .resource {
+        margin: 20px;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0px; /* Adjust as needed */
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        padding:50px 30px !important;
+
+    }
+
+    .form-container i{
+        position: absolute;
+        top:20px;
+        right:20px;
+        font-size:20px;
+    }
+
+    .form-container a{
+        color:black;
+    }
+
+    .form-container {
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        padding:50px 70px;
+        border-radius: 20px;
+        position: relative;
+        width: 40%;
+
+    }
+
+    .form-container h2{
+        margin-top:30px;
+        font-size: 27px;
+
+    }
+
+    .Rectangle-1239 {
+        padding: 1rem 3rem;
+        border-radius: 50px;
+        font-size: 1.5rem;
+        outline: none;
+        border: none;
+        background-color: #000;
+        color: #fff;
+        margin-left: 2rem;
+    }
+
+
+    @media (max-width:425px) {
+        .form-container {
+            width:80%;
+            margin:0px 10%;
+            padding:20px 15px;
+        }
+
+        .form-container h2{
+            margin-top:20px;
+            font-size: 14px;
+            border-radius: 10px;
+
+        }
+
+    }
+</style>
 <body>
 @include('frontend.common_marquee')
 <header>
@@ -104,10 +187,17 @@
         <h2 class="course-head">Find a Course</h2>
         <form action="{{route('courses.general.search')}}" method="get">
             <div class="find-course">
-                <select name="level" id="course">
-                    <option value="">Select category</option>
-                    @foreach($levels as $level)
-                        <option value="{{$level->id}}">{{$level->level_name}}</option>
+
+                <select name="category" id="course">
+                    <option value="">Category</option>
+                    @foreach($course_category as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
+                <select name="country" id="course">
+                    <option value="">Country</option>
+                    @foreach($countries as $country)
+                        <option value="{{$country->id}}">{{$country->name}}</option>
                     @endforeach
                 </select>
                 <input  name="search" type="text" placeholder="Search Course...">
@@ -117,21 +207,68 @@
 
     </div>
 </section>
-<section>
+<section style="margin-top: -70px;">
     <div class="ask-list">
         @if(count($courses) > 0)
             @foreach($courses as $course)
-                <a href="{{route('courses.detail', $course->slug)}}">
-                    <div class="bachelor">
-                        <h3>{{$course->title}}</h3>
-                        <p>{{ Str::limit($course->description, 100) }}</p>
-                        <h4>Duration: {{$course->duration}} Year(s)</h4>
-                        <h6>Entry score: {{$course->entry_score}} IELTS
-                        </h6>
+                <div style="box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px; padding: 20px 50px" class="bsc-container">
+                    <div style="margin-bottom: 0px; padding-left: 20px;" class="row">
+                        <div class="col-lg-6">
+                            <h2 style="margin-bottom: 20px;">{{$course->title}}</h2>
+                            <span style="font-size: 14px; color: #0d6efd"><i class="fa fa-university"></i> {{$course->university}}</span><br/>
+                            <span style="font-size: 14px; color: #9b9b9b"><i class="fa fa-map"></i> {{optional($course->country_name)->name}}</span>
+                        </div>
+                        <div class="col-lg-6 bsc-duration2">
+                            <div style="" class="">
+                                <h4><button style="padding: 10px 40px; color: white; background: #ff6430; border: none; border-radius: 20px;" class="" onclick="showForm({{$loop->index}})">Apply Now</button></h4>
+                            </div>
+
+                        </div>
                     </div>
-                </a>
+
+                    <div class="bsc-duration-box">
+                        <div class="bsc-duration">
+                            <h4>{{$course->duration}} Month(s)</h4>
+                            <p>Duration</p>
+                        </div>
+                        <div class="bsc-duration">
+                            <h4>{{$course->entry_score}}</h4>
+                            <p>Exam Score</p>
+                        </div>
+                        <div class="bsc-duration">
+                            <h4>{{$course->fee}}</h4>
+                            <p>Tuition Fee</p>
+                        </div>
+                        <div class="bsc-duration">
+                            <h4>{{$course->intake}}</h4>
+                            <p>Intake</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="overlay{{$loop->index}}" class="overlay">
+
+                    <div class="form-container">
+                        <a href="#" style="margin-top:50px; text-align: center" onclick="hideForm({{$loop->index}})"><i class="fa fa-times"></i></a>
+                        <h2 style="color:#080808; margin-bottom: 30px;" class="text-center"><span style="color: #0a53be">{{$course->title}}</span></h2>
+                        <form id="downloadForm{{$loop->index}}" onsubmit="return submitForm({{$loop->index}})">
+                            <label for="email{{$loop->index}}">Email:</label>
+                            <input  placeholder="Enter Email" type="email" id="email{{$loop->index}}" required>
+                            <br>
+                            <label for="phone{{$loop->index}}">Phone:</label>
+                            <input placeholder="Enter Mobile Number"  type="number" id="phone{{$loop->index}}" required>
+                            <input   value="{{$course->id}}" type="hidden" id="course_id{{$loop->index}}" required>
+                            <br>
+                            <br/>
+                            <br/>
+                            <button  class="Rectangle-1239" type="submit">Apply Now</button>
+                        </form>
+                    </div>
+                </div>
             @endforeach
 
+            {{$courses->links('frontend.paginate')}}
         @else
             <div>
                 <h3 style="color: red; font-weight: 700; margin-top: 50px; margin-left: 100px">Course(s) not available Yet</h3>
@@ -221,7 +358,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -230,7 +367,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC
@@ -330,4 +467,53 @@
     }
 
 </script>
+
+<script>
+    function showForm(index) {
+        document.getElementById(`overlay${index}`).style.display = 'flex';
+    }
+
+    function hideForm(index) {
+        // document.getElementById(`overlay${index}`).style.display = 'flex';
+        document.getElementById(`overlay${index}`).style.display = 'none';
+    }
+    function submitForm(index) {
+        var email = document.getElementById(`email${index}`).value;
+        var phone = document.getElementById(`phone${index}`).value;
+        var course_id = document.getElementById(`course_id${index}`).value;
+        fetch('/apply/course', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            },
+            body: JSON.stringify({ email, phone, course_id }),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    document.getElementById(`overlay${index}`).style.display = 'none';
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Success: Trigger file download
+                alert(data.message);
+                document.getElementById(`overlay${index}`).style.display = 'none';
+                setTimeout(function () {
+                    window.location.reload();
+                }, 5000);
+            })
+            .catch(error => {
+                document.getElementById(`overlay${index}`).style.display = 'none';
+                // Handle errors (display appropriate messages)
+                alert('Error submitting the form: ' + error.message);
+            });
+
+
+        return false;
+    }
+
+</script>
+
 </html>

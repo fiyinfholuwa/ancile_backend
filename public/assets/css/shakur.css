@@ -8,6 +8,24 @@
     box-sizing: border-box;
 }
 
+::-webkit-input-placeholder { /* For Chrome, Safari, and Opera */
+    font-size: 14px; /* Set the font size */
+}
+::-moz-placeholder { /* For Firefox 19+ */
+    font-size: 14px; /* Set the font size */
+}
+:-ms-input-placeholder { /* For IE 10+ */
+    font-size: 14px; /* Set the font size */
+}
+:-moz-placeholder { /* For Firefox 18- */
+    font-size: 14px; /* Set the font size */
+}
+
+.ask-container input::placeholder {
+    font-size: 14px; /* Set the desired font size */
+}
+
+
 *{
     a{
         font-size: 14px;
@@ -29,13 +47,17 @@ body {
 
 section,
 footer {
-    padding: 0rem 10rem 5rem 10rem;
+    padding: 0px 5rem 5rem 5rem;
     overflow-x: hidden;
 }
 
 footer {
     padding-bottom: 8rem;
     padding-top: 8rem;
+}
+
+footer .footer_div{
+    padding: 1px 5rem !important;
 }
 
 a {
@@ -165,7 +187,7 @@ li {
 }
 
 .nav-link,
-.nav-linkss {
+.nav-linkss , .nav-linkee{
     color: #fff;
     font-size: 14px;
     font-style: normal;
@@ -978,6 +1000,13 @@ footer {
     gap: 10rem;
     margin-top: 6rem;
 }
+.footer-box3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10rem;
+    margin-top: 6rem;
+}
 
 .footer-quest h3 {
     font-size: 3rem;
@@ -1216,13 +1245,13 @@ footer {
 .consult-details,
 .consult-password {
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
     gap: 3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 
-.consult-details input,
+.consult-details input[type='text'], .consult-details input[type='email'], .consult-details input[type='number'],.consult-details input[type='password'],
 .consult-select select {
     width: 40%;
     padding: 1rem;
@@ -1234,7 +1263,7 @@ footer {
     font-stretch: normal;
     font-style: normal;
     letter-spacing: normal;
-    text-align: left;
+    /*text-align: left;*/
     color: #ffffff;
 }
 
@@ -1251,7 +1280,10 @@ footer {
     text-align: left;
     color: #ffffff;
     width: 98%;
+}
 
+.password-box input:nth-child(2) {
+    margin-left: 30px !important;
 }
 
 .password-box {
@@ -1654,11 +1686,6 @@ footer {
 
 
 
-
-
-
-
-
 .wrapper{
     max-width: 1200px;
     margin: auto;
@@ -1757,4 +1784,11 @@ footer {
     .reg-button{
         margin-top: -40px;
     }
+
+    .consult-details input[type='text'], .consult-details input[type='email'], .consult-details input[type='number'],.consult-details input[type='password'],
+    .consult-select select {
+        width: 100%;
+
+    }
+
 }

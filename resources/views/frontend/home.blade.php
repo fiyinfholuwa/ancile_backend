@@ -183,7 +183,7 @@
                 @else
                 <a href="#" id="logged2" class="arrow"><i class="fa-solid fa-arrow-right"></i></a>
                 @endauth
-                
+
             </div>
             <div class="help-box">
                 <img src="{{asset('assets/image/consult.svg')}}" alt="">
@@ -414,84 +414,55 @@
 
 
 
-<section>
-    <div class="course-container">
-        <h2>Popular Course</h2>
-        @php
-            $courses = $course_category;
-            $courses = json_decode($course_category, true);
-            $accounting = collect($courses)->firstWhere('course_code', 'accounting');
-            $engineering = collect($courses)->firstWhere('course_code', 'engineering');
-            $computer = collect($courses)->firstWhere('course_code', 'computer');
-            $health = collect($courses)->firstWhere('course_code', 'health');
-            $language = collect($courses)->firstWhere('course_code', 'language');
-            $education = collect($courses)->firstWhere('course_code', 'education');
-            $art = collect($courses)->firstWhere('course_code', 'art');
-            $law = collect($courses)->firstWhere('course_code', 'law');
-            $media= collect($courses)->firstWhere('course_code', 'media');
-        @endphp
-
-        <div class="course-box">
-            <div class="course">
-                <a href="{{route('courses.category',$accounting['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/accounting.svg')}}" alt="">
-                    {{$accounting['course_name']}}
-                </a>
+<section id="offer">
+    <div class="offer-container">
+        <div class="offer-header">
+            <h2>What We Offer</h2>
+            <p>At Ancile Academy, we provide comprehensive services tailored to each
+                studen’s unique journey,</p>
+        </div>
+        <div class="offer-box">
+            <div class="offer">
+                <p>University and program Selection</p>
             </div>
-            <div class="course">
-                <a href="{{route('courses.category',$engineering['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/engineering.svg')}}" alt="">
-                    {{$engineering['course_name']}}
-                </a>
+            <div class="offer">
+                <p>Visa Assistance</p>
             </div>
-            <div class="course">
-                <a href="{{route('courses.category',$computer['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/computer.svg')}}" alt="">
-                    {{$computer['course_name']}}
-                </a>
+            <div class="offer">
+                <p>ELP Training</p>
+            </div>
+        </div>
+        <div class="offer-box">
+            <div class="offer">
+                <p>Financial Aid Support</p>
+            </div>
+            <div class="offer">
+                <p>Career Counselling</p>
+            </div>
+            <div class="offer">
+                <p>Application & Scholarship</p>
             </div>
         </div>
 
-        <div class="course-box">
-            <div class="course">
-                <a href="{{route('courses.category',$health['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/medical.svg')}}" alt="">
-                    {{$health['course_name']}}
-                </a>
+        <div class="offer-box">
+            <div class="offer">
+                <p>Accommodation and Part-time assistance</p>
             </div>
-            <div class="course">
-                <a href="{{route('courses.category',$language['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/language.svg')}}" alt="">
-                    {{$language['course_name']}}
-                </a>
+            <div class="offer">
+                <p>OPT/CPT Assistance and Post Study work right (PSW)</p>
             </div>
-            <div class="course">
-                <a href="{{route('courses.category',$education['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/education.svg')}}" alt="">
-                    {{$education['course_name']}}
-                </a>
+            <div class="offer">
+                <p>Resume Marketing</p>
             </div>
         </div>
+        <div class="offer-box">
+            <div class="offer">
+                <p>HIB visa filing and PR assistance</p>
+            </div>
+            <div class="offer">
+                <p>Green Card filling</p>
+            </div>
 
-        <div class="course-box">
-            <div class="course">
-                <a href="{{route('courses.category',$law['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/law.svg')}}" alt="">
-                    {{$law['course_name']}}
-                </a>
-            </div>
-            <div class="course">
-                <a href="{{route('courses.category',$art['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/art.svg')}}" alt="">
-                    {{$art['course_name']}}
-                </a>
-            </div>
-            <div class="course">
-                <a href="{{route('courses.category',$media['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/marketing.svg')}}" alt="">
-                    {{$media['course_name']}}
-                </a>
-            </div>
         </div>
     </div>
 </section>
@@ -659,7 +630,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -668,7 +639,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC
@@ -692,7 +663,7 @@
     // REGISTER LOGIC
     const registerBtn = document.getElementById('registered')
 
-    
+
 
     const registerBtn3 = document.getElementById('registered3')
 
@@ -708,7 +679,7 @@
         registerBox.classList.toggle('active');
     })
 
-    
+
 
     // registerBtn3.addEventListener('click', (e) => {
     //     e.preventDefault()
@@ -733,7 +704,7 @@
 
     const closeLogin = document.querySelector('.login-link')
 
-    
+
     loginBtn.addEventListener('click', (e) => {
         e.preventDefault()
         loginBox.classList.toggle('active');

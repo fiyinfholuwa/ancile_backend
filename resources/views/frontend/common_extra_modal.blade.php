@@ -50,10 +50,10 @@
 
     <form action="javascript:void(0);" class="consult-form" id="consultForm">
         <div class="consult-details">
-            <input type="text" name="first_name" id="fname" placeholder="First name"> <br>
-            <p class="error" id="first_name_error" style="color: white;"></p>
+            <input type="text" name="first_name" id="fname" placeholder="First name">
+            <p style="display: block; color: #ffffff" class="error" id="first_name_error"></p>
 
-            <input type="text" name="last_name" id="lname" placeholder="Last name"><br>
+            <input type="text" name="last_name" id="lname" placeholder="Last name">
             <p class="error" id="last_name_error" style="color: white;"></p>
         </div>
 
@@ -61,7 +61,7 @@
             <input type="email" name="email" id="email" placeholder="Email address">
             <p class="error" id="email_error" style="color: white;"></p>
 
-            <input type="tel" id="phone" name="phone" placeholder="Phone number">
+            <input type="number" id="phone" name="phone" placeholder="Phone number">
             <p class="error" id="phone_error" style="color: white;"></p>
         </div>
 
@@ -70,7 +70,7 @@
             <select style="display: none" name="country" id="country">
                 <!-- ... Options ... -->
             </select>
-            <select name="country" id="country">
+            <select class="form-control" name="country" id="country">
                 <option value="">Select Country</option>
                 @foreach($countries as $country)
                     <option value="{{$country->name}}">{{$country->name}}</option>
@@ -80,8 +80,8 @@
         </div>
 
         <div class="consult-select">
-            <h4>What level of study are you planning for?</h4>
-            <select name="education_level" id="education_level">
+            <h4>level of study are you planning for?</h4>
+            <select class="form-control" name="education_level" id="education_level">
                 <option value="">Select Educational Level</option>
                 @foreach($levels as $level)
                     <option value="{{$level->level_name}}">{{$level->level_name}}</option>
@@ -116,10 +116,10 @@
             <input type="email" name="email" id="mail" placeholder="Enter Email Address">
             <p class="error" id="r_email_error" style="color: white;"></p>
 
-            <input type="tel" id="phone2" name="mobile_number">
+            <input type="number" id="phone2" name="mobile_number">
             <p class="error" id="mobile_number_error" style="color: white;"></p>
         </div>
-        <div class="consult-password">
+        <div class="">
             <div class="password-box">
                 <input type="password" name="password" id="passwordField1" placeholder="Enter Password">
                 <p class="error" id="password_error" style="color: white;"></p>
@@ -127,19 +127,21 @@
               <i class="fa-solid fa-eye" id="eyeIcon1"></i>
             </span>
             </div>
+
             <div class="password-box">
                 <input type="password" name="password_confirmation" id="passwordField2" placeholder="Confirm Password">
-
+                <p class="error" id="password_error" style="color: white;"></p>
                 <span class="toggle-password2" onclick="togglePasswordVisibility2()">
               <i class="fa-solid fa-eye" id="eyeIcon2"></i>
             </span>
             </div>
+
         </div>
-        <p class="consult-parag2"><input required type="checkbox">  I agree to Acileacademy  <a href="#">Terms &
+        <p class="consult-parag2"><input required checked type="checkbox">&nbsp;  I agree to Acileacademy <a href="#">Terms &
                 Conditions</a> & <a href="#">Privacy
                 Policy</a></p>
-        <p class="consult-parag2"><input required type="checkbox">  Please contact me by phone, email or sms to assist with my enquiry</p>
-        <p class="consult-parag2"><input required type="checkbox">  I would like to recieve update and offer from Ancileacademy.</p>
+        <p class="consult-parag2"><input required checked type="checkbox">&nbsp; I consent to be contacted  by phone, email or sms to assist with my enquiry</p>
+        <p class="consult-parag2"><input checked type="checkbox">&nbsp;  I would like to receive update and offer from Ancileacademy.</p>
         <div class="reg-button">
             <button id="registerB" type="submit">Create Account</button>
             <div class="reg-already">

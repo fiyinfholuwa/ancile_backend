@@ -169,13 +169,13 @@
                                 @foreach($applications as $application)
                                     <div class="completed-list">
                                         <div class="completed-list-name">
-                                            <h4>{{$application->full_name}}</h4>
+                                            <h4>{{$application->shortlist}}</h4>
                                             @php
                                                 $inputDate = new DateTime($application->created_at);
                                                 $datePart = $inputDate->format('Y-m-d');
                                                 $outputDateString = 'Created on ' . DateTime::createFromFormat('Y-m-d', $datePart)->format('j M. Y');
                                             @endphp
-                                           <p>{{$outputDateString}}</p>
+                                           <p style="color: #1a77e5; font-size: 15px;">{{$outputDateString}}</p>
                                         </div>
 
                                         <div class="completed-list-percent">
@@ -197,7 +197,7 @@
 
                                             @endif
 
-                                            <a href="{{route('user.application.edit', $application->id)}}" class="edit">Edit</a>
+                                            <a href="{{route('user.application.edit', $application->id)}}" class="edit">Update</a>
                                             <a href="{{route('user.track', $application->id)}}"
                                                class="track_app">Track</a>
                                         </div>
@@ -221,7 +221,7 @@
                                 @foreach($completed_applications as $application)
                                     <div class="completed-list">
                                         <div class="completed-list-name">
-                                            <h4>{{$application->full_name}}</h4>
+                                            <h4>{{$application->shortliist}}</h4>
                                             @php
                                                 $inputDate = new DateTime($application->created_at);
                                                 $datePart = $inputDate->format('Y-m-d');
@@ -235,7 +235,7 @@
                                                 <h3>100%</h3>
 
 
-                                            <a href="#" class="edit">Edit</a>
+                                            <a href="#" class="edit">Update</a>
                                             <a href="{{route('user.track', $application->id)}}"
                                                class="track_app">Track</a>
                                         </div>
@@ -259,7 +259,7 @@
                                 @foreach($canceled_applications as $application)
                                     <div class="completed-list">
                                         <div class="completed-list-name">
-                                            <h4>{{$application->full_name}}</h4>
+                                            <h4>{{$application->shortlist}}</h4>
                                             @php
                                                 $inputDate = new DateTime($application->created_at);
                                                 $datePart = $inputDate->format('Y-m-d');
@@ -270,7 +270,7 @@
 
                                         <div class="completed-list-percent">
                                                 <h3>0%</h3>
-                                            <a href="#" class="edit">Edit</a>
+                                            <a href="#" class="edit">Update</a>
                                             <a href="{{route('user.track', $application->id)}}"
                                                class="track_app">Track</a>
                                         </div>
@@ -613,7 +613,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -622,7 +622,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC

@@ -57,7 +57,7 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div class="input-box">
                         <form action="{{route('faq.general.search')}}" method="get">
-                            <input type="text" name="search" placeholder="Search...">
+                            <input class="form-control" type="text" name="search" placeholder="Search...">
                             <button type="submit" class="searchh">Search</button>
                         </form>
 
@@ -130,9 +130,9 @@
                     </div>
 
                     <div class="card-body">
-                        <h2 class="blog-title">{!! (\Illuminate\Support\Str::limit($blog->title, 30, '...')) !!}</h2>
+                        <h2 class="blog-title">{!! (\Illuminate\Support\Str::limit($blog->title, 40, '...')) !!}</h2>
                         <div class="card-profile">
-                            <img class="profile-img" src='https://static.thenounproject.com/png/4035887-200.png' alt=''>
+                            <img class="profile-img" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGzQ-Zc7A3vZcxlVEv05ReeiAyiPniRTdQrWVoDUj9tQ&s' alt=''>
                             <div class="card-profile-info">
                                 <h3 class="profile-name">Admin</h3>
                                 <p class="profile-followers">@php
@@ -140,7 +140,17 @@
                                         $datePart = $inputDate->format('Y-m-d');
                                         $outputDateString = DateTime::createFromFormat('Y-m-d', $datePart)->format('j M. Y');
                                     @endphp
-                                    {{$outputDateString}}</p>
+                                    <span style="color: #000000;" class="">{{$outputDateString}}</span>
+                                        <?php $currentUrl = URL::current(); ?>
+                                    <span style=""><a class="s_link" href="http://www.facebook.com/share.php?u={{$currentUrl}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    <a class="s_link" href="https://twitter.com/share?url={{$currentUrl}}&amp;text={{$blog->title}}&amp;hashtags=" target="_blank"><i class="fa fa-twitter"></i></a>
+                                    <a class="s_link" href="https://web.whatsapp.com/send?text={{$currentUrl}}" target="_blank"><i class="fa fa-whatsapp"></i></a>
+                                    {{--                <a href="https://plus.google.com/share?url={{$currentUrl}}L" target="_blank"><i class="fa fa-google-plus"></i></a>--}}
+                                        <a class="s_link" href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{$currentUrl}}" target="_blank"><i class="fa fa-linkedin"></i></a></span>
+</span>
+
+
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -242,7 +252,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -251,7 +261,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC
@@ -358,7 +368,7 @@
     .wrapper {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        /*justify-content: center;*/
     }
 
     .card {
@@ -369,6 +379,7 @@
         position: relative;
         width: 350px;
         margin: 1rem;
+        margin-left: -20px;
         transition: 250ms all ease-in-out;
         cursor: pointer;
     }
@@ -459,7 +470,21 @@
 
     .profile-followers {
         color: #616b74;
-        font-size: 0.9rem;
+        font-size: 14px;
+    }
+
+    .s_link{
+        color: coral;
+        padding-left: 10px;
+        font-size: 20px;
+        font-weight: bolder !important;
+    }
+
+    @media (max-width: 768px) {
+        .card {
+            width: 300px;
+        }
+
     }
 
 </style>

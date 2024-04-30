@@ -12,11 +12,19 @@ class ProgramCourse extends Model
 
     public function course_info()
     {
-        return $this->hasOne(CourseCategory::class, 'id', 'course_id');
+        return $this->hasOne(ProgramCat::class, 'id', 'course_id');
     }
 
     public function status_info()
     {
         return $this->hasOne(Status::class, 'id', 'status');
+    }
+
+    public function edu_name()
+    {
+        return $this->hasOne(EducationalLevel::class, 'id', 'level');
+    }public function country_name()
+    {
+        return $this->hasOne(Country::class, 'id', 'location');
     }
 }

@@ -26,15 +26,6 @@
                   @enderror
                   </p>
                 </div>
-                <div class="col-md-6 col-lg-12">
-                  <label for="inputName5" class="form-label">Course Description</label>
-                  <textarea name="description" placeholder="Enter Course Description" class="form-control" rows="10">{{$course->description}}</textarea>
-                  <p style="font-weight:bold; color:red; font-size:12px;">
-                  @error('description')
-                    {{$message}}
-                  @enderror
-                  </p>
-                </div>
 
                   <div class="col-md-6 col-lg-4">
                       <label for="inputName5" class="form-label">Duration</label>
@@ -47,8 +38,8 @@
                   </div>
 
                   <div class="col-md-6 col-lg-4">
-                      <label for="inputName5" class="form-label">Entry Score (IELTS)</label>
-                      <input type="text" value="{{$course->entry_score}}" class="form-control" name="entry_score">
+                      <label for="inputName5" class="form-label">Exam Score</label>
+                      <input type="text" value="{{$course->entry_score}}" placeholder="Exam Score" class="form-control" name="entry_score">
                       <p style="font-weight:bold; color:red; font-size:12px;">
                           @error('entry_score')
                           {{$message}}
@@ -56,15 +47,52 @@
                       </p>
                   </div>
 
-                 <div class="col-md-6 col-lg-4">
-                      <label for="inputName5" class="form-label">Entry Score (TOEFL iBT)</label>
-                      <input type="text" value="{{$course->entry_score2}}" class="form-control" name="entry_score2">
+                  <div class="col-md-6 col-lg-4">
+                      <label for="inputName5" class="form-label">Country</label>
+                      <select required name="location" class="form-control">
+                          <option value="">Select Country</option>
+                          @foreach($countries as $country)
+                              <option value="{{$country->id}}" {{$country->id == $course->location ? 'selected' : ''}}>{{$country->name}}</option>
+                          @endforeach
+                      </select>
+
                       <p style="font-weight:bold; color:red; font-size:12px;">
-                          @error('entry_score2')
+                          @error('location')
                           {{$message}}
                           @enderror
                       </p>
                   </div>
+
+                  <div class="col-md-6 col-lg-6">
+                      <label for="inputName5" class="form-label">Intake</label>
+                      <input type="text" value="{{$course->intake}}" placeholder="Intake" class="form-control" name="intake">
+                      <p style="font-weight:bold; color:red; font-size:12px;">
+                          @error('intake')
+                          {{$message}}
+                          @enderror
+                      </p>
+                  </div>
+                  <div class="col-md-6 col-lg-6">
+                      <label for="inputName5" class="form-label">Tuition Fee</label>
+                      <input type="text" value="{{$course->fee}}" class="form-control" placeholder="Tuition Fee" name="fee">
+                      <p style="font-weight:bold; color:red; font-size:12px;">
+                          @error('fee')
+                          {{$message}}
+                          @enderror
+                      </p>
+                  </div>
+
+
+                  <div class="col-md-12 col-lg-12">
+                      <label for="inputName5" class="form-label">University</label>
+                      <input type="text" value="{{$course->university}}" class="form-control" placeholder="University" name="university">
+                      <p style="font-weight:bold; color:red; font-size:12px;">
+                          @error('university')
+                          {{$message}}
+                          @enderror
+                      </p>
+                  </div>
+
 
 
                   <div class="col-md-12 col-lg-6">
@@ -72,7 +100,7 @@
                   <select required name="course_id" class="form-control">
                       <option value="">Select Course</option>
                       @foreach($courses as $coursed)
-                          <option value="{{$coursed->id}}" {{$coursed->id == $course->course_id ? "selected" : ""}}>{{$coursed->course_name}}</option>
+                          <option value="{{$coursed->id}}" {{$coursed->id == $course->course_id ? "selected" : ""}}>{{$coursed->name}}</option>
                       @endforeach
                   </select>
                   <p style="font-weight:bold; color:red; font-size:12px;">
@@ -96,19 +124,6 @@
                           @enderror
                       </p>
                   </div>
-
-
-                  <div class="col-md-6 col-lg-12">
-                      <label for="inputName5" class="form-label">About the Course</label>
-                      <textarea name="about" id="myTextarea" placeholder="Enter About Course" class="form-control" rows="10">{{$course->about}}</textarea>
-                      <p style="font-weight:bold; color:red; font-size:12px;">
-                          @error('about')
-                          {{$message}}
-                          @enderror
-                      </p>
-                  </div>
-
-
 
                   <div class="">
                   <button type="submit" class="btn btn-primary">Update Course</button>

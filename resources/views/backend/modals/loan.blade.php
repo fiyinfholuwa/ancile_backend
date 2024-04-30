@@ -20,7 +20,7 @@
                 </form>
               </div><!-- End Disabled Animation Modal-->
 
-           
+
               <div class="modal" id="loan_status_{{$loan->id}}" tabindex="-1">
                 <form method="post" action="{{route('admin.loan.status', $loan->id)}}">
                   @csrf
@@ -42,11 +42,11 @@
                     @endforeach
                   </select>
                 </div>
-                
+
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                       
+
                         <button type="submit" class="btn btn-success">Change loan Status
                         </button>
                     </div>

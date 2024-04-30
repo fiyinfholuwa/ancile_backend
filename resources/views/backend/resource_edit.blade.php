@@ -15,7 +15,7 @@
               <h5 class="card-title">Edit Resource</h5>
               <div class="card">
 
-              <form method="post" action="{{route('admin.resource.update', $resource->id)}}" enctype="multipart/form-data" class="row g-3">
+              <form method="post" action="{{route('admin.resource.update', $resource->id)}}" c class="row g-3">
                 @csrf
 
                 <div class="col-md-12">

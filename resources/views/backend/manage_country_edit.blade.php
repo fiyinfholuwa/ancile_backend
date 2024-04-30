@@ -67,6 +67,7 @@
                   <tr>
 
                     <th>Country Name</th>
+                    <th>Country ID</th>
                     <th>Country Flag</th>
                     <th>Action</th>
                   </tr>
@@ -75,6 +76,7 @@
                   @foreach($countries as $country)
                   <tr>
                     <td>{{$country->name}}</td>
+                    <td>{{$country->id}}</td>
                     <td><img height="40px" width="40px" src="{{asset($country->flag)}}"></td>
 
                     <td>

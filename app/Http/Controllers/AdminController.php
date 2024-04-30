@@ -7,6 +7,7 @@ use App\Mail\ConsultationNotification;
 use App\Mail\LoanNotification;
 use App\Mail\CounsellorNotification;
 use App\Mail\UserApplicationCounsellor;
+use App\Models\ApplyCourse;
 use App\Models\AskCategory;
 use App\Models\AskGpt;
 use App\Models\Country;
@@ -36,6 +37,8 @@ use App\Mail\RegisterationEmail;
 use Illuminate\Support\Facades\Session;
 use Auth;
 use Illuminate\Support\Facades\File;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
 
 class AdminController extends Controller
 {
@@ -275,7 +278,8 @@ class AdminController extends Controller
 
     public function application_view()
     {
-        return view('backend.application_view');
+        $users = User::all();
+        return view('backend.application_view', compact('users'));
     }
 
     public function application_all()
@@ -555,7 +559,7 @@ class AdminController extends Controller
         $application->country= $request->address;
         $application->year= $request->year;
         $application->dob = $request->dob;
-        $application->user_id = \Illuminate\Support\Facades\Auth::user()->id;
+        $application->user_id = $request->user_id;
         $application->status = "pending";
         $application->save();
         $notification = array(
@@ -609,9 +613,56 @@ class AdminController extends Controller
 
     public function admin_application_edit($id)
     {
+        $users = User::all();
         $app = NewApplication::findOrFail($id);
-        return view('backend.application_edit', compact('app'));
+        return view('backend.application_edit', compact('app', 'users'));
     }
+
+    public function admin_course_excel(Request $request)
+    {
+        $request->validate([
+            'csv_file' => 'required|mimes:xlsx,xls',
+        ]);
+        if ($request->file('csv_file')->isValid()) {
+            // Get the uploaded file
+            $file = $request->file('csv_file');
+            $spreadsheet = IOFactory::load($file->getRealPath());
+            $worksheet = $spreadsheet->getActiveSheet();
+            $data = $worksheet->toArray();
+            if (!empty($data[0])) {
+                unset($data[0]);
+            }
+            foreach ($data as $row) {
+                $url_slug = strtolower($row[0]);
+                $label_slug = preg_replace('/\s+/', '-', $url_slug);
+                $programCourse = new ProgramCourse();
+                $programCourse->title = $row[0];
+                $programCourse->slug = $label_slug;
+                $programCourse->duration = $row[1];
+                $programCourse->course_id = $row[2];
+                $programCourse->level = $row[3];
+                $programCourse->entry_score = $row[4];
+                $programCourse->location = $row[5];
+                $programCourse->intake = $row[6];
+                $programCourse->fee = $row[7];
+                $programCourse->university = $row[8];
+                $programCourse->save();
+            }
+            $notification = [
+                'message' => 'File Successfully Uploaded',
+                'alert-type' => 'success'
+            ];
+            return redirect()->back()->with($notification);
+        } else {
+            // Redirect with error message
+            $notification = [
+                'message' => 'Failed to upload file.',
+                'alert-type' => 'error'
+            ];
+            return redirect()->back()->with($notification);
+        }
+    }
+
     public function admin_application_review($id)
     {
         $app = NewApplication::findOrFail($id);
@@ -866,8 +917,27 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
+        $baseUrl = request()->getSchemeAndHttpHost();
+        $url_slug = strtolower($request->name);
+
+        $label_slug= preg_replace('/\s+/', '-', $url_slug);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $directory = 'uploads/program_category/image/';
+            if (!file_exists($directory)) {
+                mkdir($directory, 0755, true);
+            }
+            $image->move($directory, $filename);
+            $path = $baseUrl . "/" . $directory . $filename;
+        } else {
+            $path = NULL;
+        }
         $program_cat = new ProgramCat();
         $program_cat->name = $request->name;
+        $program_cat->slug = $label_slug;
+        $program_cat->image = $path;
         $program_cat->save();
         $notification = array(
             'message' => 'Program Category Successfully saved',
@@ -881,8 +951,28 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
+
         $program_cat = ProgramCat::findOrFail($id);
+        $baseUrl = request()->getSchemeAndHttpHost();
+        $url_slug = strtolower($request->name);
+        $label_slug= preg_replace('/\s+/', '-', $url_slug);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $directory = 'uploads/program_category/image/';
+            if (!file_exists($directory)) {
+                mkdir($directory, 0755, true);
+            }
+            $image->move($directory, $filename);
+            $path = $baseUrl . "/" . $directory . $filename;
+        } else {
+            $path = $program_cat->image;
+        }
+
         $program_cat->name = $request->name;
+        $program_cat->slug = $label_slug;
+        $program_cat->image = $path;
         $program_cat->save();
         $notification = array(
             'message' => 'Program Category Successfully Updated',
@@ -1315,7 +1405,7 @@ class AdminController extends Controller
         $askgpt->answer = $request->answer;
         $askgpt->save();
         $notification = array(
-            'message' => 'Askgpt Successfully Added',
+            'message' => 'FAQ Successfully Added',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
@@ -1342,7 +1432,7 @@ class AdminController extends Controller
         $askgpt->answer = $request->answer;
         $askgpt->save();
         $notification = array(
-            'message' => 'Askgpt Successfully Updated',
+            'message' => 'FAQ Successfully Updated',
             'alert-type' => 'success'
         );
         return redirect()->route('admin.askgpt.all')->with($notification);
@@ -1354,7 +1444,7 @@ class AdminController extends Controller
         $askgpt = AskGpt::findOrFail($id);
         $askgpt->delete();
         $notification = array(
-            'message' => 'AskGpt Successfully Deleted',
+            'message' => 'FAQ Successfully Deleted',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
@@ -1482,17 +1572,24 @@ class AdminController extends Controller
 
     public function admin_course_view()
     {
-        $courses = CourseCategory::all();
+        $courses = ProgramCat::all();
         $levels = EducationalLevel::all();
         return view('backend.course_view', compact('courses', 'levels'));
     }
 
     public function admin_course_edit($id)
     {
-        $courses = CourseCategory::all();
+        $courses = ProgramCat::all();
         $course = ProgramCourse::findOrFail($id);
         $levels = EducationalLevel::all();
         return view('backend.course_edit', compact('courses', 'course', 'levels'));
+    }
+    public function admin_course_review($id)
+    {
+        $courses = ProgramCat::all();
+        $course = ProgramCourse::findOrFail($id);
+        $levels = EducationalLevel::all();
+        return view('backend.course_review', compact('courses', 'course', 'levels'));
     }
 
     public function admin_course_save(Request $request)
@@ -1500,21 +1597,24 @@ class AdminController extends Controller
         $request->validate([
             'course_id' => 'required',
             'title' => 'required',
-            'description' => 'required',
             'duration' => 'required',
-            'about' => 'required',
-
+            'location' => 'required',
+            'intake' => 'required',
+            'fee' => 'required',
+            'university' => 'required',
         ]);
         $url_slug = strtolower($request->title);
         $label_slug = preg_replace('/\s+/', '-', $url_slug);
         $course = new ProgramCourse;
         $course->course_id = $request->course_id;
         $course->title = $request->title;
-        $course->description = $request->description;
         $course->duration = $request->duration;
         $course->entry_score = $request->entry_score;
         $course->level = $request->level;
-        $course->entry_score2 = $request->entry_score2;
+        $course->location = $request->location;
+        $course->intake = $request->intake;
+        $course->fee = $request->fee;
+        $course->university = $request->university;
         $course->about = $request->about;
         $course->slug = $label_slug;
         $course->save();
@@ -1536,21 +1636,24 @@ class AdminController extends Controller
         $request->validate([
             'course_id' => 'required',
             'title' => 'required',
-            'description' => 'required',
             'duration' => 'required',
-            'about' => 'required',
+            'location' => 'required',
+            'intake' => 'required',
+            'fee' => 'required',
+            'university' => 'required',
         ]);
         $url_slug = strtolower($request->title);
         $label_slug = preg_replace('/\s+/', '-', $url_slug);
         $course = ProgramCourse::findOrFail($id);
         $course->course_id = $request->course_id;
         $course->title = $request->title;
-        $course->description = $request->description;
         $course->duration = $request->duration;
         $course->level = $request->level;
         $course->entry_score = $request->entry_score;
-        $course->entry_score2 = $request->entry_score2;
-        $course->about = $request->about;
+        $course->location = $request->location;
+        $course->intake = $request->intake;
+        $course->fee = $request->fee;
+        $course->university = $request->university;
         $course->slug = $label_slug;
         $course->save();
         $notification = array(
@@ -1966,6 +2069,17 @@ class AdminController extends Controller
         return view('backend.loan_all', compact('loans', 'statuses'));
     }
 
+    public function loan_view($id){
+        $loan = Loan::findOrFail($id);
+        return view('backend.loan_view', compact('loan'));
+    }
+
+
+    public function consultation_view($id){
+        $consultation = Consultation::findOrFail($id);
+        return view('backend.consultation_view', compact('consultation'));
+    }
+
     public function resource_download(){
         $downloads = ResourceDownloader::all();
         return view('backend.resource_download', compact('downloads'));
@@ -1977,12 +2091,21 @@ class AdminController extends Controller
         return view('backend.english_test', compact('tests'));
     }
 
-    
+
 
 
     public function admin_academy_view(){
         $tests = AcademyTutorial::all();
         return view('backend.academy_test', compact('tests'));
+    }
+    public function admin_apply_course_all(){
+        $applied = ApplyCourse::all();
+        $courses = ProgramCourse::all();
+        return view('backend.apply_course', compact('applied', 'courses'));
+    }
+    public function admin_apply_course_review($id){
+        $ap = ApplyCourse::findOrFail($id);
+        return view('backend.applied_review', compact('ap'));
     }
 
 
@@ -2059,5 +2182,14 @@ class AdminController extends Controller
         return redirect()->back()->with($notification);
     }
 
+
+    public function course_delete_all(){
+        ProgramCourse::truncate();
+        $notification = array(
+            'message' => 'All Course deleted',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 
 }

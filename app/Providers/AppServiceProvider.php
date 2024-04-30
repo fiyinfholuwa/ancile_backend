@@ -8,6 +8,7 @@ use App\Models\Country;
 use App\Models\CourseCategory;
 use App\Models\Destination;
 use App\Models\EducationalLevel;
+use App\Models\Loan;
 use App\Models\NewApplication;
 use App\Models\ProgramCat;
 use App\Models\Ribbon;
@@ -58,18 +59,22 @@ class AppServiceProvider extends ServiceProvider
 
 
                 $consultations_not = Consultation::where('status', '=', NULL)->get();
+                $loan_not = Loan::where('status', '=', 'pending')->get();
 
                 $application_not = NewApplication::where('status', '=', 'pending')->get();
                 $application_notification = NewApplication::where('status', '=', 'pending')->take(3)->get();
 
                 $consultation_notification = Consultation::where('status', '=', NULL)->take(3)->get();
+                $loan_notification = Loan::where('status', '=', 'pending')->take(3)->get();
 
                 $view->with('unread_messages', $unread_messages);
 
                 $view->with('unread_messages_user', $unread_messages_user);
                 $view->with('consultations_not', $consultations_not);
+                $view->with('loan_not', $loan_not);
                 $view->with('application_not', $application_not);
                 $view->with('consultation_notification', $consultation_notification);
+                $view->with('loan_notification', $loan_notification);
                 $view->with('application_notification', $application_notification);
             }
         });

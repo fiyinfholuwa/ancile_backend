@@ -50,6 +50,9 @@
 form {
   width: 100%;
 }
+.personal-detail{
+    margin-left: 5rem !important;
+}
 
 .personal-detail:not(:last-child) {
   margin-bottom: 5rem;
@@ -247,7 +250,7 @@ input::placeholder {
     .application-header-box {
       margin: 8rem 2rem;
     }
-    
+
     .application-header {
       border-bottom: 1px solid hwb(0 3% 97% / 0.27);
       padding-bottom: 3rem;
@@ -262,5 +265,9 @@ input::placeholder {
       /* justify-content: end; */
       gap: 2rem;
       margin-left: 2rem !important;
+    }
+
+    .personal-detail{
+        margin-left: 1rem !important;
     }
 }

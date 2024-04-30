@@ -21,8 +21,11 @@ return new class extends Migration
             $table->text('why')->nullable();
             $table->text('level')->nullable();
             $table->string('entry_score')->nullable();
-            $table->string('entry_score2')->nullable();
             $table->string('duration')->nullable();
+            $table->string('location')->nullable();
+            $table->string('intake')->nullable();
+            $table->string('fee')->nullable();
+            $table->text('university')->nullable();
             $table->timestamps();
         });
     }

@@ -50,6 +50,9 @@
                       @endif
                     </td>
                     <td>
+                        <a href="{{route('consultation.view', $consultation->id)}}">
+                            <i style="color:green;"  class="fa fa-eye text-secondary"></i>
+                        </a>
                     <a type="button" class="" data-bs-toggle="modal" data-bs-target="#consultation_status_{{$consultation->id}}">
                     <i  class="fa fa-check-circle	 text-secondary"></i>
                     </a>

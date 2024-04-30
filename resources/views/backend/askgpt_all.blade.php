@@ -12,7 +12,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Manage AskGpt</h5>
+              <h5 class="card-title">Manage FAQs</h5>
 
 
               <!-- Table with stripped rows -->

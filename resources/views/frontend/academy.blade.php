@@ -33,7 +33,7 @@
     <title>Academy -Course</title>
 
     <style>
-         .overlay {
+        .overlay {
             display: none;
             position: fixed;
             top: 0px; /* Adjust as needed */
@@ -63,22 +63,24 @@
             padding:50px 70px !important;
             border-radius: 20px;
             position: relative;
+            width: 40%;
         }
 
         .Rectangle-1239 {
-  width: 163.5px;
-  height: 33.5px;
-  margin: 6px 181.5px 12.5px 8.5px;
-  padding: 9px 30.5px;
-  border-radius: 16.8px;
-  background-color: #000000;
-  color:#ffffff}
-
-  @media (max-width:425px) {
-            .form-container {
-                width:80%;
-           margin:0px 10%;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            outline: none;
+            border: none;
+            background-color: #000;
+            color: #fff;
+            margin-left: 2rem;
         }
+        @media (max-width:425px) {
+            .form-container {
+                width:100%;
+                margin:0px 10%;
+            }
         }
     </style>
 </head>
@@ -150,87 +152,91 @@
     @endauth
 
 
-<div class="hero-container">
+    <div class="hero-container">
         <div class="hero-bag">
-          <h1>Academic
-            Tutorials</h1>
-          <div class="tutorial-link">
-            <a href="#GRE">GRE</a>
-            <a href="#SAT">SAT</a>
-            <a href="#GMAT">GMAT</a>
-          </div>
+            <h1>Academic
+                Tutorials</h1>
+            <div class="tutorial-link">
+                <a href="#GRE">GRE</a>
+                <a href="#SAT">SAT</a>
+                <a href="#GMAT">GMAT</a>
+            </div>
         </div>
-      </div>
-    
-      </header>
-    <section id="GRE">
-      <div class="tutorial-container">
+    </div>
+
+</header>
+<section id="GRE">
+    <div class="tutorial-container">
         <div class="tutor-imggs"></div>
         <!-- <img src="{{asset('assets/image/gre-img.png')}}" alt=""> -->
         <div class="tutorial-text first">
 
-          <p>The GRE® Test (Graduate Record Examination) is a standardized test that’s commonly required
-            for admission
-            to graduate
-            programs in various fields, including business, engineering, social sciences, and natural sciences. It
-            assesses a
-            candidate’s readiness for graduate-level academic work.</p>
-          <div class="tutorial-footer">
-            <a href=" #"  onclick="showForm('GRE')" class="test-link">Apply for Lessons</a>
-            <img src="{{asset('assets/image/gre-logo.png')}}" alt="">
-          </div>
+            <p>The GRE® Test (Graduate Record Examination) is a standardized test that’s commonly required
+                for admission
+                to graduate
+                programs in various fields, including business, engineering, social sciences, and natural sciences. It
+                assesses a
+                candidate’s readiness for graduate-level academic work.</p>
+            <div class="tutorial-footer">
+                <a href=" #"  onclick="showForm('GRE')" class="test-link">Apply for Lessons</a>
+                <img src="{{asset('assets/image/gre-logo.png')}}" alt="">
+            </div>
 
         </div>
-      </div>
-    </section>
-    <section id="SAT">
-      <div class="tutorial-container">
+    </div>
+</section>
+<section id="SAT">
+    <div class="tutorial-container">
         <div class="tutorial-text second">
-          <p>The SAT (Scholastic Assessment Test) is a standardized test widely used for college admissions in the
-            United States. It
-            assesses a student’s readiness for college and is typically taken by high school juniors and seniors.</p>
-          <div class="tutorial-footer">
-            <a href=" #"  onclick="showForm('SAT')" class="test-link">Apply for Lessons</a>
-            <img src="{{asset('assets/image/sat-logo.png')}}" alt="">
-          </div>
+            <p>The SAT (Scholastic Assessment Test) is a standardized test widely used for college admissions in the
+                United States. It
+                assesses a student’s readiness for college and is typically taken by high school juniors and seniors.</p>
+            <div class="tutorial-footer">
+                <a href=" #"  onclick="showForm('SAT')" class="test-link">Apply for Lessons</a>
+                <img src="{{asset('assets/image/sat-logo.png')}}" alt="">
+            </div>
         </div>
         <!-- <img src="{{asset('assets/image/img11.jpg')}}" alt=""> -->
         <div class="tutor-imggs2"></div>
-      </div>
-    </section>
-    <section id="GMAT">
-      <div  class="tutorial-container last_div">
+    </div>
+</section>
+<section id="GMAT">
+    <div  class="tutorial-container last_div">
         <!-- <img src="{{asset('assets/image/img11.jpg')}}" alt=""> -->
         <div class="tutor-imggs3"></div>
         <div class="tutorial-text thirrd">
-          <p>The GMAT (Graduate Management Admission Test) is a standardized exam used by many business schools as
-            part
-            of the
-            admissions process for MBA (Master of Business Administration) and other graduate management programs.
-          </p>
-          <div class="tutorial-footer">
-            <a href=" #"  onclick="showForm('GMAT')" class="test-link">Apply for Lessons</a>
-            <img src="{{asset('assets/image/gmat-logo.png')}}" alt="">
-          </div>
+            <p>The GMAT (Graduate Management Admission Test) is a standardized exam used by many business schools as
+                part
+                of the
+                admissions process for MBA (Master of Business Administration) and other graduate management programs.
+            </p>
+            <div class="tutorial-footer">
+                <a href=" #"  onclick="showForm('GMAT')" class="test-link">Apply for Lessons</a>
+                <img src="{{asset('assets/image/gmat-logo.png')}}" alt="">
+            </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
 
-    <div id="overlay" class="overlay">
+<div id="overlay" class="overlay">
     <div class="form-container">
-    <a href="#" style="margin-top:50px;"  onclick="hideForm()"><i class="fa fa-times"></i></a>
-        <h2 id="formTitle" style="color:#080808; padding-bottom:20px;">Register for the Tutorials</h2>
+        <a href="#" style="margin-top:50px;"  onclick="hideForm()"><i class="fa fa-times"></i></a>
+        <h2 id="formTitle" style="color:#080808; padding-bottom:20px; text-align: center;">Register for the Tutorials</h2>
         <form id="downloadForm" onsubmit="return submitForm()">
             <input type="hidden" id="typeField" name="type" value="">
             <label for="email">Email:</label>
-            <input type="email" id="email" required>
+            <input type="email" id="email" placeholder="Enter Email" required>
             <br>
+            <br/>
+            <br/>
             <label for="phone">Phone:</label>
-            <input type="tel" id="phone" required>
+            <input type="tel" id="phone" placeholder="Enter Mobile Number" required>
             <br>
+            <br/>
+            <br/>
             <button class="Rectangle-1239" type="submit">Submit</button>
-            
+
         </form>
     </div>
 </div>
@@ -314,7 +320,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -323,7 +329,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC
@@ -449,30 +455,30 @@
             },
             body: JSON.stringify({ email, phone, section }),
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Success: Trigger file download
-            alert(data.message);
-            
-            setTimeout(function () {
-            window.location.reload();
-        }, 5000);
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Success: Trigger file download
+                alert(data.message);
 
-        })
-        .catch(error => {
-            // Handle errors (display appropriate messages)
-            alert('Error submitting the form: ' + error.message);
-        });
+                setTimeout(function () {
+                    window.location.reload();
+                }, 5000);
+
+            })
+            .catch(error => {
+                // Handle errors (display appropriate messages)
+                alert('Error submitting the form: ' + error.message);
+            });
 
         document.getElementById('overlay').style.display = 'none';
         return false;
     }
 
-    
+
 </script>
 </html>

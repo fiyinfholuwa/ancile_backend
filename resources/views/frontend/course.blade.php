@@ -104,10 +104,17 @@
         <h2 class="course-head">Find a Course</h2>
         <form action="{{route('courses.general.search')}}" method="get">
             <div class="find-course">
-                <select name="level" id="course">
-                    <option value="">Select category</option>
-                    @foreach($levels as $level)
-                        <option value="{{$level->id}}">{{$level->level_name}}</option>
+
+                <select name="category" id="course">
+                    <option value="">Category</option>
+                    @foreach($course_category as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
+                <select name="country" id="course">
+                    <option value="">Country</option>
+                    @foreach($countries as $country)
+                        <option value="{{$country->id}}">{{$country->name}}</option>
                     @endforeach
                 </select>
                 <input  name="search" type="text" placeholder="Search Course...">
@@ -118,84 +125,32 @@
     </div>
 </section>
 <section>
-    <div class="course-container">
+    <div style="margin-top: -10px" class="course-container">
         @php
-            $courses = $course_category;
             $courses = json_decode($course_category, true);
-            $accounting = collect($courses)->firstWhere('course_code', 'accounting');
-            $engineering = collect($courses)->firstWhere('course_code', 'engineering');
-            $computer = collect($courses)->firstWhere('course_code', 'computer');
-            $health = collect($courses)->firstWhere('course_code', 'health');
-            $language = collect($courses)->firstWhere('course_code', 'language');
-            $education = collect($courses)->firstWhere('course_code', 'education');
-            $art = collect($courses)->firstWhere('course_code', 'art');
-            $law = collect($courses)->firstWhere('course_code', 'law');
-            $media= collect($courses)->firstWhere('course_code', 'media');
+            $count = 0; // Initialize counter variable
         @endphp
 
-        <div class="course-box">
-            <div class="course">
-                <a href="{{route('courses.category',$accounting['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/accounting.svg')}}" alt="">
-                    {{$accounting['course_name']}}
-                </a>
-            </div>
-            <div class="course">
-                <a href="{{route('courses.category',$engineering['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/engineering.svg')}}" alt="">
-                    {{$engineering['course_name']}}
-                </a>
-            </div>
-            <div class="course">
-                <a href="{{route('courses.category',$computer['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/computer.svg')}}" alt="">
-                    {{$computer['course_name']}}
-                </a>
-            </div>
-        </div>
 
-        <div class="course-box">
-            <div class="course">
-                <a href="{{route('courses.category',$health['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/medical.svg')}}" alt="">
-                    {{$health['course_name']}}
-                </a>
-            </div>
-            <div class="course">
-                <a href="{{route('courses.category',$language['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/language.svg')}}" alt="">
-                    {{$language['course_name']}}
-                </a>
-            </div>
-            <div class="course">
-                <a href="{{route('courses.category',$education['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/education.svg')}}" alt="">
-                    {{$education['course_name']}}
-                </a>
-            </div>
-        </div>
-
-        <div class="course-box">
-            <div class="course">
-                <a href="{{route('courses.category',$law['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/law.svg')}}" alt="">
-                    {{$law['course_name']}}
-                </a>
-            </div>
-            <div class="course">
-                <a href="{{route('courses.category',$art['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/art.svg')}}" alt="">
-                    {{$art['course_name']}}
-                </a>
-            </div>
-            <div class="course">
-                <a href="{{route('courses.category',$media['course_code'])}}">
-                    <img src="{{asset('assets/image/Courses/marketing.svg')}}" alt="">
-                    {{$media['course_name']}}
-                </a>
-            </div>
-        </div>
+        @foreach ($courses as $course)
+            @if ($count % 3 == 0)
+                <div style="padding: 20px" class="course-box">
+                    @endif
+                    <div class="course">
+                        <a href="{{ route('courses.category', $course['slug']) }}">
+                            <img src="{{ asset($course['image'])}}" alt="">
+                            {{ $course['name'] }}
+                        </a>
+                    </div>
+                    @php
+                        $count++; // Increment counter
+                    @endphp
+                    @if ($count % 3 == 0 || $loop->last)
+                </div>
+            @endif
+        @endforeach
     </div>
+
 </section>
 
 @include('frontend.common_footer')
@@ -278,7 +233,7 @@
 
     const iti = window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
     const input2 = document.querySelector("#phone2");
     window.intlTelInput(input2, {
@@ -287,7 +242,7 @@
 
     const iti2 = window.intlTelInput(input2, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        initialCountry: "ng", // "ng" is the ISO country code for Nigeria
+        initialCountry: "in", // "ng" is the ISO country code for Nigeria
     });
 
     // CONSULTATION LOGIC

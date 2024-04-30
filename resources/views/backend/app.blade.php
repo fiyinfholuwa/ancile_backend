@@ -83,6 +83,54 @@
 
               <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                   <i style="font-size: 25px;"  class="bi bi-bell"></i>
+                  <span class="badge bg-danger badge-number">{{count($loan_not)}}</span>
+              </a><!-- End Messages Icon -->
+
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                  <li class="dropdown-header">
+                      You have {{count($loan_not)}} new loan alert
+                      <a href="{{route('admin.loan.all')}}"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                  </li>
+                  <li>
+                      <hr class="dropdown-divider">
+                  </li>
+
+                  @if(count($loan_notification) > 0)
+                      @foreach($loan_notification as $not)
+                          <li class="message-item">
+                              <a href="{{route('loan.view', $not->id)}}">
+{{--                                  <img src="{{asset('assets/img/messages-1.jpg')}}" alt="" class="rounded-circle">--}}
+{{--                                  <i style="font-size: 25px; color: greenyellow;"  class="bi bi-bell"></i>--}}
+                                  <div>
+                                      <h4>{{$not->first_name}}</h4>
+                                      <p>i just applied for a loan, please respond promptly, thank you.</p>
+                                      <p>{{ $not->created_at->diffForHumans() }}</p>
+                                  </div>
+                              </a>
+                          </li>
+                          <li>
+                              <hr class="dropdown-divider">
+                          </li>
+
+                      @endforeach
+                      <li class="dropdown-footer">
+                          <a href="{{route('admin.loan.all')}}">Show all loans</a>
+                      </li>
+                  @else
+                      <li class="dropdown-footer">
+                          <a href="#">No Loan(s) yet</a>
+                      </li>
+                  @endif
+
+              </ul><!-- End Messages Dropdown Items -->
+
+          </li><!-- End Messages Nav -->
+
+
+<li class="nav-item dropdown">
+
+              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                  <i style="font-size: 25px;"  class="bi bi-bell"></i>
                   <span class="badge bg-primary badge-number">{{count($application_not)}}</span>
               </a><!-- End Messages Icon -->
 
@@ -98,8 +146,9 @@
                   @if(count($application_notification) > 0)
                       @foreach($application_notification as $notification)
                           <li class="message-item">
-                              <a href="#">
-                                  <img src="{{asset('assets/img/messages-1.jpg')}}" alt="" class="rounded-circle">
+                              <a href="{{route('admin.application.review', $notification->id)}}">
+{{--                                  <img src="{{asset('assets/img/messages-1.jpg')}}" alt="" class="rounded-circle">--}}
+                                  <i style="font-size: 25px; color: greenyellow;"  class="bi bi-bell"></i>
                                   <div>
                                       <h4>{{$notification->full_name}}</h4>
                                       <p>i just applied for a new application, please respond promptly, thank you.</p>
@@ -113,7 +162,7 @@
 
                       @endforeach
                       <li class="dropdown-footer">
-                          <a href="{{route('application.all')}}">Show all messages</a>
+                          <a href="{{route('application.all')}}">Show all applications</a>
                       </li>
                   @else
                       <li class="dropdown-footer">
@@ -128,7 +177,8 @@
         <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i  style="font-size: 25px;" class="bi bi-chat-left-text"></i>
+{{--            <i  style="font-size: 25px;" class="bi bi-chat-left-text"></i>--}}
+              <i style="font-size: 25px;"  class="bi bi-bell"></i>
             <span class="badge bg-success badge-number">{{count($consultations_not)}}</span>
           </a><!-- End Messages Icon -->
 
@@ -144,8 +194,8 @@
             @if(count($consultation_notification) > 0)
             @foreach($consultation_notification as $consultation)
             <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+              <a href="{{route('consultation.view', $consultation->id)}}">
+{{--                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">--}}
                 <div>
                   <h4>{{$consultation->first_name}} {{$consultation->last_name}}</h4>
                   <p>i want to get consultation, please respond promptly, thank you.</p>
@@ -159,7 +209,7 @@
 
             @endforeach
             <li class="dropdown-footer">
-              <a href="{{route('consultation.all')}}">Show all messages</a>
+              <a href="{{route('consultation.all')}}">Show all consultations</a>
             </li>
             @else
             <li class="dropdown-footer">
@@ -320,14 +370,14 @@
     <li class="nav-item ">
         <a class="nav-link {{ request()->routeIs('admin.askgpt.view') || request()->routeIs('admin.askgpt.all') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav4" data-bs-toggle="collapse" href="#">
             @if(in_array('add_user', $permissions) || in_array('manage_user', $permissions) || Auth::user()->user_type== 2 )
-                <i class="fas fa-question"></i><span >AskGPT</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="fas fa-question"></i><span >FAQ</span><i class="bi bi-chevron-down ms-auto"></i>
             @endif
         </a>
         <ul id="charts-nav4" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             @if(in_array('add_user', $permissions) || Auth::user()->user_type== 2)
                 <li>
                     <a href="{{route('admin.askgpt.view')}}">
-                        <i class="bi bi-circle"></i><span>Add AskGPT</span>
+                        <i class="bi bi-circle"></i><span>Add FAQ</span>
                     </a>
                 </li>
             @endif
@@ -335,7 +385,7 @@
             @if(in_array('manage_user', $permissions) || Auth::user()->user_type== 2)
                 <li>
                     <a href="{{route('admin.askgpt.all')}}">
-                        <i class="bi bi-circle"></i><span>All AskGPTs</span>
+                        <i class="bi bi-circle"></i><span>All FAQs</span>
                     </a>
                 </li>
             @endif
@@ -508,6 +558,15 @@
   </li><!-- End Profile Page Nav -->
 @endif
 
+@if(in_array('manage_consultation', $permissions) || Auth::user()->user_type== 2)
+  <li class="nav-item">
+    <a class="nav-link {{ request()->routeIs('admin.apply.course.all') ? 'text-primary' : '' }} collapsed" href="{{route('admin.apply.course.all')}}">
+      <i class="fas fa-user-cog	"></i>
+      <span>Applied Courses</span>
+    </a>
+  </li><!-- End Profile Page Nav -->
+@endif
+
 
 @if(in_array('manage_consultation', $permissions) || Auth::user()->user_type== 2)
   <li class="nav-item">
@@ -564,7 +623,7 @@
       </li>
       @endif
 
-      
+
     @if(in_array('manage_status', $permissions) || Auth::user()->user_type== 2)
       <li>
         <a href="{{route('ribbon.view')}}">
