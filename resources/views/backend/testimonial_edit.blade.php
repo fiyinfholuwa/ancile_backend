@@ -2,6 +2,8 @@
 
 @extends('backend.app')
 
+@section('title', 'Edit Testimonial')
+@section('page', 'Edit Testimonial')
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +14,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit Testimonial</h5>
-              <div class="card">
+{{--              <h5 class="card-title">Edit Testimonial</h5>--}}
+              <div class="">
 
               <form method="post" action="{{route('admin.testimonial.update', $testimonial->id)}}" enctype="multipart/form-data" class="row g-3">
                 @csrf

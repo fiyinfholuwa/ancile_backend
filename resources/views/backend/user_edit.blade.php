@@ -2,8 +2,10 @@
 
 @extends('backend.app')
 
+@section('title', 'Edit User')
+@section('page', 'Edit User')
 @section('content')
-  
+
   <main id="main" class="main">
 
   <section class="section">
@@ -12,9 +14,9 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit User</h5>
-              <div class="card">
-        
+{{--              <h5 class="card-title">Edit User</h5>--}}
+              <div class="">
+
               <form method="post" action="{{route('admin.user.update', $user->id)}}" class="row g-3">
                 @csrf
                 <div class="col-md-6">
@@ -46,7 +48,7 @@
                 </div>
                 <div class="col-md-6">
                   <label for="inputPassword5" class="form-label">Phone Number</label>
-                  <input type="number" name="phone" value="{{$user->phone}}" class="form-control" id="inputPassword5" placeholder="Phone Number"> 
+                  <input type="number" name="phone" value="{{$user->phone}}" class="form-control" id="inputPassword5" placeholder="Phone Number">
                   <p style="font-weight:bold; color:red; font-size:12px;">
                   @error('phone')
                     {{$message}}
@@ -55,7 +57,7 @@
                 </div>
                 <div class="col-md-6">
                   <label for="inputPassword5" class="form-label">Alt Phone Number</label>
-                  <input type="number" name="alt_phone"  value="{{$user->alt_phone}}" class="form-control" id="inputPassword5" placeholder="Alt Phone Number"> 
+                  <input type="number" name="alt_phone"  value="{{$user->alt_phone}}" class="form-control" id="inputPassword5" placeholder="Alt Phone Number">
                   <p style="font-weight:bold; color:red; font-size:12px;">
                   @error('alt_phone')
                     {{$message}}
@@ -72,7 +74,7 @@
                   @enderror
                   </p>
                 </div>
-                
+
                 <div class="col-md-12">
                   <label for="inputCity" class="form-label">Country</label>
                   <input type="text" name="country" value="{{$user->country}}" class="form-control" id="inputCity" placeholder="Country">
@@ -91,13 +93,13 @@
                   @enderror
                   </p>
                 </div>
-                
+
                 <div class="">
                   <button type="submit" class="btn btn-primary">Update User</button>
                 </div>
               </form><!-- End Multi Columns Form -->
 
-             
+
             </div>
           </div>
 
@@ -113,4 +115,3 @@
 
   </main><!-- End #main -->
 @endsection
-  

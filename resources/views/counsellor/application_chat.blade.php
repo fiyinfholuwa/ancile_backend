@@ -2,6 +2,10 @@
 
 @extends('counsellor.app')
 
+@section('page', 'Application Chat')
+@section('title')
+    Chat with Application ID <span class="text-danger">{{$app->app_uid}}</span>
+@endsection
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +16,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Chat with Application ID <span class="text-danger">{{$app->app_uid}}</span></h5>
-              <div class="card">
+{{--              <h5 class="card-title"></h5>--}}
+              <div class="">
 
               <form class="row g-3" method="post" action="{{route('counsellor.application.chat.save')}}" enctype="multipart/form-data">
                 @csrf

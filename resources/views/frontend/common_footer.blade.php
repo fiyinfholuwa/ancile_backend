@@ -24,7 +24,7 @@
             }
         </style>
         <div class="row">
-            <div class="col-lg-4 col-md-6 footer-quest">
+            <div class="col-lg-3 col-md-6 footer-quest">
                 {{--            <img src="{{asset('assets/image/footer-signal.svg')}}" />--}}
                 <h3>Headquarter</h3>
                 <p style="color: white; font-size: 14px; margin-top: 30px;">2006 S Bagdad Rd,
@@ -36,7 +36,74 @@
                 <a style="color: white; font-size: 14px" href="mailto:info@ancileacademy.com">info@ancileacademy.com</a>
             </div>
 
-            <div class="col-lg-4 col-md-6 footer-quest">
+            <div class="col-lg-3 col-md-6 footer-quest">
+                {{--            <img src="{{asset('assets/image/footer-signal.svg')}}" />--}}
+                <h3>Denton-Corporate
+                </h3>
+                <p style="color: white; font-size: 14px; margin-top: 30px;">300 N Carroll Blvd, Suite 103
+                    <br>Denton, TX 76201
+
+
+                </p>
+                <h6 style="color: white; font-size: 14px">919.607.2143
+
+                </h6>
+                <h6 style="color: white; font-size: 14px">913.804.7687
+
+                </h6>
+                <a style="color: white; font-size: 14px" href="mailto:info@ancileacademy.com">info@ancileacademy.com</a>
+            </div>
+
+        <div class="col-lg-3 col-md-6 footer-quest">
+                {{--            <img src="{{asset('assets/image/footer-signal.svg')}}" />--}}
+                <h3>Milpitas-Branch
+                </h3>
+                <p style="color: white; font-size: 14px; margin-top: 30px;">329 Odyssey Lane, Milpitas,
+                    <br>CA 95035
+
+{{--                    <br> Hyderabad 500072--}}
+
+                </p>
+                <h6 style="color: white; font-size: 14px">669.437.1139
+
+
+                </h6>
+                <a style="color: white; font-size: 14px" href="mailto:info@ancileacademy.com">info@ancileacademy.com</a>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-quest">
+                {{--            <img src="{{asset('assets/image/footer-signal.svg')}}" />--}}
+                <h3>South Carolina-Branch
+                </h3>
+                <p style="color: white; font-size: 14px; margin-top: 30px;">148 Ravensara Ave,
+                    <br>Fort Mill, SC 29715
+{{--                    <br>Hyderabad, Telangana 500081--}}
+                </p>
+                <h6 style="color: white; font-size: 14px">424.242.4567
+                </h6>
+                <a style="color: white; font-size: 14px" href="mailto:info@ancileacademy.com">info@ancileacademy.com</a>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6 footer-quest">
+                {{--            <img src="{{asset('assets/image/footer-signal.svg')}}" />--}}
+                <h3>Vijayawada, India
+                </h3>
+                <p style="color: white; font-size: 14px; margin-top: 30px;">D No: 5-141, Koudinya Nagar,
+                    <br> Penamaluru (MD), (PO), Krishna District,
+                <br/>
+                    Andhra Pradesh 521139
+
+                </p>
+                <h6 style="color:#ffffff; font-size: 14px">+91 8885555474
+                </h6>
+                <a style="color: white; font-size: 14px" href="mailto:info@ancileacademy.com">info@ancileacademy.com</a>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-quest">
                 {{--            <img src="{{asset('assets/image/footer-signal.svg')}}" />--}}
                 <h3>Hyderabad, India
                 </h3>
@@ -51,7 +118,21 @@
                 <a style="color: white; font-size: 14px" href="mailto:info@ancileacademy.com">info@ancileacademy.com</a>
             </div>
 
-            <div class="col-lg-4 col-md-6 footer-quest">
+            <div class="col-lg-3 col-md-6 footer-quest">
+                {{--            <img src="{{asset('assets/image/footer-signal.svg')}}" />--}}
+                <h3>Canada, Calgary (Regus)
+
+                </h3>
+                <p style="color: white; font-size: 14px; margin-top: 30px;">8 Floor Bankers Hall West
+                    <br>888, 5th Street SW, Suite 1000<br> Calgary, AB T2P 5C5
+                </p>
+                <h6 style="color: white; font-size: 14px">(+91) 9177330029
+
+                </h6>
+                <a style="color: white; font-size: 14px" href="mailto:info@ancileacademy.com">info@ancileacademy.com</a>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-quest">
                 {{--            <img src="{{asset('assets/image/footer-signal.svg')}}" />--}}
                 <h3>Hyderabad, India
                 </h3>

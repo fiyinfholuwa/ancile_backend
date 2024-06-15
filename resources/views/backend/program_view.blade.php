@@ -2,18 +2,20 @@
 
 @extends('backend.app')
 
+@section('title','Manage Program')
+@section('page','Manage Program')
 @section('content')
 
   <main id="main" class="main">
 
   <section class="section">
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-5">
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Add Program</h5>
-              <div class="card">
+              <h5 class="card-title"></h5>
+              <div class="">
 
               <form action="{{route('program.add')}}" enctype="multipart/form-data" method="post" class="row g-3">
                 @csrf
@@ -51,12 +53,12 @@
           </div>
 
 
-        <div class="col-lg-6">
+        <div class="col-lg-7">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Manage Programs</h5>
+{{--              <h5 class="card-title">Manage Programs</h5>--}}
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table id="my-table" class="table datatable">
                 <thead>
                   <tr>
                     <th>
@@ -91,7 +93,7 @@
                 @endforeach
                 </tbody>
 
-              </table>
+              </tableid>
               <!-- End Table with stripped rows -->
 
             </div>

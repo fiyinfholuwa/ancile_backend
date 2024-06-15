@@ -2,6 +2,8 @@
 
 @extends('backend.app')
 
+@section('title', 'Edit Resource')
+@section('page', 'Edit Resource')
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +14,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit Resource</h5>
-              <div class="card">
+{{--              <h5 class="card-title">Edit Resource</h5>--}}
+              <div class="">
 
               <form method="post" action="{{route('admin.resource.update', $resource->id)}}" c class="row g-3">
                 @csrf
@@ -55,7 +57,7 @@
                           @enderror
                       </p>
                       <div style="margin: 20px 0px;">
-                          <a class="badge bg-primary text-white" href="{{asset($resource->pdf)}}">View PDF</a>
+                          <a class="btn btn-warning text-white" href="{{asset($resource->pdf)}}">View PDF</a>
                       </div>
                   </div>
 

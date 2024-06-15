@@ -2,8 +2,11 @@
 
 @extends('backend.app')
 
+@section('title', 'Edit Admin Manager')
+
+@section('page', 'Edit Admin Manager')
 @section('content')
-  
+
   <main id="main" class="main">
 
   <section class="section">
@@ -12,9 +15,9 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit Admin Manager</h5>
-              <div class="card">
-        
+{{--              <h5 class="card-title"></h5>--}}
+              <div class="">
+
               <form method="post" action="{{route('admin.admin_manager.update', $user->id)}}" class="row g-3">
                 @csrf
                 <div class="col-md-12">
@@ -46,7 +49,7 @@
                 </div>
                 <div class="col-md-12">
                   <label for="inputPassword5" class="form-label">Phone Number</label>
-                  <input type="number" name="phone" value="{{$user->phone}}" class="form-control" id="inputPassword5" placeholder="Phone Number"> 
+                  <input type="number" name="phone" value="{{$user->phone}}" class="form-control" id="inputPassword5" placeholder="Phone Number">
                   <p style="font-weight:bold; color:red; font-size:12px;">
                   @error('phone')
                     {{$message}}
@@ -70,13 +73,13 @@
                   @enderror
                   </p>
                 </div>
-                
+
                 <div class="">
                   <button type="submit" class="btn btn-primary">Update Admin Manager</button>
                 </div>
               </form><!-- End Multi Columns Form -->
 
-             
+
             </div>
           </div>
 
@@ -89,14 +92,14 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Manage Admin Managers</h5>
-            
+{{--              <h5 class="card-title">Manage Admin Managers</h5>--}}
+
 
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table id="my-table" class="table datatable">
                 <thead>
                   <tr>
-                    
+
                     <th>Full Name</th>
                     <th>Email</th>
                     <th>Role</th>
@@ -109,12 +112,12 @@
                     <td>{{$user->first_name}} {{$user->last_name}}</td>
                     <td>{{$user->email}}</td>
                     <td>
-                     
+
                       <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>{{optional($user->role_name)->name}}</span>
-                      
+
                     </td>
                     <td>
-                    
+
                     <a href="{{route('counsellor.edit', $user->id)}}">
                     <i  class="fa fa-edit text-primary"></i>
                     </a>
@@ -142,4 +145,3 @@
 
   </main><!-- End #main -->
 @endsection
-  

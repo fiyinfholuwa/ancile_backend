@@ -32,12 +32,17 @@
 
     <title>Academy -Course</title>
 
+
     <style>
         /* Your existing CSS styles */
 
         .resource-box {
             display: flex;
             flex-wrap: wrap;
+        }
+
+        .form-container input, .form-container  #phone{
+            width: 100% !important;
         }
 
         .resource {
@@ -268,7 +273,8 @@
             <br/>
             <br/>
             <label for="phone">Phone:</label>
-            <input type="tel" id="phone" placeholder="Enter Mobile Number" required>
+            <input type="tel" id="phone" placeholder="Enter Mobile Number" required style="width: 100%;">
+
             <br>
             <br/>
             <br/>

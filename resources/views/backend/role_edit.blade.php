@@ -1,7 +1,8 @@
 
 
 @extends('backend.app')
-
+@section('title', 'Edit Role')
+@section('page', 'Edit Role')
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +13,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit Role</h5>
-              <div class="card">
+{{--              <h5 class="card-title">Edit Role</h5>--}}
+              <div class="">
 
               <form action="{{route('role.update', $role->id)}}" method="post" class="row g-3">
                 @csrf
@@ -44,9 +45,9 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Manage Role</h5>
+{{--              <h5 class="card-title">Manage Role</h5>--}}
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table id="my-table" class="table datatable">
                 <thead>
                   <tr>
                     <th>

@@ -1,737 +1,692 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- [Head] start -->
 
+
+<!-- Mirrored from ableproadmin.com/dashboard/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Mar 2024 18:19:58 GMT -->
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Ancileacademy - Admin Dashboard</title>
+    <!-- [Meta] -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+          content="Able Pro is trending dashboard template made using Bootstrap 5 design framework. Able Pro is available in Bootstrap, React, CodeIgniter, Angular,  and .net Technologies.">
+    <meta name="keywords"
+          content="Bootstrap admin template, Dashboard UI Kit, Dashboard Template, Backend Panel, react dashboard, angular dashboard">
+    <meta name="author" content="Phoenixcoded">
 
-  <title>Dashboard</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <!-- [Favicon] icon -->
+    <link rel="icon" href="{{asset('backend/logo.svg')}}" type="image/x-icon"> <!-- [Font] Family -->
+    <link rel="stylesheet" href="{{asset('backend/assets/fonts/inter/inter.css')}}" id="main-font-link"/>
+    <!-- [Tabler Icons] https://tablericons.com -->
+    <link rel="stylesheet" href="{{asset('backend/assets/fonts/tabler-icons.min.css')}}">
+    <!-- [Feather Icons] https://feathericons.com -->
+    <link rel="stylesheet" href="{{asset('backend/assets/fonts/feather.css')}}">
+    <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+    <link rel="stylesheet" href="{{asset('backend/assets/fonts/fontawesome.css')}}">
+    <!-- [Material Icons] https://fonts.google.com/icons -->
+    <link rel="stylesheet" href="{{asset('backend/assets/fonts/material.css')}}">
+    <!-- [Template CSS Files] -->
+    <link rel="stylesheet" href="{{asset('backend/assets/css/style.css')}}" id="main-style-link">
+    <link rel="stylesheet" href="{{asset('backend/assets/css/style-preset.css')}}">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-14K1GBX9FG"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
-  <!-- Favicons -->
-  <link href="{{asset('backend/assets/img/logo.svg')}}" rel="icon">
-  <link href="{{asset('backend/assets/img/logo.svg')}}" rel="apple-touch-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLR4zYJ5iENBO06fYlB8kEzZ55niPy5XKpQ+cl4zp2"
+            crossorigin="anonymous"></script>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{{asset('backend/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{asset('backend/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{asset('backend/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-  <link href="{{asset('backend/assets/vendor/quill/quill.snow.css')}}" rel="stylesheet">
-  <link href="{{asset('backend/assets/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
-  <link href="{{asset('backend/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
-  <link href="{{asset('backend/assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="{{asset('backend/assets/css/style.css')}}" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" >
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Nov 17 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-14K1GBX9FG');
+    </script>
+    <!-- WiserNotify -->
+    <script>
+        !(function () {
+            if (window.t4hto4) console.log('WiserNotify pixel installed multiple time in this page');
+            else {
+                window.t4hto4 = !0;
+                var t = document,
+                    e = window,
+                    n = function () {
+                        var e = t.createElement('script');
+                        (e.type = 'text/javascript'),
+                            (e.async = !0),
+                            (e.src = '../../pt.wisernotify.com/pixel6d4c.js?ti=1jclj6jkfc4hhry'),
+                            document.body.appendChild(e);
+                    };
+                'complete' === t.readyState ? n() : window.attachEvent ? e.attachEvent('onload', n) : e.addEventListener('load', n, !1);
+            }
+        })();
+    </script>
+    <!-- Microsoft clarity -->
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] =
+                c[a] ||
+                function () {
+                    (c[a].q = c[a].q || []).push(arguments);
+                };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = 'https://www.clarity.ms/tag/' + i;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        })(window, document, 'clarity', 'script', 'gkn6wuhrtb');
+    </script>
+
 </head>
-<style>
-  *{
-    label{
-      font-size:14px;
-      font-weight:bold;
-      color:#1a77e5;
-    }
-      body{
-          font-size: 14px;
-      }
-      .datatable-wrapper.no-footer .datatable-container{
-          border-bottom: none;
-      }
-
-      .badge{
-          font-size: 14px;
-          color: white;
-      }
-  }
-</style>
-<body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
-
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="{{route('admin.dashboard')}}" class="logo d-flex align-items-center">
-        <img style="height:100px; width:150px" src="{{asset('backend/assets/img/logo.svg')}}" alt="">
-        <!-- <span class="d-none d-lg-block">NiceAdmin</span> -->
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
-
-
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-
-          <li class="nav-item dropdown">
-
-              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                  <i style="font-size: 25px;"  class="bi bi-bell"></i>
-                  <span class="badge bg-danger badge-number">{{count($loan_not)}}</span>
-              </a><!-- End Messages Icon -->
-
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-                  <li class="dropdown-header">
-                      You have {{count($loan_not)}} new loan alert
-                      <a href="{{route('admin.loan.all')}}"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-                  </li>
-                  <li>
-                      <hr class="dropdown-divider">
-                  </li>
-
-                  @if(count($loan_notification) > 0)
-                      @foreach($loan_notification as $not)
-                          <li class="message-item">
-                              <a href="{{route('loan.view', $not->id)}}">
-{{--                                  <img src="{{asset('assets/img/messages-1.jpg')}}" alt="" class="rounded-circle">--}}
-{{--                                  <i style="font-size: 25px; color: greenyellow;"  class="bi bi-bell"></i>--}}
-                                  <div>
-                                      <h4>{{$not->first_name}}</h4>
-                                      <p>i just applied for a loan, please respond promptly, thank you.</p>
-                                      <p>{{ $not->created_at->diffForHumans() }}</p>
-                                  </div>
-                              </a>
-                          </li>
-                          <li>
-                              <hr class="dropdown-divider">
-                          </li>
-
-                      @endforeach
-                      <li class="dropdown-footer">
-                          <a href="{{route('admin.loan.all')}}">Show all loans</a>
-                      </li>
-                  @else
-                      <li class="dropdown-footer">
-                          <a href="#">No Loan(s) yet</a>
-                      </li>
-                  @endif
-
-              </ul><!-- End Messages Dropdown Items -->
-
-          </li><!-- End Messages Nav -->
-
-
-<li class="nav-item dropdown">
-
-              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                  <i style="font-size: 25px;"  class="bi bi-bell"></i>
-                  <span class="badge bg-primary badge-number">{{count($application_not)}}</span>
-              </a><!-- End Messages Icon -->
-
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-                  <li class="dropdown-header">
-                      You have {{count($application_not)}} new Application alert
-                      <a href="{{route('application.all')}}"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-                  </li>
-                  <li>
-                      <hr class="dropdown-divider">
-                  </li>
-
-                  @if(count($application_notification) > 0)
-                      @foreach($application_notification as $notification)
-                          <li class="message-item">
-                              <a href="{{route('admin.application.review', $notification->id)}}">
-{{--                                  <img src="{{asset('assets/img/messages-1.jpg')}}" alt="" class="rounded-circle">--}}
-                                  <i style="font-size: 25px; color: greenyellow;"  class="bi bi-bell"></i>
-                                  <div>
-                                      <h4>{{$notification->full_name}}</h4>
-                                      <p>i just applied for a new application, please respond promptly, thank you.</p>
-                                      <p>{{ $notification->created_at->diffForHumans() }}</p>
-                                  </div>
-                              </a>
-                          </li>
-                          <li>
-                              <hr class="dropdown-divider">
-                          </li>
-
-                      @endforeach
-                      <li class="dropdown-footer">
-                          <a href="{{route('application.all')}}">Show all applications</a>
-                      </li>
-                  @else
-                      <li class="dropdown-footer">
-                          <a href="#">No Application(s) yet</a>
-                      </li>
-                  @endif
-
-              </ul><!-- End Messages Dropdown Items -->
-
-          </li><!-- End Messages Nav -->
-
-        <li class="nav-item dropdown">
-
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-{{--            <i  style="font-size: 25px;" class="bi bi-chat-left-text"></i>--}}
-              <i style="font-size: 25px;"  class="bi bi-bell"></i>
-            <span class="badge bg-success badge-number">{{count($consultations_not)}}</span>
-          </a><!-- End Messages Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-            <li class="dropdown-header">
-              You have {{count($consultations_not)}} new consultation alert
-              <a href="{{route('consultation.all')}}"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            @if(count($consultation_notification) > 0)
-            @foreach($consultation_notification as $consultation)
-            <li class="message-item">
-              <a href="{{route('consultation.view', $consultation->id)}}">
-{{--                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">--}}
-                <div>
-                  <h4>{{$consultation->first_name}} {{$consultation->last_name}}</h4>
-                  <p>i want to get consultation, please respond promptly, thank you.</p>
-                  <p>{{ $consultation->created_at->diffForHumans() }}</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            @endforeach
-            <li class="dropdown-footer">
-              <a href="{{route('consultation.all')}}">Show all consultations</a>
-            </li>
-            @else
-            <li class="dropdown-footer">
-              <a href="#">No Messages yet</a>
-            </li>
-            @endif
-
-          </ul><!-- End Messages Dropdown Items -->
-
-        </li><!-- End Messages Nav -->
-
-        <li class="nav-item dropdown pe-3">
-
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Super Admin</span>
-          </a><!-- End Profile Iamge Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Super Admin</h6>
-              <!-- <span>Web Designer</span> -->
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{route('admin.profile.view')}}">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
-
-      </ul>
-    </nav><!-- End Icons Navigation -->
-
-  </header><!-- End Header -->
-
-  <aside id="sidebar" class="sidebar">
-
-<ul class="sidebar-nav" id="sidebar-nav">
-
-    <li class="nav-item">
-        <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
-            <i class="fa fa-tachometer"></i>
-            <span>Dashboard</span>
-        </a>
-    </li><!-- End Dashboard Nav -->
-
-
-    <li class="nav-item">
-        <a class="nav-link {{ request()->routeIs('application.view') || request()->routeIs('application.all') ? 'active' : '' }} collapsed"
-           data-bs-target="#charts-nav11"
-           data-bs-toggle="collapse"
-           href="#">
-            @if(in_array('add_application', $permissions) || in_array('manage_application', $permissions)  || Auth::user()->user_type== 2)
-                <i class="fab fa-windows"></i><span class="{{ request()->routeIs('application.view') || request()->routeIs('application.all') ? 'text-primary' : '' }}">Applications</span><i class="bi bi-chevron-down ms-auto"></i>
-            @endif
-        </a>
-        <ul id="charts-nav11" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-
-            <li class="{{ request()->routeIs('application.view') ? 'active' : '' }}">
-                <a href="{{ route('application.view') }}">
-                    <i class="bi bi-circle"></i><span>Add Application</span>
-                </a>
-            </li>
-
-            @if(in_array('manage_application', $permissions) || Auth::user()->user_type== 2)
-                <li class="{{ request()->routeIs('application.all') ? 'active' : '' }}">
-                    <a href="{{ route('application.all') }}">
-                        <i class="bi bi-circle"></i><span>All Applications</span>
-                    </a>
-                </li>
-            @endif
-        </ul>
-    </li><!-- End Charts Nav -->
-
-
-@if(in_array('manage_consultation', $permissions) || Auth::user()->user_type== 2)
-  <li class="nav-item">
-    <a class="nav-link {{ request()->routeIs('consultation.all') ? 'text-primary' : '' }} collapsed" href="{{route('consultation.all')}}">
-      <i class="fas fa-user-cog	"></i>
-      <span>Consultations</span>
-    </a>
-  </li><!-- End Profile Page Nav -->
-@endif
-
-  <li class="nav-item ">
-    <a class="nav-link {{ request()->routeIs('user.add.view') || request()->routeIs('user.view') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav1" data-bs-toggle="collapse" href="#">
-    @if(in_array('add_user', $permissions) || in_array('manage_user', $permissions) || Auth::user()->user_type== 2 )
-      <i class="fas fa-users"></i><span >Users</span><i class="bi bi-chevron-down ms-auto"></i>
-      @endif
-    </a>
-    <ul id="charts-nav1" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-    @if(in_array('add_user', $permissions) || Auth::user()->user_type== 2)
-      <li>
-        <a href="{{route('user.add.view')}}">
-          <i class="bi bi-circle"></i><span>Add User</span>
-        </a>
-      </li>
-      @endif
-
-      @if(in_array('manage_user', $permissions) || Auth::user()->user_type== 2)
-      <li>
-        <a href="{{route('user.view')}}">
-          <i class="bi bi-circle"></i><span>All Users</span>
-        </a>
-      </li>
-      @endif
-    </ul>
-  </li><!-- End Charts Nav -->
-
-
-    <li class="nav-item ">
-        <a class="nav-link {{ request()->routeIs('admin.testimonial.view') || request()->routeIs('admin.testimonial.all') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav3" data-bs-toggle="collapse" href="#">
-            @if(in_array('add_user', $permissions) || in_array('manage_user', $permissions) || Auth::user()->user_type== 2 )
-                <i class="fas fa-quote-left"></i><span >Testimonials</span><i class="bi bi-chevron-down ms-auto"></i>
-            @endif
-        </a>
-        <ul id="charts-nav3" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            @if(in_array('add_user', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.testimonial.view')}}">
-                        <i class="bi bi-circle"></i><span>Add Testimonial</span>
-                    </a>
-                </li>
-            @endif
-
-            @if(in_array('manage_user', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.testimonial.all')}}">
-                        <i class="bi bi-circle"></i><span>All Testimonials</span>
-                    </a>
-                </li>
-            @endif
-        </ul>
-    </li><!-- End Charts Nav -->
-
-
-    <li class="nav-item ">
-        <a class="nav-link {{ request()->routeIs('admin.askgpt.view') || request()->routeIs('admin.askgpt.all') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav4" data-bs-toggle="collapse" href="#">
-            @if(in_array('add_user', $permissions) || in_array('manage_user', $permissions) || Auth::user()->user_type== 2 )
-                <i class="fas fa-question"></i><span >FAQ</span><i class="bi bi-chevron-down ms-auto"></i>
-            @endif
-        </a>
-        <ul id="charts-nav4" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            @if(in_array('add_user', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.askgpt.view')}}">
-                        <i class="bi bi-circle"></i><span>Add FAQ</span>
-                    </a>
-                </li>
-            @endif
-
-            @if(in_array('manage_user', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.askgpt.all')}}">
-                        <i class="bi bi-circle"></i><span>All FAQs</span>
-                    </a>
-                </li>
-            @endif
-        </ul>
-    </li><!-- End Charts Nav -->
-
-    <li class="nav-item ">
-        <a class="nav-link {{ request()->routeIs('admin.resource.view') || request()->routeIs('admin.resource.all') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav5" data-bs-toggle="collapse" href="#">
-            @if(in_array('add_user', $permissions) || in_array('manage_user', $permissions) || Auth::user()->user_type== 2 )
-                <i class="fas fa-book"></i><span >Resources</span><i class="bi bi-chevron-down ms-auto"></i>
-            @endif
-        </a>
-        <ul id="charts-nav5" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            @if(in_array('add_user', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.resource.view')}}">
-                        <i class="bi bi-circle"></i><span>Add Resource</span>
-                    </a>
-                </li>
-            @endif
-
-            @if(in_array('manage_user', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.resource.all')}}">
-                        <i class="bi bi-circle"></i><span>All Resources</span>
-                    </a>
-                </li>
-            @endif
-        </ul>
-    </li><!-- End Charts Nav -->
-
-    <li class="nav-item ">
-        <a class="nav-link {{ request()->routeIs('admin.destination.view') || request()->routeIs('admin.destination.all') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav15" data-bs-toggle="collapse" href="#">
-            @if(in_array('add_user', $permissions) || in_array('manage_user', $permissions) || Auth::user()->user_type== 2 )
-                <i class="fas fa-map-marker"></i><span >Destinations</span><i class="bi bi-chevron-down ms-auto"></i>
-            @endif
-        </a>
-        <ul id="charts-nav15" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            @if(in_array('add_user', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.destination.view')}}">
-                        <i class="bi bi-circle"></i><span>Add destination</span>
-                    </a>
-                </li>
-            @endif
-
-            @if(in_array('manage_user', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.destination.all')}}">
-                        <i class="bi bi-circle"></i><span>All Destinations</span>
-                    </a>
-                </li>
-            @endif
-        </ul>
-    </li><!-- End Charts Nav -->
-
-
-    <li class="nav-item ">
-        <a class="nav-link {{ request()->routeIs('admin.course.view') || request()->routeIs('admin.course.all') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav6" data-bs-toggle="collapse" href="#">
-            @if(in_array('add_course', $permissions) || in_array('manage_course', $permissions) || Auth::user()->user_type== 2 )
-                <i class="fas fa-graduation-cap"></i><span >Courses</span><i class="bi bi-chevron-down ms-auto"></i>
-            @endif
-        </a>
-        <ul id="charts-nav6" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            @if(in_array('add_course', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.course.view')}}">
-                        <i class="bi bi-circle"></i><span>Add Course</span>
-                    </a>
-                </li>
-            @endif
-
-            @if(in_array('manage_course', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.course.all')}}">
-                        <i class="bi bi-circle"></i><span>All Courses</span>
-                    </a>
-                </li>
-            @endif
-        </ul>
-    </li><!-- End Charts Nav -->
-
-
-<li class="nav-item ">
-        <a class="nav-link {{ request()->routeIs('admin.blog.view') || request()->routeIs('admin.blog.all') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav61" data-bs-toggle="collapse" href="#">
-            @if(in_array('add_post', $permissions) || in_array('manage_post', $permissions) || Auth::user()->user_type== 2 )
-                <i class="fas fa-blog"></i><span >Blog & News</span><i class="bi bi-chevron-down ms-auto"></i>
-            @endif
-        </a>
-        <ul id="charts-nav61" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            @if(in_array('add_post', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.blog.view')}}">
-                        <i class="bi bi-circle"></i><span>Add Blog & News</span>
-                    </a>
-                </li>
-            @endif
-
-            @if(in_array('manage_post', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.blog.all')}}">
-                        <i class="bi bi-circle"></i><span>All Blog & News</span>
-                    </a>
-                </li>
-            @endif
-        </ul>
-    </li><!-- End Charts Nav -->
-
-
-
-    <li class="nav-item ">
-        <a class="nav-link {{ request()->routeIs('admin.english.view') || request()->routeIs('admin.academy.view') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav612" data-bs-toggle="collapse" href="#">
-            @if(in_array('add_post', $permissions) || in_array('manage_post', $permissions) || Auth::user()->user_type== 2 )
-                <i class="fas fa-blog"></i><span >Test Preps</span><i class="bi bi-chevron-down ms-auto"></i>
-            @endif
-        </a>
-        <ul id="charts-nav612" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            @if(in_array('add_post', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.english.view')}}">
-                        <i class="bi bi-circle"></i><span>English Test</span>
-                    </a>
-                </li>
-            @endif
-
-            @if(in_array('manage_post', $permissions) || Auth::user()->user_type== 2)
-                <li>
-                    <a href="{{route('admin.academy.view')}}">
-                        <i class="bi bi-circle"></i><span>Academy Tutorials</span>
-                    </a>
-                </li>
-            @endif
-        </ul>
-    </li><!-- End Charts Nav -->
-
-
-
-
-    <li class="nav-item">
-    <a class="nav-link {{ request()->routeIs('counsellor.view') || request()->routeIs('counsellor.all') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav2" data-bs-toggle="collapse" href="#">
-    @if(in_array('add_counsellor', $permissions) || in_array('manage_counsellor', $permissions) || Auth::user()->user_type== 2 )
-      <i class="fas fa-user"></i><span>Counsellors</span><i class="bi bi-chevron-down ms-auto"></i>
-      @endif
-    </a>
-    <ul id="charts-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-    @if(in_array('add_counsellor', $permissions) || Auth::user()->user_type== 2)
-      <li>
-        <a href="{{route('counsellor.view')}}">
-          <i class="bi bi-circle"></i><span>Add Counsellor</span>
-        </a>
-      </li>
-      @endif
-
-      @if(in_array('manage_counsellor', $permissions) || Auth::user()->user_type== 2)
-      <li>
-        <a href="{{route('counsellor.all')}}">
-          <i class="bi bi-circle"></i><span>All Counsellors</span>
-        </a>
-      </li>
-      @endif
-    </ul>
-  </li><!-- End Charts Nav -->
-
-  @if(in_array('manage_consultation', $permissions) || Auth::user()->user_type== 2)
-  <li class="nav-item">
-    <a class="nav-link {{ request()->routeIs('admin.loan.all') ? 'text-primary' : '' }} collapsed" href="{{route('admin.loan.all')}}">
-      <i class="fas fa-user-cog	"></i>
-      <span>Loans</span>
-    </a>
-  </li><!-- End Profile Page Nav -->
-@endif
-
-@if(in_array('manage_consultation', $permissions) || Auth::user()->user_type== 2)
-  <li class="nav-item">
-    <a class="nav-link {{ request()->routeIs('admin.apply.course.all') ? 'text-primary' : '' }} collapsed" href="{{route('admin.apply.course.all')}}">
-      <i class="fas fa-user-cog	"></i>
-      <span>Applied Courses</span>
-    </a>
-  </li><!-- End Profile Page Nav -->
-@endif
-
-
-@if(in_array('manage_consultation', $permissions) || Auth::user()->user_type== 2)
-  <li class="nav-item">
-    <a class="nav-link {{ request()->routeIs('admin.resource.download') ? 'text-primary' : '' }} collapsed" href="{{route('admin.resource.download')}}">
-      <i class="fas fa-user-cog	"></i>
-      <span>Resource Downloads</span>
-    </a>
-  </li><!-- End Profile Page Nav -->
-@endif
-
-
-  <li class="nav-item">
-    <a class="nav-link {{ request()->routeIs('role.view') || request()->routeIs('admin_manager.view') || request()->routeIs('status.view') || request()->routeIs('admin.profile.view') ? 'text-primary' : '' }} collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-      <i class="fa fa-gears"></i><span>Settings</span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      @if(in_array('manage_role', $permissions) || Auth::user()->user_type== 2)
-      <li>
-        <a href="{{route('role.view')}}">
-          <i class="bi bi-circle"></i><span>Role and Permission</span>
-        </a>
-      </li>
-      @endif
-
-          @if(in_array('program.view', $permissions) || Auth::user()->user_type== 2)
-              <li>
-                  <a href="{{route('program.view')}}">
-                      <i class="bi bi-circle"></i><span>Program Category</span>
-                  </a>
-              </li>
-          @endif
-
-      @if(in_array('manage_admins', $permissions) || Auth::user()->user_type== 2)
-      <li>
-        <a href="{{route('admin_manager.view')}}">
-          <i class="bi bi-circle"></i><span>Admins</span>
-        </a>
-      </li>
-      @endif
-
-      @if(in_array('manage_status', $permissions) || Auth::user()->user_type== 2)
-      <li>
-        <a href="{{route('status.view')}}">
-          <i class="bi bi-circle"></i><span>Status</span>
-        </a>
-      </li>
-      @endif
-
-      @if(in_array('manage_status', $permissions) || Auth::user()->user_type== 2)
-      <li>
-        <a href="{{route('homeslider.view')}}">
-          <i class="bi bi-circle"></i><span>Home Slider</span>
-        </a>
-      </li>
-      @endif
-
-
-    @if(in_array('manage_status', $permissions) || Auth::user()->user_type== 2)
-      <li>
-        <a href="{{route('ribbon.view')}}">
-          <i class="bi bi-circle"></i><span>Ribbon</span>
-        </a>
-      </li>
-      @endif
-
-        @if(in_array('manage_status', $permissions) || Auth::user()->user_type== 2)
-          <li>
-            <a href="{{route('manage.country.view')}}">
-              <i class="bi bi-circle"></i><span>Countries</span>
-            </a>
-          </li>
-         @endif
-
-
-      <li>
-        <a href="{{route('admin.profile.view')}}">
-          <i class="bi bi-circle"></i><span>Profile</span>
-        </a>
-      </li>
-    </ul>
-  </li><!-- End Charts Nav -->
-
-
-</ul>
-
-</aside><!-- End Sidebar-->
-
-
-<style>
-  .active{
-    color: #1a77e5;
-  }
-</style>
-@yield('content')
-
-
-<footer id="footer" class="footer">
-    <div class="copyright">
-      <!-- &copy; Copyright <strong><span>Ancile Academy</span></strong>. All Rights Reserved -->
+<!-- [Head] end -->
+<!-- [Body] Start -->
+
+<body data-pc-preset="preset-1" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme_contrast=""
+      data-pc-theme="light">
+<!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+    <div class="loader-track">
+        <div class="loader-fill"></div>
     </div>
-  </footer><!-- End Footer -->
+</div>
+<!-- [ Pre-loader ] End -->
+<!-- [ Sidebar Menu ] start -->
+<nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+        <div class="m-header">
+            <a href="{{route('admin.dashboard')}}" class="b-brand text-primary">
+                <!-- ========   Change your logo from here   ============ -->
+                <img style="height: 60px" src="{{asset('backend/logo.svg')}}" class="img-fluid" alt="logo">
+                {{--                <span class="badge bg-light-success rounded-pill ms-2 theme-version">v9.0</span>--}}
+            </a>
+        </div>
+        <div class="navbar-content">
+            <div class="card pc-user-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <img src="{{asset('backend/assets/images/user/avatar-1.jpg')}}" alt="user-image"
+                                 class="user-avtar wid-45 rounded-circle"/>
+                        </div>
+                        <div class="flex-grow-1 ms-3 me-2">
+                            <h6 class="mb-0">{{Auth::user()->first_name}}</h6>
+                            <small>Admin</small>
+                        </div>
+                        <a class="btn btn-icon btn-link-secondary avtar" data-bs-toggle="collapse"
+                           href="#pc_sidebar_userlink">
+                            <svg class="pc-icon">
+                                <use xlink:href="#custom-sort-outline"></use>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="collapse pc-user-links" id="pc_sidebar_userlink">
+                        <div class="pt-3">
+                            <a href="{{route('admin.profile.view')}}">
+                                <i class="ti ti-user"></i>
+                                <span>My Account</span>
+                            </a>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+                            <a href="{{route('logout')}}">
+                                <i class="ti ti-power"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <!-- Vendor JS Files -->
-  <script src="{{asset('backend/assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
-  <script src="{{asset('backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{asset('backend/assets/vendor/chart.js/chart.umd.js')}}"></script>
-  <script src="{{asset('backend/assets/vendor/echarts/echarts.min.js')}}"></script>
-  <script src="{{asset('backend/assets/vendor/quill/quill.min.js')}}"></script>
-  <script src="{{asset('backend/assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
-  <script src="{{asset('backend/assets/vendor/tinymce/tinymce.min.js')}}"></script>
-  <script src="{{asset('backend/assets/vendor/php-email-form/validate.js')}}"></script>
+            <ul class="pc-navbar">
+                <li class="pc-item pc-caption">
+                    <label>Navigation</label>
+                </li>
+                <li class="pc-item pc-hasmenu">
+                    <a href="{{route('admin.dashboard')}}" class="pc-link">
+            <span class="pc-micon">
+              <svg class="pc-icon">
+                <use xlink:href="#custom-status-up"></use>
+              </svg>
+            </span>
+                        <span class="pc-mtext">Dashboard</span>
+                        {{--                        <span class="pc-arrow"><i data-feather="chevron-right"></i></span>--}}
+                        {{--                        <span class="pc-badge">2</span>--}}
+                    </a>
 
-  <!-- Template Main JS File -->
-  <script src="{{asset('backend/assets/js/main.js')}}"></script>
+                </li>
 
-  <script src="tinymce/tinymce.min.js"></script>
-<script>
-    tinymce.init({
-        selector: '#myTextarea'
-    });
-</script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  <script>
-      @if(Session::has('message'))
-      var type = "{{ Session::get('alert-type','info') }}";
-      switch(type){
-          case 'info':
-              Toastify({ text: "{{ Session::get('message') }}", duration: 3000,
-                  style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }
-              }).showToast();
-              break;
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">
+                    <span class="pc-micon">
+                    <i style="font-size: 20px;" class="ph-duotone ph-file-cloud"></i>
 
-          case 'success':
-              Toastify({ text: "{{ Session::get('message') }}", duration: 3000,
-                  style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }
-              }).showToast();
-              break;
+                    </span>
+                        <span class="pc-mtext">Applications</span>
+                        <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                    </a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{ route('application.view') }}">Add
+                                Application</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{ route('application.all') }}">All
+                                Applications</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('consultation.all')}}">Consultations</a>
+                        </li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.english.view')}}">English Test</a>
+                        </li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.academy.view')}}">Academy
+                                Tutorials</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.apply.course.all')}}">Applied
+                                Courses</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.loan.all')}}">Loan Application</a>
+                        </li>
+                    </ul>
+                </li>
 
-          case 'warning':
-              Toastify({ text: "{{ Session::get('message') }}", duration: 3000,
-                  style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }
-              }).showToast();
-              break;
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">
+                        <span class="pc-micon">
+                            <i style="font-size: 20px;" class="ph-duotone ph-users-three"></i>
 
-          case 'error':
-              Toastify({ text: "{{ Session::get('message') }}", duration: 3000,
-                  style: { background: "linear-gradient(to right, #ff0000, #ff0000)" }
-              }).showToast();
-              break;
-      }
+                        </span>
+                        <span class="pc-mtext">Users</span><span class="pc-arrow"><i
+                                data-feather="chevron-right"></i></span
+                        ></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{route('user.add.view')}}">Add User</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('user.view')}}">All Users</a></li>
+                    </ul>
+                </li>
 
-      // Unset the session
-      {{ Session::forget('message') }}
-      {{ Session::forget('alert-type') }}
-      @endif
-  </script>
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">
+                        <span class="pc-micon">
+                            <i style="font-size: 20px;" class="ph-duotone ph-quotes"></i>
 
+                        </span>
+                        <span class="pc-mtext">Testimonial</span><span class="pc-arrow"><i
+                                data-feather="chevron-right"></i></span
+                        ></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.testimonial.view')}}">Add
+                                Testimonial</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.testimonial.all')}}">All
+                                Testimonials</a></li>
+                    </ul>
+                </li>
+
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">
+                        <span class="pc-micon">
+                            <i style="font-size: 20px;" class="ph-duotone ph-seal-question"></i>
+
+                        </span>
+                        <span class="pc-mtext">FAQ</span><span class="pc-arrow"><i
+                                data-feather="chevron-right"></i></span
+                        ></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.askgpt.view')}}">Add FAQ</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.askgpt.all')}}">All FAQs</a></li>
+                    </ul>
+                </li>
+
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">
+                        <span class="pc-micon">
+                          <svg class="pc-icon">
+                            <use xlink:href="#custom-keyboard"></use>
+                          </svg>
+                        </span>
+                        <span class="pc-mtext">Resources</span><span class="pc-arrow"><i
+                                data-feather="chevron-right"></i></span
+                        ></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.resource.view')}}">Add Resource</a>
+                        </li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.resource.all')}}">All Resources</a>
+                        </li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.resource.download')}}">Resource
+                                Download</a></li>
+                    </ul>
+                </li>
+
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">
+                        <span class="pc-micon">
+                            <i style="font-size: 20px;" class="ph-duotone ph-map-pin"></i>
+
+                        </span>
+                        <span class="pc-mtext">Destinations</span><span class="pc-arrow"><i
+                                data-feather="chevron-right"></i></span
+                        ></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.destination.view')}}">Add
+                                Destination</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.destination.all')}}">All
+                                Destinations</a></li>
+                    </ul>
+                </li>
+
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">
+                        <span class="pc-micon">
+                            <i style="font-size: 20px;" class="ph-duotone ph-book"></i>
+
+                        </span>
+                        <span class="pc-mtext">Courses</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+                        ></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.course.view')}}">Add Course</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.course.all')}}">All Courses</a></li>
+                    </ul>
+                </li>
+
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">
+                        <span class="pc-micon">
+                            <i style="font-size: 20px;" class="ph-duotone ph-book-open-text"></i>
+
+                        </span>
+                        <span class="pc-mtext">Blog & News</span><span class="pc-arrow"><i
+                                data-feather="chevron-right"></i></span
+                        ></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.blog.view')}}">Add Blog & News</a>
+                        </li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.blog.all')}}">All Blog & News</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">
+                        <span class="pc-micon">
+                            <i style="font-size: 20px;" class="ph-duotone ph-user-focus"></i>
+
+                        </span>
+                        <span class="pc-mtext">Counsellors</span><span class="pc-arrow"><i
+                                data-feather="chevron-right"></i></span
+                        ></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{route('counsellor.view')}}">Add Counsellor</a>
+                        </li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('counsellor.all')}}">All Counsellors</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">
+                        <span class="pc-micon">
+                            <i style="font-size: 20px;" class="ph-duotone ph-globe-hemisphere-west"></i>
+
+                        </span>
+                        <span class="pc-mtext">Website Settings</span><span class="pc-arrow"><i
+                                data-feather="chevron-right"></i></span
+                        ></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{route('role.view')}}">Role & Permission</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('program.view')}}">Program Category</a>
+                        </li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin_manager.view')}}">Admin</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('status.view')}}">Status</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('homeslider.view')}}">Home Slider</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('ribbon.view')}}">Ribbon</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('manage.country.view')}}">Countries</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
+<header class="pc-header">
+    <div class="header-wrapper"> <!-- [Mobile Media Block] start -->
+        <div class="me-auto pc-mob-drp">
+            <ul class="list-unstyled">
+                <!-- ======= Menu collapse Icon ===== -->
+                <li class="pc-h-item pc-sidebar-collapse">
+                    <a href="#" class="pc-head-link ms-0" id="sidebar-hide">
+                        <i class="ti ti-menu-2"></i>
+                    </a>
+                </li>
+                <li class="pc-h-item pc-sidebar-popup">
+                    <a href="#" class="pc-head-link ms-0" id="mobile-collapse">
+                        <i class="ti ti-menu-2"></i>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- [Mobile Media Block end] -->
+        <div class="ms-auto">
+            <ul class="list-unstyled">
+
+                <li class="dropdown pc-h-item">
+                    <a
+                        class="pc-head-link dropdown-toggle arrow-none me-0"
+                        data-bs-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="false"
+                        aria-expanded="false"
+                    >
+                        <svg class="pc-icon">
+                            <use xlink:href="#custom-setting-2"></use>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
+                        <a href="{{route('admin.profile.view')}}" class="dropdown-item">
+                            <i class="ti ti-user"></i>
+                            <span>My Account</span>
+                        </a>
+
+                        <a href="{{route('logout')}}" class="dropdown-item">
+                            <i class="ti ti-power"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="dropdown pc-h-item">
+                    <a
+                        class="pc-head-link dropdown-toggle arrow-none me-0"
+                        data-bs-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="false"
+                        aria-expanded="false"
+                    >
+                        <svg class="pc-icon">
+                            <use xlink:href="#custom-notification"></use>
+                        </svg>
+                        <span
+                            class="badge bg-success pc-h-badge">{{count($loan_not) + count($application_not) + count($consultations_not) }}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-notification dropdown-menu-end pc-h-dropdown">
+                        <div class="dropdown-header d-flex align-items-center justify-content-between">
+                            <h5 class="m-0"> All Notifications <span
+                                    class="badge bg-success pc-h-badge"> {{count($loan_not) + count($application_not) + count($consultations_not) }}</span>
+                            </h5>
+                            <a href="#!" class="btn btn-link btn-sm"></a>
+                        </div>
+                        <div class="dropdown-body text-wrap header-notification-scroll position-relative"
+                             style="max-height: calc(100vh - 215px)">
+                            <p class="text-span">You have <span
+                                    class="badge bg-danger">{{count($application_not)}}</span> new Application(s) alert
+                            </p>
+
+                            @if(count($application_notification) > 0)
+                                @foreach($application_notification as $notification)
+                                    <a href="{{route('admin.application.review', $notification->id)}}">
+                                        <div class="card mb-2">
+                                            <div class="card-body">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0">
+                                                        <i style="font-size: 20px;"
+                                                           class="ph-duotone ph-note-pencil"></i>
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-3">
+                                                        {{--                                                        <span class="float-end text-sm text-muted">1 hour ago</span>--}}
+                                                        <h5 class="text-body mb-2">{{$notification->full_name}}</h5>
+                                                        <p>i just applied for a new application, please respond
+                                                            promptly, thank you.</p>
+                                                        <p>{{ $notification->created_at->diffForHumans() }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                @endforeach
+                                <div class="mt-4 mb-3">
+                                    <a class="btn btn-danger text-white" href="{{route('application.all')}}">Show all
+                                        applications</a>
+
+                                </div>
+                            @endif
+
+                            <br/>
+                            <br/>
+
+                            <p class="text-span">You have <span
+                                    class="badge bg-primary">{{count($loan_not)}}</span> new loan(s) alert
+                            </p>
+
+                            @if(count($loan_notification) > 0)
+                                @foreach($loan_notification as $not)
+                                    <a href="{{route('loan.view', $not->id)}}">
+                                        <div class="card mb-2">
+                                            <div class="card-body">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0">
+                                                        <i style="font-size: 20px;"
+                                                           class="ph-duotone ph-money"></i>
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-3">
+                                                        {{--                                                        <span class="float-end text-sm text-muted">1 hour ago</span>--}}
+                                                        <h5 class="text-body mb-2">{{$not->first_name}}</h5>
+                                                        <p>i just applied for a loan, please respond promptly, thank
+                                                            you.</p>
+                                                        <p>{{ $not->created_at->diffForHumans() }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                @endforeach
+                                <div class="mt-4 mb-3">
+                                    <a class="btn btn-primary text-white" href="{{route('admin.loan.all')}}">Show all
+                                        loans</a>
+
+                                </div>
+                            @endif
+
+
+                            <br/>
+                            <br/>
+
+
+                            <p class="text-span">You have <span class="badge bg-warning">{{count($consultations_not)}}</span> new consultation(s) alert
+                            </p>
+
+                            @if(count($consultation_notification) > 0)
+                                @foreach($consultation_notification as $consultation)
+                                    <a href="{{route('consultation.view', $consultation->id)}}">
+                                        <div class="card mb-2">
+                                            <div class="card-body">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0">
+                                                        <i style="font-size: 20px;"
+                                                           class="ph-duotone ph-folder-user"></i>
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-3">
+{{--                                                        <span class="float-end text-sm text-muted">1 hour ago</span>--}}
+                                                        <h5 class="text-body mb-2">{{$consultation->first_name}} {{$consultation->last_name}}</h5>
+                                                        <p>i want to get consultation, please respond promptly, thank you.</p>
+                                                        <p>{{ $consultation->created_at->diffForHumans() }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                @endforeach
+                                <div class="mt-4 mb-3">
+                                    <a class="btn btn-warning text-white" href="{{route('consultation.all')}}">Show all
+                                        consultations</a>
+
+                                </div>
+                            @endif
+
+
+                        </div>
+
+                    </div>
+                </li>
+                <li class="dropdown pc-h-item header-user-profile">
+                    <a
+                        class="pc-head-link dropdown-toggle arrow-none me-0"
+                        data-bs-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="false"
+                        data-bs-auto-close="outside"
+                        aria-expanded="false"
+                    >
+                        <img src="{{asset('backend/assets/images/user/avatar-2.jpg')}}" alt="user-image"
+                             class="user-avtar"/>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
+                            <li class="breadcrumb-item" aria-current="page">@yield('page')</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h4 style="margin: 20px 1px;" class="mb-0">@yield('title')</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @yield('content')
+
+        <!-- [Page Specific JS] start -->
+        <script src="{{asset('backend/assets/js/plugins/apexcharts.min.js')}}"></script>
+        <script src="{{asset('backend/assets/js/pages/dashboard-default.js')}}"></script>
+        <!-- [Page Specific JS] end -->
+        <!-- Required Js -->
+        <script src="{{asset('backend/assets/js/plugins/popper.min.js')}}"></script>
+        <script src="{{asset('backend/assets/js/plugins/simplebar.min.js')}}"></script>
+        <script src="{{asset('backend/assets/js/plugins/bootstrap.min.js')}}"></script>
+        <script src="{{asset('backend/assets/js/fonts/custom-font.js')}}"></script>
+        <script src="{{asset('backend/assets/js/pcoded.js')}}"></script>
+        <script src="{{asset('backend/assets/js/plugins/feather.min.js')}}"></script>
+
+
+        <script>layout_change('light');</script>
+
+
+        <script>layout_theme_contrast_change('false');</script>
+
+
+        <script>change_box_container('false');</script>
+
+
+        <script>layout_caption_change('true');</script>
+
+
+        <script>layout_rtl_change('false');</script>
+
+
+        <script>preset_change("preset-1");</script>
 
 </body>
-<style>
-    .nav-link.active {
-        color: #1a77e5;
+<!-- [Body] end -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script>
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type','info') }}";
+    switch (type) {
+        case 'info':
+            Toastify({
+                text: "{{ Session::get('message') }}", duration: 3000,
+                style: {background: "linear-gradient(to right, #00b09b, #96c93d)"}
+            }).showToast();
+            break;
+
+        case 'success':
+            Toastify({
+                text: "{{ Session::get('message') }}", duration: 3000,
+                style: {background: "linear-gradient(to right, #00b09b, #96c93d)"}
+            }).showToast();
+            break;
+
+        case 'warning':
+            Toastify({
+                text: "{{ Session::get('message') }}", duration: 3000,
+                style: {background: "linear-gradient(to right, #00b09b, #96c93d)"}
+            }).showToast();
+            break;
+
+        case 'error':
+            Toastify({
+                text: "{{ Session::get('message') }}", duration: 3000,
+                style: {background: "linear-gradient(to right, #ff0000, #ff0000)"}
+            }).showToast();
+            break;
     }
 
+    // Unset the session
+    {{ Session::forget('message') }}
+    {{ Session::forget('alert-type') }}
+    @endif
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#my-table').DataTable({
+            "paging": true,
+            "searching": true,
+            "ordering": true
+        });
+    });
+</script>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
+<script> var editor = new FroalaEditor('#myTextarea'); </script>
+
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#myTextarea'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+<style>
+    /* Custom styles to enlarge the editor */
+    .ck-editor__editable_inline {
+        min-height: 200px;
+        width: 100%;
+    }
 </style>
+
+
+<!-- Mirrored from ableproadmin.com/dashboard/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Mar 2024 18:20:32 GMT -->
 </html>

@@ -2,6 +2,8 @@
 
 @extends('backend.app')
 
+@section('title',  'Manage  Country')
+@section('page',  'Manage  Country')
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +14,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Add Country</h5>
-              <div class="card">
+{{--              <h5 class="card-title">Add Country</h5>--}}
+              <div class="">
 
               <form method="post" action="{{route('manage.country.save')}}"  enctype="multipart/form-data" class="row g-3">
                 @csrf
@@ -54,11 +56,11 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Manage Countries</h5>
+{{--              <h5 class="card-title">Manage Countries</h5>--}}
 
 
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table  id="my-table" class="table datatable">
                 <thead>
                   <tr>
 

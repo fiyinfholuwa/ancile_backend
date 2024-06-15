@@ -2,6 +2,7 @@
 
 @extends('backend.app')
 
+@section('title', 'Manage Applications')
 @section('content')
 
   <main id="main" class="main">
@@ -12,11 +13,11 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Manage Applications</h5>
+{{--              <h5 class="card-tit/le"></h5>--}}
 
 
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table id="my-table" class="table datatable">
                 <thead>
                   <tr>
                     <th>

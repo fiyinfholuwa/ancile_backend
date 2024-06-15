@@ -2,6 +2,8 @@
 
 @extends('backend.app')
 
+@section('title',  'Add Resource')
+@section('page',  'Add Resource')
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +14,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Add Resource</h5>
-              <div class="card">
+{{--              <h5 class="card-title"></h5>--}}
+              <div class="">
 
               <form method="post" action="{{route('admin.resource.save')}}" enctype="multipart/form-data" class="row g-3">
                 @csrf

@@ -2,8 +2,10 @@
 
 @extends('backend.app')
 
+@section('title', 'Add Counsellor')
+@section('page', 'Add Counsellor')
 @section('content')
-  
+
   <main id="main" class="main">
 
   <section class="section">
@@ -12,9 +14,9 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Add Counsellor</h5>
-              <div class="card">
-        
+              <h5 class="card-title"></h5>
+              <div class="">
+
               <form method="post" action="{{route('admin.counsellor.save')}}" class="row g-3">
                 @csrf
                 <div class="col-md-6">
@@ -46,20 +48,20 @@
                 </div>
                 <div class="col-md-6">
                   <label for="inputPassword5" class="form-label">Phone Number</label>
-                  <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="inputPassword5" placeholder="Phone Number"> 
+                  <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="inputPassword5" placeholder="Phone Number">
                   <p style="font-weight:bold; color:red; font-size:12px;">
                   @error('phone')
                     {{$message}}
                   @enderror
                   </p>
                 </div>
-                
+
                 <div class="">
                   <button type="submit" class="btn btn-primary">Add Counsellor</button>
                 </div>
               </form><!-- End Multi Columns Form -->
 
-             
+
             </div>
           </div>
 
@@ -75,4 +77,3 @@
 
   </main><!-- End #main -->
 @endsection
-  

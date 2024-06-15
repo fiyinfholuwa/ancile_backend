@@ -2,6 +2,8 @@
 
 @extends('backend.app')
 
+@section('title', 'Manage Ribbon Display')
+@section('page', 'Manage Ribbon Display')
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +14,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Manage Ribbon Display</h5>
-              <div class="card">
+{{--              <h5 class="card-title"></h5>--}}
+              <div class="">
 
               <form action="{{route('ribbon.save')}}" method="post" class="row g-3">
                 @csrf

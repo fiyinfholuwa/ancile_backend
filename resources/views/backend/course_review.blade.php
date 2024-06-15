@@ -2,6 +2,8 @@
 
 @extends('backend.app')
 
+@section('title','View Course')
+@section('page','View Course')
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +14,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">View Course</h5>
-              <div class="card">
+{{--              <h5 class="card-title">View Course</h5>--}}
+              <div class="">
 
               <form method="post" action="" enctype="multipart/form-data" class="row g-3">
                 @csrf

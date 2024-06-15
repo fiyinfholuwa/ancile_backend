@@ -2,6 +2,8 @@
 
 @extends('backend.app')
 
+@section('title',  'Manage Courses')
+@section('page',  'Manage Courses')
 @section('content')
 
   <main id="main" class="main">
@@ -36,11 +38,11 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Manage Courses  <span style="margin-left: 40px;"><a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_all">Delete All Course</a></span></h5>
+              <h5 class="card-title">  <span style="margin-left: 40px;"><a class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#delete_all">Delete All Course</a></span></h5>
 
 
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table id="my-table" class="table datatable">
                 <thead>
                   <tr>
                     <th>

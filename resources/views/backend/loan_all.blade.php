@@ -2,6 +2,8 @@
 
 @extends('backend.app')
 
+@section('title', 'Manage Loans')
+
 @section('content')
 
   <main id="main" class="main">
@@ -12,7 +14,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Manage Loans</h5>
+{{--              <h5 class="card-title"></h5>--}}
 
 
               <form method="post" action="{{route('loan.report')}}">
@@ -43,7 +45,7 @@
                         </form>
 
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table id="my-table" class="table datatable">
                 <thead>
                   <tr>
                     <th>

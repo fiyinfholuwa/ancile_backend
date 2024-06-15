@@ -2,6 +2,11 @@
 
 @extends('backend.app')
 
+@section('page', 'View Applied Course')
+
+@section('title')
+    View Applied Course ({{$ap->email}})
+@endsection
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +17,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">View Applied Course ({{$ap->email}})</h5>
-              <div class="card">
+{{--              <h5 class="card-title">View Applied Course ({{$ap->email}})</h5>--}}
+              <div class="">
 
                   <form method="post" action="" enctype="multipart/form-data" class="row g-3">
                       @csrf

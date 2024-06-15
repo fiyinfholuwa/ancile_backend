@@ -2,18 +2,21 @@
 
 @extends('backend.app')
 
+@section('title', 'Profile')
+
+@section('page', 'Profile')
 @section('content')
-  
+
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Profile</h1>
-  
+{{--  <h1>Profile</h1>--}}
+
 </div><!-- End Page Title -->
 
 <section class="section profile">
   <div class="row">
-    
+
     <div class="col-xl-8">
 
       <div class="card">
@@ -29,7 +32,7 @@
               <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
             </li>
 
-            
+
             <li class="nav-item">
               <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
             </li>
@@ -39,7 +42,7 @@
 
             <div class="tab-pane fade show active profile-overview" id="profile-overview">
               <!-- <h5 class="card-title">About</h5> -->
-             
+
               <!-- <h5 class="card-title">Profile Details</h5> -->
 
               <div class="row">
@@ -58,13 +61,13 @@
                 <div class="col-lg-9 col-md-8">{{Auth::user()->email}}</div>
               </div>
 
-             
+
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Mobile</div>
                 <div class="col-lg-9 col-md-8">{{Auth::user()->phone}}</div>
               </div>
 
-              
+
             </div>
 
             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
@@ -87,7 +90,7 @@
                 </div>
 
 
-                
+
                 <div class="row mb-3">
                   <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Mobile</label>
                   <div class="col-md-8 col-lg-9">
@@ -102,7 +105,7 @@
                   </div>
                 </div>
 
-                
+
                 <div class="">
                   <button type="submit" class="btn btn-primary">Save Changes</button>
                 </div>
@@ -113,7 +116,7 @@
             <div class="tab-pane fade pt-3" id="profile-settings">
 
               <!-- Settings Form -->
-             
+
             </div>
 
             <div class="tab-pane fade pt-3" id="profile-change-password">
@@ -160,4 +163,3 @@
 </main><!-- End #main -->
 
 @endsection
-  

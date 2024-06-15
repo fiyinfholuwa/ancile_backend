@@ -2,6 +2,9 @@
 
 @extends('counsellor.app')
 
+
+@section('title', 'View Application')
+@section('page', 'View Application')
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +15,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">View Application</h5>
-              <div class="card">
+              <h5 class="card-title"></h5>
+              <div class="">
 
               <form class="row g-3" method="post" action="{{route('admin.application.save')}}" enctype="multipart/form-data">
                 @csrf

@@ -2,8 +2,11 @@
 
 @extends('backend.app')
 
+@section('title', 'View Application')
+@section('page', 'View Application')
+
 @section('content')
-  
+
   <main id="main" class="main">
 
   <section class="section">
@@ -13,10 +16,10 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">{{$user->first_name}} {{$user->last_name}}'s Applications</h5>
-            
+
 
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table id="my-table" class="table datatable">
                 <thead>
                   <tr>
                     <th>
@@ -41,7 +44,7 @@
                       @else
                       <span class="badge bg-primary">{{optional($app->counsellor_name)->first_name}}  {{optional($app->counsellor_name)->last_name}}</span>
                       @endif
-                      
+
                     </td>
                     <td>
                       @if($app->status == "pending")
@@ -83,4 +86,3 @@
 
   </main><!-- End #main -->
 @endsection
-  

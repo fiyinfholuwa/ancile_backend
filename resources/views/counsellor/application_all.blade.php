@@ -1,7 +1,8 @@
 
 
 @extends('counsellor.app')
-
+@section('title',  'Assigned Applications')
+@section('page',  'Assigned Applications')
 @section('content')
   <main id="main" class="main">
   <section class="section">
@@ -10,9 +11,9 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Assigned Applications</h5>
+{{--              <h5 class="card-title"></h5>--}}
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table id="my-table" class="table datatable">
                 <thead>
                   <tr>
                     <th>

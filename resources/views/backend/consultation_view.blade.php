@@ -2,18 +2,22 @@
 
 @extends('backend.app')
 
+@section('title')
+    View Consultation (ID: {{ $consultation->id }})
+@endsection
+@section('page', 'View Consultation')
 @section('content')
 
   <main id="main" class="main">
 
-  <section class="section">
+  <section class="mt-5  section">
       <div class="row">
         <div class="col-lg-5">
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">View Consutlation (ID:{{$consultation->id}})</h5>
-              <div class="card">
+          <div class="">
+            <div class="">
+{{--              <h5 class="card-title">View Consultation (ID:{{$consultation->id}})</h5>--}}
+              <div class="">
 
               <form style="box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px; padding: 20px 40px;" action="" enctype="multipart/form-data" method="post" class="row g-3">
     @csrf

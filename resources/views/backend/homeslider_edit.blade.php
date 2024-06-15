@@ -2,6 +2,8 @@
 
 @extends('backend.app')
 
+@section('title','Edit Home Slider' )
+@section('page','Edit Home Slider' )
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +14,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit Home Slider</h5>
-              <div class="card">
+{{--              <h5 class="card-title"></h5>--}}
+              <div class="">
 
               <form action="{{ route('homeslider.update', $homeslider->id) }}" enctype="multipart/form-data" method="post" class="row g-3">
     @csrf
@@ -102,16 +104,16 @@
         <div class="col-lg-7">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Manage homesliders</h5>
+{{--              <h5 class="card-title">Manage homesliders</h5>--}}
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table id="my-table" class="table datatable">
                 <thead>
                   <tr>
                     <th>
-                      Header 
+                      Header
                     </th>
                     <th>
-                      Paragraph 
+                      Paragraph
                     </th>
 
                     <th>

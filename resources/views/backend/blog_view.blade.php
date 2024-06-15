@@ -1,5 +1,7 @@
 @extends('backend.app')
 
+@section('title' , 'Add Post')
+@section('page' , 'Add Post')
 @section('content')
 
     <main id="main" class="main">
@@ -10,8 +12,8 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Add Post</h5>
-                            <div class="card">
+{{--                            <h5 class="card-title"></h5>--}}
+                            <div class="">
 
                                 <form method="post" action="{{route('admin.blog.save')}}" enctype="multipart/form-data"
                                       class="row g-3">

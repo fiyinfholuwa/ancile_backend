@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Destination;
+use App\Models\ProgramCourse;
+use App\Models\ResourceBook;
+use App\Models\Testimonial;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\NewApplication;
@@ -26,7 +31,12 @@ class AuthController extends Controller
         $applications = NewApplication::count();
         $applications_review = NewApplication::where('status', '!=', 'pending')->count();
         $consultations = Consultation::where('status', '=', NULL)->count();
-        return view('backend.dashboard', compact('applications', 'applications_review', 'consultations'));
+        $total_users = User::where('user_type', '=', '0')->count();
+        $total_testimonials = Testimonial::count();
+        $total_resources = ResourceBook::count();
+        $total_destinations = Destination::count();
+        $total_courses = ProgramCourse::count();
+        return view('backend.dashboard', compact('applications', 'applications_review', 'consultations', 'total_users', 'total_testimonials',  'total_users', 'total_courses', 'total_resources', 'total_destinations'));
     }
 
     public function counsellor_dashboard(){

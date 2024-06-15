@@ -2,100 +2,95 @@
 
 @extends('counsellor.app')
 
+@section('page', 'Counsellor Dashboard')
 @section('content')
+    <!-- [ breadcrumb ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="row">
+        <div class="col-md-6 col-xxl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <div class="avtar avtar-s bg-light-primary">
+                                <i style="font-size: 40px;" class="ph-duotone ph-user-list"></i>
 
-  <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1 style="padding-top:20px;">Hello {{Auth::user()->first_name}} {{Auth::user()->last_name}},</h1>
-      <p>Here’s an overview</p>
-
-    </div><!-- End Page Title -->
-
-    <section style="min-height:60vh;" class="section dashboard">
-      <div class="row">
-
-        <!-- Left side columns -->
-        <div class="col-lg-12">
-          <div class="row">
-
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-lg-4 col-md-6">
-              <div class="card info-card sales-card">
-
-
-                  <div style="min-height:150px; background-color: #fff" class="">
-                  <!-- <h5 class="card-title">Sales <span>| Today</span></h5> -->
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <!-- <i class="bi bi-archive"></i> -->
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-0">Assigned Applications</h6>
+                        </div>
                     </div>
-                    <div style="padding:50px;" class="ps-3">
-                      <h6 style="color:#1a77e5; font-size:100px;">{{$assigned_applications}}</h6>
-                      <span class="text-dark small pt-1 fw-bold">Assigned Applications</span>
-
+                    <div class="bg-body p-3 mt-3 rounded">
+                        <div class="mt-3 row align-items-center">
+                            <div class="col-7">
+{{--                                <div id="all-earnings-graph"></div>--}}
+                            </div>
+                            <div class="col-5">
+                                <h5 class="mb-1">{{$assigned_applications}}</h5>
+{{--                                <p class="text-primary mb-0"><i class="ti ti-arrow-up-right"></i>{{$assigned_applications}}</p>--}}
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xxl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <div class="avtar avtar-s bg-light-warning">
+                                <i style="font-size: 40px;" class="ph-duotone ph-first-aid-kit"></i>
 
-              </div>
-            </div><!-- End Sales Card -->
-
-
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-lg-4 col-md-6">
-              <div class="card info-card sales-card">
-
-
-                  <div style="min-height:150px; background-color: #fff" class="">
-                  <!-- <h5 class="card-title">Sales <span>| Today</span></h5> -->
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <!-- <i class="bi bi-bookmark-check-fill"></i> -->
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-0">Successful Applications</h6>
+                        </div>
                     </div>
-                    <div style="padding:50px;" class="ps-3">
-                    <h6 style="color:#1a77e5; font-size:100px;">0</h6>
-                      <span class="text-dark small pt-1 fw-bold">Successful Applications</span>
-
+                    <div class="bg-body p-3 mt-3 rounded">
+                        <div class="mt-3 row align-items-center">
+                            <div class="col-7">
+{{--                                <div id="page-views-graph"></div>--}}
+                            </div>
+                            <div class="col-5">
+                                <h5 class="mb-1">0</h5>
+{{--                                <p class="text-warning mb-0"><i class="ti ti-arrow-up-right"></i> 30.6%</p>--}}
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xxl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <div class="avtar avtar-s bg-light-success">
+                                <i style="font-size: 40px;" class="ph-duotone ph-folder-simple"></i>
 
-              </div>
-            </div><!-- End Sales Card -->
-<!-- Sales Card -->
-            <div class="col-xxl-4 col-lg-4 col-md-6">
-              <div class="card info-card sales-card">
-
-
-                  <div style="min-height:150px; background-color: #fff" class="">
-                  <!-- <h5 class="card-title">Sales <span>| Today</span></h5> -->
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <!-- <i class="bi bi-bookmark-check"></i> -->
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-0">Pending Applications</h6>
+                        </div>
                     </div>
-                    <div style="padding:50px;" class="ps-3">
-                    <h6 style="color:#1a77e5; font-size:100px;">0</h6>
-                      <span class="text-dark small pt-1 fw-bold"> Pending Consultations</span>
-
+                    <div class="bg-body p-3 mt-3 rounded">
+                        <div class="mt-3 row align-items-center">
+                            <div class="col-7">
+{{--                                <div id="total-task-graph"></div>--}}
+                            </div>
+                            <div class="col-5">
+                                <h5 class="mb-1">0</h5>
+{{--                                <p class="text-success mb-0"><i class="ti ti-arrow-up-right"></i> New</p>--}}
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-              </div>
-            </div><!-- End Sales Card -->
-
-
-
-
-          </div>
-        </div><!-- End Left side columns -->
-
-      </div>
-    </section>
-
-  </main><!-- End #main -->
 @endsection

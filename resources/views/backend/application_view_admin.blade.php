@@ -2,18 +2,22 @@
 
 @extends('backend.app')
 
+
+@section('page', 'Add Application')
+@section('title', 'View Application')
 @section('content')
+
 
     <main id="main" class="main">
 
         <section class="section">
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">View Application</h5>
-                            <div class="card">
+{{--                            <h5 class="card-title">View Application</h5>--}}
+                            <div class="">
 
                                 <form class="row g-3" method="post" action="{{route('admin.application.update', $app->id)}}" enctype="multipart/form-data">
                                     @csrf
@@ -123,18 +127,18 @@
                                         <label for="inputAddress2" class="form-label">UnderGraduate (Attachment)</label>
 
                                         @if($app->undergraduate != NULL)
-                                            <a class="badge bg-success" href="{{asset($app->undergraduate)}}">view file</a>
+                                            <a class="btn text-white bg-success" href="{{asset($app->undergraduate)}}">view file</a>
                                         @else
-                                            <span class="badge bg-danger">not stated</span>
+                                            <span class="btn text-white bg-danger">not stated</span>
                                         @endif
                                     </div>
                                     <div class="col-md-4">
                                         <label for="inputAddress2" class="form-label">PostGraduate (Attachment)</label>
 
                                         @if($app->postgraduate != NULL)
-                                            <a class="badge bg-success" href="{{asset($app->postgraduate)}}">view file</a>
+                                            <a class="btn text-white bg-success" href="{{asset($app->postgraduate)}}">view file</a>
                                         @else
-                                            <span class="badge bg-danger">not stated</span>
+                                            <span class="btn text-white bg-danger">not stated</span>
                                         @endif
                                     </div>
 
@@ -143,9 +147,9 @@
                                         <label for="inputCity" class="form-label">Intermediate (Attachment) </label>
 
                                         @if($app->mark_sheet_11_12 != NULL)
-                                            <a class="badge bg-success" href="{{asset($app->mark_sheet_11_12)}}">view file</a>
+                                            <a class="btn text-white bg-success" href="{{asset($app->mark_sheet_11_12)}}">view file</a>
                                         @else
-                                            <span class="badge bg-danger">not stated</span>
+                                            <span class="btn text-white bg-danger">not stated</span>
                                         @endif
                                     </div>
 
@@ -154,9 +158,9 @@
                                         <label for="inputCity" class="form-label">10th Mark Sheet (Attachment)</label>
 
                                         @if($app->mark_sheet_10 != NULL)
-                                            <a class="badge bg-success" href="{{asset($app->mark_sheet_10)}}">view file</a>
+                                            <a class="btn text-white bg-success" href="{{asset($app->mark_sheet_10)}}">view file</a>
                                         @else
-                                            <span class="badge bg-danger">not stated</span>
+                                            <span class="btn text-white bg-danger">not stated</span>
                                         @endif
                                     </div>
 
@@ -165,9 +169,9 @@
                                         <label for="inputCity" class="form-label">Finance Bank Statement (Attachment)</label>
 
                                         @if($app->finance != NULL)
-                                            <a class="badge bg-success" href="{{asset($app->finance)}}">view file</a>
+                                            <a class="btn text-white bg-success" href="{{asset($app->finance)}}">view file</a>
                                         @else
-                                            <span class="badge bg-danger">not stated</span>
+                                            <span class="btn text-white bg-danger">not stated</span>
                                         @endif
                                     </div>
 
@@ -175,9 +179,9 @@
                                         <label for="inputCity" class="form-label">Passport Copy if applicable</label>
 
                                         @if($app->passport != NULL)
-                                            <a class="badge bg-success" href="{{asset($app->passport)}}">view file</a>
+                                            <a class="btn text-white bg-success" href="{{asset($app->passport)}}">view file</a>
                                         @else
-                                            <span class="badge bg-danger">not stated</span>
+                                            <span class="btn text-white bg-danger">not stated</span>
                                         @endif
                                     </div>
                                     <div style="margin-top: 20px;">
@@ -196,7 +200,7 @@
                                                     <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ $greOption }}</td>
                                                     <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ json_decode($app->gre_score, true)['scores'][$i] ?? null }}</td>
                                                     <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">
-                                                        <a style="font-size: 10px;" class="badge bg-primary text-white" href="{{ isset(json_decode($app->gre_score, true)['attachments'][$i]) ? asset(json_decode($app->gre_score, true)['attachments'][$i]) : '#' }}" target="_blank" style="color: #007bff; text-decoration: none;">
+                                                        <a style="font-size: 10px;" class="btn text-white bg-primary text-white" href="{{ isset(json_decode($app->gre_score, true)['attachments'][$i]) ? asset(json_decode($app->gre_score, true)['attachments'][$i]) : '#' }}" target="_blank" style="color: #007bff; text-decoration: none;">
                                                             {{ isset(json_decode($app->gre_score, true)['attachments'][$i]) ? 'view file' : 'Attachment not stated' }}
                                                         </a>
                                                     </td>

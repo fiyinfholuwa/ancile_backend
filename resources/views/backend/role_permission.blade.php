@@ -1,6 +1,9 @@
 
 
 @extends('backend.app')
+@section('title', 'Set Permission for ' . $role->name)
+
+@section('page', 'Role Permission')
 
 @section('content')
 
@@ -13,8 +16,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Set Permission for  <span class="text-danger">{{$role->name}}</span></h5>
-              <div class="card">
+{{--              <h5 class="card-title">Set Permission for  <span class="text-danger">{{$role->name}}</span></h5>--}}
+              <div class="">
 
               <form action="{{route('role.permission.set', $role->id)}}" method="post" class="row g-3">
                 @csrf
@@ -108,8 +111,8 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Set Permission for <span class="text-danger">{{$role->name}}</span></h5>
-            <div class="card">
+{{--            <h5 class="card-title">Set Permission for <span class="text-danger">{{$role->name}}</span></h5>--}}
+            <div class="">
 
               <form action="{{route('role.permission.set', $role->id)}}" method="post" class="row g-3">
                 @csrf

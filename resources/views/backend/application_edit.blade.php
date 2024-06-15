@@ -1,8 +1,11 @@
 
 
 @extends('backend.app')
+@section('page', 'Edit Application')
+@section('title', 'Edit Application')
 
 @section('content')
+
 
   <main id="main" class="main">
 
@@ -12,12 +15,12 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit Application</h5>
-              <div class="card">
+{{--              <h5 class="card-title">Edit Application</h5>--}}
+              <div class="">
 
               <form class="row g-3" method="post" action="{{route('admin.application.update', $app->id)}}" enctype="multipart/form-data">
                 @csrf
-                  <h2>Personal Details</h2>
+                  <h4>Personal Details</h4>
                   <div class="col-md-6">
                       <label for="inputName5" class="form-label">Full Name</label>
                       <input type="text"  name="full_name" value="{{$app->full_name}}" placeholder="Full Name" class="form-control" id="inputName5">
@@ -128,7 +131,7 @@
                       </p>
                   </div>
 
-                  <h2>Other Details</h2>
+                  <h4>Other Details</h4>
                   <div class="personal col-lg-4">
                       <label for="program">Source of Funds</label>
                       <select name="fund" id="fund" class="form-control">
@@ -202,7 +205,7 @@
                       </p>
                   </div>
 
-                  <h2>Required Documents</h2>
+                  <h4>Required Documents</h4>
                   <div class="col-md-4">
                       <label for="inputAddress2" class="form-label">UnderGraduate (Attachment)</label>
                       <input type="file" name="undergraduate" class="form-control" id="inputAddress2" >
@@ -212,9 +215,9 @@
                           @enderror
                       </p>
                       @if($app->undergraduate != NULL)
-                          <a class="badge bg-success" href="{{asset($app->undergraduate)}}">view file</a>
+                          <a class="btn text-white bg-success" href="{{asset($app->undergraduate)}}">view file</a>
                       @else
-                          <span class="badge bg-danger">not stated</span>
+                          <span class="btn text-white bg-danger">not stated</span>
                       @endif
                   </div>
                   <div class="col-md-4">
@@ -226,9 +229,9 @@
                           @enderror
                       </p>
                       @if($app->postgraduate != NULL)
-                          <a class="badge bg-success" href="{{asset($app->postgraduate)}}">view file</a>
+                          <a class="btn text-white bg-success" href="{{asset($app->postgraduate)}}">view file</a>
                       @else
-                          <span class="badge bg-danger">not stated</span>
+                          <span class="btn text-white bg-danger">not stated</span>
                       @endif
                   </div>
 
@@ -243,9 +246,9 @@
                       </p>
 
                       @if($app->mark_sheet_11_12 != NULL)
-                          <a class="badge bg-success" href="{{asset($app->mark_sheet_11_12)}}">view file</a>
+                          <a class="btn text-white bg-success" href="{{asset($app->mark_sheet_11_12)}}">view file</a>
                       @else
-                          <span class="badge bg-danger">not stated</span>
+                          <span class="btn text-white bg-danger">not stated</span>
                       @endif
                   </div>
 
@@ -259,9 +262,9 @@
                           @enderror
                       </p>
                       @if($app->mark_sheet_10 != NULL)
-                          <a class="badge bg-success" href="{{asset($app->mark_sheet_10)}}">view file</a>
+                          <a class="btn text-white bg-success" href="{{asset($app->mark_sheet_10)}}">view file</a>
                       @else
-                          <span class="badge bg-danger">not stated</span>
+                          <span class="btn text-white bg-danger">not stated</span>
                       @endif
                   </div>
 
@@ -275,9 +278,9 @@
                           @enderror
                       </p>
                       @if($app->finance != NULL)
-                          <a class="badge bg-success" href="{{asset($app->finance)}}">view file</a>
+                          <a class="btn text-white bg-success" href="{{asset($app->finance)}}">view file</a>
                       @else
-                          <span class="badge bg-danger">not stated</span>
+                          <span class="btn text-white bg-danger">not stated</span>
                       @endif
                   </div>
 
@@ -290,13 +293,13 @@
                           @enderror
                       </p>
                       @if($app->passport != NULL)
-                          <a class="badge bg-success" href="{{asset($app->passport)}}">view file</a>
+                          <a class="btn text-white bg-success" href="{{asset($app->passport)}}">view file</a>
                       @else
-                          <span class="badge bg-danger">not stated</span>
+                          <span class="btn text-white bg-danger">not stated</span>
                       @endif
                   </div>
                   <div style="margin-top: 20px;">
-                      <h3>Previously Selected Scores/Exams:</h3>
+                      <h4>Previously Selected Scores/Exams:</h4>
                       <table style="width: 70%; border-collapse: collapse; margin-top: 10px;">
                           <thead>
                           <tr>
@@ -311,7 +314,7 @@
                                   <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ $greOption }}</td>
                                   <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ json_decode($app->gre_score, true)['scores'][$i] ?? null }}</td>
                                   <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">
-                                      <a style="font-size: 10px;" class="badge bg-primary text-white" href="{{ isset(json_decode($app->gre_score, true)['attachments'][$i]) ? asset(json_decode($app->gre_score, true)['attachments'][$i]) : '#' }}" target="_blank" style="color: #007bff; text-decoration: none;">
+                                      <a style="font-size: 10px;" class="btn text-white bg-primary text-white" href="{{ isset(json_decode($app->gre_score, true)['attachments'][$i]) ? asset(json_decode($app->gre_score, true)['attachments'][$i]) : '#' }}" target="_blank" style="color: #007bff; text-decoration: none;">
                                           {{ isset(json_decode($app->gre_score, true)['attachments'][$i]) ? 'view file' : 'Attachment not stated' }}
                                       </a>
                                   </td>
@@ -336,14 +339,14 @@
                                       <option value="toefl">TOEFL</option>
                                       <option value="ielts">IELTS</option>
                                   </select>
-                                  <input class="form-control" type="text" name="score[]" placeholder="Enter score">
-                                  <input class="form-control" type="file" name="attachment[]">
+                                  <input  class="form-control mt-3" type="text" name="score[]" placeholder="Enter score">
+                                  <input class="form-control mt-3" type="file" name="attachment[]">
                                   <!-- Hide Remove button for the first element -->
-                                  <button class="badge bg-danger remove-btn" style="display: none;">Remove</button>
+                                  <button  class="btn bg-danger remove-btn mt-2" style="display: none; color: #ffffff">Remove</button>
                               </div>
                           </div>
                       </div>
-                      <button class="badge bg-success mb-2" id="add-btn" type="button" onclick="addMore()">Add More</button>
+                      <button  class="btn bg-success mb-2 mt-2  text-white" id="add-btn" type="button" onclick="addMore()">Add More</button>
 
                   </div>
 

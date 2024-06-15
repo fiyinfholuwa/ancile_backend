@@ -2,12 +2,14 @@
 
 @extends('counsellor.app')
 
+@section('title', 'Profile')
+@section('page', 'Profile')
 @section('content')
 
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Profile</h1>
+{{--  <h1></h1>--}}
 
 </div><!-- End Page Title -->
 

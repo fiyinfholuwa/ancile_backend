@@ -2,6 +2,8 @@
 
 @extends('backend.app')
 
+@section('title', 'Add Course')
+@section('page', 'Add Course')
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +14,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Add Course</h5>
-              <div class="card">
+{{--              <h5 class="card-title">Add Course</h5>--}}
+              <div class="">
 
               <form method="post" action="{{route('admin.course.save')}}" enctype="multipart/form-data" class="row g-3">
                 @csrf
@@ -134,10 +136,10 @@
           </div>
             </div>
           </div>
-          <div style="margin-top: 50px" class="col-lg-4">
+          <div style="margin-top: -20px" class="col-lg-4">
               <form action="{{route('admin.course.excel')}}" method="post" enctype="multipart/form-data">
                   @csrf
-                  <h5 class="card-title">Upload Excel/ CSV File</h5>
+                  <h5 class="card-title mb-3">Upload Excel/ CSV File</h5>
                   <div class="form-group">
                     <input type="file" class="form-control" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="csv_file"/>
                   </div>

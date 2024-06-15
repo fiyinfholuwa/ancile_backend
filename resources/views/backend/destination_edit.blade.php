@@ -2,6 +2,8 @@
 
 @extends('backend.app')
 
+@section('title'  , 'Edit Destination')
+@section('page'  , 'Edit Destination')
 @section('content')
 
   <main id="main" class="main">
@@ -12,8 +14,8 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit Destination</h5>
-              <div class="card">
+{{--              <h5 class="card-title"></h5>--}}
+              <div class="">
 
               <form method="post" action="{{route('admin.destination.update', $destination->id)}}" enctype="multipart/form-data" class="row g-3">
                 @csrf

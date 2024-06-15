@@ -23,10 +23,17 @@
         background-size: contain;
     }
 
+    .phone_style{
+        width: 320px  !important;
+    }
+
     @media (max-width: 767px) {
         .se-pre-con {
             /* Adjust styles for smaller screens here */
             background-size: contain; /* or any other styles you want */
+        }
+        .phone_style{
+            width: 380px  !important;
         }
     }
 
@@ -61,7 +68,8 @@
             <input type="email" name="email" id="email" placeholder="Email address">
             <p class="error" id="email_error" style="color: white;"></p>
 
-            <input type="number" id="phone" name="phone" placeholder="Phone number">
+            <input class="phone_style" type="number" id="phone" name="phone" placeholder="        Phone number">
+
             <p class="error" id="phone_error" style="color: white;"></p>
         </div>
 
@@ -116,7 +124,7 @@
             <input type="email" name="email" id="mail" placeholder="Enter Email Address">
             <p class="error" id="r_email_error" style="color: white;"></p>
 
-            <input type="number" id="phone2" name="mobile_number">
+            <input class="phone_style" type="number" placeholder="          Mobile Number" id="phone2" name="mobile_number">
             <p class="error" id="mobile_number_error" style="color: white;"></p>
         </div>
         <div class="">

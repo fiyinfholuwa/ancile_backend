@@ -2,6 +2,7 @@
 
 @extends('backend.app')
 
+@section('title', 'Manage Academy Tutorial Students')
 @section('content')
 
   <main id="main" class="main">
@@ -12,7 +13,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Manage Academy Tutorial Students</h5>
+{{--              <h5 class="card-title"></h5>--}}
 
               <form method="post" action="{{route('academic.test.report')}}">
 										@csrf
@@ -21,17 +22,17 @@
                                     <div class="" style="">
 
                                     <input name="date_from" class="form-control "  type="date"  placeholder="Start Date"    required/>
-                                    
+
                                     </div>
                                 </div>
                                 <div class="col-lg-2  mt-1">
                                     <div class="" style="">
 
                                     <input name="date_to" class="form-control "  type="date"  placeholder="End Date"   required/>
-                                    
+
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-lg-2  mt-1">
                                     <div class="" style="">
 
@@ -41,11 +42,11 @@
                                       <option value="gmat">gmat</option>
                                       <option value="sat">sat</option>
                                     </select>
-                                    
+
                                     </div>
                                 </div>
-                                
-                              
+
+
                                 <div class="col-lg-4   mt-1" >
                                 <button type="submit" class='btn btn-secondary btn-sm'>Export to CSV</button>
                                 </div>
@@ -55,17 +56,17 @@
 
 
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table id="my-table" class="table datatable">
                 <thead>
                   <tr>
                     <th>
                       S/N
                     </th>
-            
+
                     <th>Phone Number</th>
                     <th>Email</th>
                     <th>Section</th>
-                    
+
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -76,12 +77,12 @@
                   @foreach($tests as $test)
                   <tr>
                     <td>{{$i++}}</td>
-                
+
                     <td>{{$test->phone}}</td>
                     <td>{{$test->email}}</td>
                     <td>{{$test->section}}</td>
-                
-                    
+
+
                    <td>
                     <a type="button" class="" data-bs-toggle="modal" data-bs-target="#test_{{$test->id}}">
                     <i  class="fa fa-trash text-danger"></i>
