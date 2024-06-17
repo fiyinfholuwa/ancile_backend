@@ -166,6 +166,8 @@
 
                 </li>
 
+                @if(in_array('manage_applications', $permissions) || Auth::user()->user_type== 3)
+
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
                     <span class="pc-micon">
@@ -192,7 +194,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
 
+                @if(in_array('manage_users', $permissions) || Auth::user()->user_type== 3)
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
                         <span class="pc-micon">
@@ -207,7 +211,9 @@
                         <li class="pc-item"><a class="pc-link" href="{{route('user.view')}}">All Users</a></li>
                     </ul>
                 </li>
+                @endif
 
+                @if(in_array('manage_testimonials', $permissions) || Auth::user()->user_type== 3)
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
                         <span class="pc-micon">
@@ -224,7 +230,9 @@
                                 Testimonials</a></li>
                     </ul>
                 </li>
+                @endif
 
+                @if(in_array('manage_faqs', $permissions) || Auth::user()->user_type== 3)
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
                         <span class="pc-micon">
@@ -239,7 +247,9 @@
                         <li class="pc-item"><a class="pc-link" href="{{route('admin.askgpt.all')}}">All FAQs</a></li>
                     </ul>
                 </li>
+                @endif
 
+                @if(in_array('manage_resources', $permissions) || Auth::user()->user_type== 3)
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
                         <span class="pc-micon">
@@ -259,7 +269,9 @@
                                 Download</a></li>
                     </ul>
                 </li>
+                @endif
 
+                @if(in_array('manage_destinations', $permissions) || Auth::user()->user_type== 3)
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
                         <span class="pc-micon">
@@ -276,7 +288,9 @@
                                 Destinations</a></li>
                     </ul>
                 </li>
+                @endif
 
+                @if(in_array('manage_courses', $permissions) || Auth::user()->user_type== 3)
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
                         <span class="pc-micon">
@@ -290,6 +304,9 @@
                         <li class="pc-item"><a class="pc-link" href="{{route('admin.course.all')}}">All Courses</a></li>
                     </ul>
                 </li>
+                @endif
+
+                @if(in_array('manage_blog_&_news', $permissions) || Auth::user()->user_type== 3)
 
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
@@ -308,6 +325,9 @@
                     </ul>
                 </li>
 
+                @endif
+
+                @if(in_array('manage_counsellor', $permissions) || Auth::user()->user_type== 3)
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
                         <span class="pc-micon">
@@ -324,6 +344,10 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+
+                @if(in_array('manage_settings', $permissions) || Auth::user()->user_type== 3)
 
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
@@ -346,8 +370,7 @@
                         </li>
                     </ul>
                 </li>
-
-
+                @endif
             </ul>
         </div>
     </div>

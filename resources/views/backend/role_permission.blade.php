@@ -22,75 +22,58 @@
               <form action="{{route('role.permission.set', $role->id)}}" method="post" class="row g-3">
                 @csrf
                 <div class="col-md-12 col-lg-12">
-                <div class="mt-1">
-                <label for="checkbox">Add Application:</label>
-                <input type="checkbox" name="permission[]" id="checkbox" value="add_application">
-                </div>
 
                 <div class="mt-1">
                     <label for="checkbox">Manage Applications:</label>
-                    <input type="checkbox" value="manage_application" id="checkbox" name="permission[]">
-                </div>
-
-
-                    <div class="mt-1">
-                <label for="checkbox">Add Course:</label>
-                <input type="checkbox" name="permission[]" id="checkbox" value="add_course">
+                    <input type="checkbox" value="manage_applications" id="checkbox" name="permission[]">
                 </div>
 
                 <div class="mt-1">
                 <label for="checkbox">Manage Courses:</label>
-                <input type="checkbox" value="manage_course" id="checkbox" name="permission[]">
-                </div>
-                <div class="mt-1">
-                <label for="checkbox">Add Post:</label>
-                <input type="checkbox" name="permission[]" id="checkbox" value="add_post">
+                <input type="checkbox" value="manage_courses" id="checkbox" name="permission[]">
                 </div>
 
                 <div class="mt-1">
-                <label for="checkbox">Manage Posts:</label>
-                <input type="checkbox" value="manage_post" id="checkbox" name="permission[]">
+                <label for="checkbox">Manage Blog & News:</label>
+                <input type="checkbox" value="manage_blog_&_news" id="checkbox" name="permission[]">
                 </div>
 
-
-                <div class="mt-1">
-                <label for="checkbox">Manage Consultation:</label>
-                <input type="checkbox" value="manage_consultation" id="checkbox" name="permission[]">
-                </div>
-
-                <div class="mt-1">
-                <label for="checkbox">Add User:</label>
-                <input type="checkbox" value="add_user" id="checkbox" name="permission[]">
-                </div>
 
                 <div class="mt-1">
                 <label for="checkbox">Manage Users:</label>
-                <input type="checkbox" value="manage_user" id="checkbox" name="permission[]">
+                <input type="checkbox" value="manage_users" id="checkbox" name="permission[]">
                 </div>
 
-                <div class="mt-1">
-                <label for="checkbox">Add Counsellor:</label>
-                <input type="checkbox" value="add_counsellor" id="checkbox" name="permission[]">
-                </div>
+                    <div class="mt-1">
+                        <label for="checkbox">Manage Testimonials:</label>
+                        <input type="checkbox" value="manage_testimonials" id="checkbox" name="permission[]">
+                    </div>
 
-                <div class="mt-1">
+
+                    <div class="mt-1">
+                        <label for="checkbox">Manage FAQs:</label>
+                        <input type="checkbox" value="manage_faqs" id="checkbox" name="permission[]">
+                    </div>
+
+                    <div class="mt-1">
+                        <label for="checkbox">Manage Resources:</label>
+                        <input type="checkbox" value="manage_resources" id="checkbox" name="permission[]">
+                    </div>
+
+                    <div class="mt-1">
+                        <label for="checkbox">Manage Destinations:</label>
+                        <input type="checkbox" value="manage_destinations" id="checkbox" name="permission[]">
+                    </div>
+
+
+                    <div class="mt-1">
                 <label for="checkbox">Manage Counsellor:</label>
                 <input type="checkbox" value="manage_counsellor" id="checkbox" name="permission[]">
                 </div>
 
                 <div class="mt-1">
-                <label for="checkbox">Manage Role & Permission:</label>
-                <input type="checkbox" value="manage_role" id="checkbox" name="permission[]">
-                </div>
-                <div class="mt-1">
-                <label for="checkbox">Manage Admins:</label>
-                <input type="checkbox" value="manage_admins" id="checkbox" name="permission[]">
-                </div>
-
-                <div class="mt-1">
-                <label for="checkbox">Manage Status:</label>
-                <input type="checkbox" value="manage_status" id="checkbox" name="permission[]">
-                </div>
+                <label for="checkbox">Manage Settings:</label>
+                <input type="checkbox" value="manage_settings" id="checkbox" name="permission[]">
                 </div>
 
                 <div class="text-left">
@@ -120,7 +103,7 @@
                   @php
                     $permissionsFromDB = json_decode($role->permission);
 
-                  $allPermissions = ['add_application', 'manage_application', 'add_user', 'add_course', 'manage_course', 'add_post', 'manage_post', 'manage_user', 'add_counsellor', 'manage_counsellor', 'manage_role', 'manage_admins', 'manage_status', 'manage_consultation'];
+                  $allPermissions = ['manage_applications', 'manage_courses',  'manage_blog_&_news', 'manage_users', 'manage_testimonials', 'manage_counsellor', 'manage_faqs', 'manage_resources', 'manage_destinations', 'manage_counsellor', 'manage_settings'];
                   @endphp
                   @foreach($allPermissions as $permission)
                   <div class="mt-1">

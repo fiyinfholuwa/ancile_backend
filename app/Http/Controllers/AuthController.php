@@ -16,7 +16,7 @@ use App\Models\Consultation;
 class AuthController extends Controller
 {
     public function check_login(){
-        if (Auth::user()->user_type=='2') {
+        if (Auth::user()->user_type=='2' || Auth::user()->user_type=='3') {
             return redirect()->route('admin.dashboard');
         }elseif(Auth::user()->user_type=='1'){
             return redirect()->route('counsellor.dashboard');
